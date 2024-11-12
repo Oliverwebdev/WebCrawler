@@ -13,35 +13,29 @@ logger = logging.getLogger('EbayScraperGUI')
 
 class EbayScraperGUI:
     def __init__(self, root):
-        """Initialisiert die GUI-Anwendung."""
         self.root = root
         self.setup_main_window()
         self.setup_variables()
         self.setup_styles()
         self.create_widgets()
         self.load_user_settings()
-        
-        # Protokolliert GUI-Start
+        self.current_column = 0
+        self.current_row = 0
         logger.info("GUI wurde initialisiert")
 
     def setup_main_window(self):
-        """Konfiguriert das Hauptfenster."""
         self.root.title("eBay Artikel-Suche")
-        self.root.geometry("1200x800")
+        self.root.geometry("1000x800")
         self.root.minsize(800, 600)
         self.root.resizable(True, True)
-        
-        # Event-Handler für das Schließen des Fensters
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
     def setup_variables(self):
-        """Initialisiert die benötigten Variablen."""
         self.scraper = EbayScraper()
         self.favorites = []
         self.current_results = []
         self.search_active = False
         
-        # Tkinter Variablen
         self.search_var = tk.StringVar()
         self.min_price_var = tk.StringVar()
         self.max_price_var = tk.StringVar()
@@ -50,20 +44,18 @@ class EbayScraperGUI:
         self.progress_var = tk.IntVar(value=0)
         self.status_var = tk.StringVar(value="Bereit für die Suche")
         self.count_var = tk.StringVar(value="Gefundene Artikel: 0")
+        self.favorites_count_var = tk.StringVar(value="Favoriten: 0")
 
     def setup_styles(self):
-        """Konfiguriert das Aussehen der GUI-Elemente."""
         self.style = ttk.Style()
         self.style.theme_use("clam")
         
-        # Hauptstile
         self.style.configure(
             "Main.TFrame",
             background="#f0f0f0",
             padding=10
         )
         
-        # Button Stile
         self.style.configure(
             "Action.TButton",
             padding=6,
@@ -72,14 +64,20 @@ class EbayScraperGUI:
             font=("Helvetica", 12)
         )
         
-        # Label Stile
+        self.style.configure(
+            "Favorites.TButton",
+            padding=6,
+            background="#FF69B4",
+            foreground="white",
+            font=("Helvetica", 12)
+        )
+        
         self.style.configure(
             "Info.TLabel",
             padding=6,
             font=("Helvetica", 12)
         )
         
-        # Header Stile
         self.style.configure(
             "Header.TLabel",
             font=("Helvetica", 16, "bold"),
@@ -87,9 +85,16 @@ class EbayScraperGUI:
             foreground="white",
             padding=10
         )
+        
+        self.style.configure(
+            "Card.TFrame",
+            background="white",
+            relief="raised",
+            borderwidth=1,
+            padding=10
+        )
 
     def create_widgets(self):
-        """Erstellt alle GUI-Elemente."""
         self.create_main_frame()
         self.create_search_section()
         self.create_results_section()
@@ -97,20 +102,31 @@ class EbayScraperGUI:
         self.create_favorites_window()
 
     def create_main_frame(self):
-        """Erstellt den Hauptframe."""
         self.main_frame = ttk.Frame(self.root, style="Main.TFrame")
         self.main_frame.pack(fill=tk.BOTH, expand=True)
 
+        # Header Frame mit Titel und Favoriten-Button
+        header_frame = ttk.Frame(self.main_frame)
+        header_frame.pack(fill=tk.X, pady=(0, 10))
+
         # Header
         header = ttk.Label(
-            self.main_frame,
+            header_frame,
             text="eBay Artikel-Suche",
             style="Header.TLabel"
         )
-        header.pack(fill=tk.X, pady=(0, 10))
+        header.pack(side=tk.LEFT, fill=tk.X, expand=True)
+
+        # Favoriten Button
+        favorites_btn = ttk.Button(
+            header_frame,
+            text="❤ Favoriten",
+            command=self.show_favorites,
+            style="Favorites.TButton"
+        )
+        favorites_btn.pack(side=tk.RIGHT, padx=10)
 
     def create_search_section(self):
-        """Erstellt den Suchbereich."""
         search_frame = ttk.LabelFrame(
             self.main_frame,
             text="Suchoptionen",
@@ -139,7 +155,6 @@ class EbayScraperGUI:
         self.create_advanced_search_options(search_frame)
 
     def create_advanced_search_options(self, parent):
-        """Erstellt erweiterte Suchoptionen."""
         options_frame = ttk.Frame(parent)
         options_frame.pack(side=tk.LEFT, padx=20)
 
@@ -175,7 +190,6 @@ class EbayScraperGUI:
         ).pack(side=tk.LEFT, padx=5)
 
     def create_results_section(self):
-        """Erstellt den Ergebnisbereich."""
         results_frame = ttk.LabelFrame(
             self.main_frame,
             text="Suchergebnisse",
@@ -187,14 +201,11 @@ class EbayScraperGUI:
         self.create_scrollable_results(results_frame)
 
     def create_results_toolbar(self, parent):
-        """Erstellt die Toolbar über den Suchergebnissen."""
         toolbar = ttk.Frame(parent)
         toolbar.pack(fill=tk.X, pady=(0, 5))
 
-        # Sortierung
         ttk.Label(toolbar, text="Sortierung:").pack(side=tk.LEFT)
         
-        # Sortier-Combobox
         sort_combobox = ttk.Combobox(
             toolbar,
             textvariable=self.sort_var,
@@ -204,10 +215,8 @@ class EbayScraperGUI:
         )
         sort_combobox.pack(side=tk.LEFT, padx=5)
         
-        # Event-Binding für Sortierung
         sort_combobox.bind('<<ComboboxSelected>>', self.sort_results)
 
-        # Anzahl gefundener Artikel
         ttk.Label(
             toolbar,
             textvariable=self.count_var,
@@ -215,7 +224,6 @@ class EbayScraperGUI:
         ).pack(side=tk.RIGHT)
 
     def create_scrollable_results(self, parent):
-        """Erstellt den scrollbaren Bereich für die Suchergebnisse."""
         self.canvas = tk.Canvas(parent, bg='white')
         scrollbar = ttk.Scrollbar(
             parent,
@@ -223,6 +231,9 @@ class EbayScraperGUI:
             command=self.canvas.yview
         )
         self.scrollable_frame = ttk.Frame(self.canvas)
+
+        self.scrollable_frame.grid_columnconfigure(0, weight=1)
+        self.scrollable_frame.grid_columnconfigure(1, weight=1)
 
         self.scrollable_frame.bind(
             "<Configure>",
@@ -234,15 +245,13 @@ class EbayScraperGUI:
         self.canvas.create_window((0, 0), window=self.scrollable_frame, anchor=tk.NW)
         self.canvas.configure(yscrollcommand=scrollbar.set)
 
-        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(5, 0))
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
     def create_status_bar(self):
-        """Erstellt die Statusleiste."""
         status_bar = ttk.Frame(self.main_frame)
         status_bar.pack(fill=tk.X, pady=5)
 
-        # Fortschrittsbalken
         ttk.Progressbar(
             status_bar,
             variable=self.progress_var,
@@ -250,29 +259,11 @@ class EbayScraperGUI:
             mode='determinate'
         ).pack(side=tk.LEFT, padx=5)
 
-        # Statustext
         ttk.Label(
             status_bar,
             textvariable=self.status_var
         ).pack(side=tk.LEFT, padx=5)
-
-    def create_favorites_window(self):
-        """Erstellt das Favoriten-Fenster."""
-        self.favorites_window = tk.Toplevel(self.root)
-        self.favorites_window.title("Favoriten")
-        self.favorites_window.geometry("800x600")
-        self.favorites_window.withdraw()
-
-        # Favoriten TreeView
-        self.favorites_tree = ttk.Treeview(
-            self.favorites_window,
-            columns=("Titel", "Preis"),
-            show="headings"
-        )
-        self.favorites_tree.heading("Titel", text="Titel")
-        self.favorites_tree.heading("Preis", text="Preis")
-        self.favorites_tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-
+    
     def start_search(self):
         """Startet die Suche."""
         if self.search_active:
@@ -366,53 +357,211 @@ class EbayScraperGUI:
             
         return sorted_results
 
-    def create_result_card(self, item):
-        """Erstellt eine Ergebniskarte für einen Artikel."""
-        try:
-            card = ttk.Frame(self.scrollable_frame, style="Card.TFrame")
-            card.pack(fill=tk.X, padx=5, pady=5)
+    def create_favorites_window(self):
+        self.favorites_window = tk.Toplevel(self.root)
+        self.favorites_window.title("Favoriten")
+        self.favorites_window.geometry("800x600")
+        self.favorites_window.withdraw()
 
-            # Titel
-            ttk.Label(
+        favorites_frame = ttk.Frame(self.favorites_window, padding="10")
+        favorites_frame.pack(fill=tk.BOTH, expand=True)
+
+        toolbar = ttk.Frame(favorites_frame)
+        toolbar.pack(fill=tk.X, pady=(0, 10))
+
+        delete_btn = ttk.Button(
+            toolbar,
+            text="Ausgewählte löschen",
+            command=self.delete_selected_favorites,
+            style="Action.TButton"
+        )
+        delete_btn.pack(side=tk.LEFT, padx=5)
+
+        delete_all_btn = ttk.Button(
+            toolbar,
+            text="Alle löschen",
+            command=self.delete_all_favorites,
+            style="Action.TButton"
+        )
+        delete_all_btn.pack(side=tk.LEFT, padx=5)
+
+        ttk.Label(
+            toolbar,
+            textvariable=self.favorites_count_var,
+            font=("Helvetica", 10)
+        ).pack(side=tk.RIGHT, padx=5)
+
+        tree_frame = ttk.Frame(favorites_frame)
+        tree_frame.pack(fill=tk.BOTH, expand=True)
+
+        scrollbar = ttk.Scrollbar(tree_frame)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        self.favorites_tree = ttk.Treeview(
+            tree_frame,
+            columns=("Titel", "Preis", "Link"),
+            show="headings",
+            selectmode="extended"
+        )
+        self.favorites_tree.pack(fill=tk.BOTH, expand=True)
+
+        scrollbar.config(command=self.favorites_tree.yview)
+        self.favorites_tree.config(yscrollcommand=scrollbar.set)
+
+        self.favorites_tree.heading("Titel", text="Titel")
+        self.favorites_tree.heading("Preis", text="Preis")
+        self.favorites_tree.heading("Link", text="Link")
+
+        self.favorites_tree.column("Titel", width=400)
+        self.favorites_tree.column("Preis", width=100)
+        self.favorites_tree.column("Link", width=200)
+
+        self.favorites_tree.bind("<Double-1>", self.on_favorite_double_click)
+        
+        self.create_context_menu()
+
+    def create_context_menu(self):
+        self.context_menu = tk.Menu(self.favorites_window, tearoff=0)
+        self.context_menu.add_command(
+            label="Öffnen in eBay",
+            command=lambda: self.open_selected_favorite()
+        )
+        self.context_menu.add_command(
+            label="Löschen",
+            command=self.delete_selected_favorites
+        )
+        
+        self.favorites_tree.bind("<Button-3>", self.show_context_menu)
+
+    def show_context_menu(self, event):
+        try:
+            self.favorites_tree.selection_set(
+                self.favorites_tree.identify_row(event.y)
+            )
+            self.context_menu.tk_popup(event.x_root, event.y_root)
+        finally:
+            self.context_menu.grab_release()
+
+    def on_favorite_double_click(self, event):
+        self.open_selected_favorite()
+
+    def open_selected_favorite(self):
+        selected = self.favorites_tree.selection()
+        if not selected:
+            return
+            
+        item = self.favorites_tree.item(selected[0])
+        link = item['values'][2]
+        if link:
+            webbrowser.open(link)
+
+    def add_favorite(self, item):
+        favorite = (item['title'], item['price'], item['link'])
+        if favorite not in self.favorites:
+            self.favorites.append(favorite)
+            self.favorites_tree.insert(
+                "", tk.END,
+                values=(item['title'], item['price'], item['link'])
+            )
+            self.update_favorites_count()
+            self.save_user_settings()
+            messagebox.showinfo(
+                "Favorit hinzugefügt", 
+                "Der Artikel wurde zu deinen Favoriten hinzugefügt!"
+            )
+
+    def show_favorites(self):
+        self.favorites_window.deiconify()
+        self.favorites_window.lift()
+        self.update_favorites_count()
+
+    def delete_selected_favorites(self):
+        selected = self.favorites_tree.selection()
+        if not selected:
+            return
+
+        if messagebox.askyesno(
+            "Löschen bestätigen",
+            "Möchten Sie die ausgewählten Favoriten wirklich löschen?"
+        ):
+            for item_id in selected:
+                values = self.favorites_tree.item(item_id)['values']
+                self.favorites = [
+                    fav for fav in self.favorites 
+                    if fav[0] != values[0]
+                ]
+                self.favorites_tree.delete(item_id)
+            
+            self.update_favorites_count()
+            self.save_user_settings()
+
+    def delete_all_favorites(self):
+        if messagebox.askyesno(
+            "Bestätigung",
+            "Möchten Sie wirklich alle Favoriten löschen?"
+        ):
+            self.favorites_tree.delete(*self.favorites_tree.get_children())
+            self.favorites = []
+            self.update_favorites_count()
+            self.save_user_settings()
+
+    def update_favorites_count(self):
+        count = len(self.favorites)
+        self.favorites_count_var.set(f"Favoriten: {count}")
+
+    def create_result_card(self, item):
+        try:
+            if self.current_column >= 2:
+                self.current_column = 0
+                self.current_row += 1
+
+            card = ttk.Frame(self.scrollable_frame, style="Card.TFrame")
+            card.grid(row=self.current_row, column=self.current_column, 
+                     padx=10, pady=10, sticky="nsew")
+
+            card.grid_columnconfigure(0, weight=1)
+
+            title_label = ttk.Label(
                 card,
                 text=item['title'],
-                wraplength=600,
+                wraplength=400,
                 font=("Helvetica", 12, "bold")
-            ).pack(anchor=tk.W)
+            )
+            title_label.grid(row=0, column=0, sticky="w", pady=(0, 5))
 
-            # Preis
-            ttk.Label(
+            price_label = ttk.Label(
                 card,
                 text=item['price'],
                 font=("Helvetica", 12)
-            ).pack(anchor=tk.W)
+            )
+            price_label.grid(row=1, column=0, sticky="w", pady=(0, 5))
 
-            # Versand und Standort
             if 'shipping' in item:
-                ttk.Label(
+                shipping_label = ttk.Label(
                     card,
                     text=f"Versand: {item['shipping']}"
-                ).pack(anchor=tk.W)
+                )
+                shipping_label.grid(row=2, column=0, sticky="w", pady=(0, 5))
 
             if 'location' in item:
-                ttk.Label(
+                location_label = ttk.Label(
                     card,
                     text=f"Standort: {item['location']}"
-                ).pack(anchor=tk.W)
+                )
+                location_label.grid(row=3, column=0, sticky="w", pady=(0, 5))
 
-            # Button Frame
             button_frame = ttk.Frame(card)
-            button_frame.pack(anchor=tk.E)
+            button_frame.grid(row=4, column=0, sticky="e", pady=(5, 0))
 
-            # Details und Favoriten Buttons
             self._create_details_button(button_frame, item['link'])
             self._create_favorite_button(button_frame, item)
+
+            self.current_column += 1
 
         except Exception as e:
             logger.error(f"Fehler beim Erstellen der Ergebniskarte: {e}")
 
     def _create_details_button(self, parent, link):
-        """Erstellt den Details-Button mit vordefinierten Callback."""
         def open_link():
             webbrowser.open(link)
         
@@ -424,7 +573,6 @@ class EbayScraperGUI:
         ).pack(side=tk.LEFT, padx=2)
 
     def _create_favorite_button(self, parent, item):
-        """Erstellt den Favoriten-Button mit vordefinierten Callback."""
         def add_to_favorites():
             self.add_favorite(item)
         
@@ -436,74 +584,31 @@ class EbayScraperGUI:
         ).pack(side=tk.LEFT, padx=2)
 
     def clear_results(self):
-        """Löscht alle aktuellen Suchergebnisse."""
         for widget in self.scrollable_frame.winfo_children():
             widget.destroy()
+        self.current_row = 0
+        self.current_column = 0
 
     def show_error(self, message):
-        """Zeigt eine Fehlermeldung an."""
         messagebox.showerror("Fehler", message)
         self.status_var.set(f"Fehler: {message}")
 
     def search_completed(self):
-        """Wird aufgerufen, wenn die Suche abgeschlossen ist."""
         self.search_active = False
         self.search_button.state(['!disabled'])
         self.status_var.set("Suche abgeschlossen")
         self.progress_var.set(100)
 
     def extract_price(self, price_str):
-        """Extrahiert den numerischen Preis aus einem Preis-String."""
         try:
-            # Entfernt alle nicht-numerischen Zeichen außer Punkt und Komma
             clean_price = ''.join(c for c in price_str if c.isdigit() or c in '.,')
-            # Ersetzt Komma durch Punkt für Float-Konvertierung
             clean_price = clean_price.replace(',', '.')
             return float(clean_price)
         except (ValueError, AttributeError, TypeError) as e:
             logger.error(f"Fehler bei der Preisextraktion für {price_str}: {e}")
             return 0.0
 
-    def add_favorite(self, item):
-        """Fügt einen Artikel zu den Favoriten hinzu."""
-        favorite = (item['title'], item['price'], item['link'])
-        if favorite not in self.favorites:
-            self.favorites.append(favorite)
-            self.favorites_tree.insert(
-                "", tk.END, values=(item['title'], item['price']))
-            self.save_user_settings()
-            messagebox.showinfo(
-                "Favorit hinzugefügt", 
-                "Der Artikel wurde zu deinen Favoriten hinzugefügt!"
-            )
-
-    def show_favorites(self):
-        """Zeigt das Favoriten-Fenster an."""
-        self.favorites_window.deiconify()
-        self.favorites_window.lift()
-
-    def delete_selected_favorites(self):
-        """Löscht ausgewählte Favoriten."""
-        selected = self.favorites_tree.selection()
-        if not selected:
-            return
-
-        for item_id in selected:
-            values = self.favorites_tree.item(item_id)['values']
-            self.favorites = [fav for fav in self.favorites if fav[0] != values[0]]
-            self.favorites_tree.delete(item_id)
-        
-        self.save_user_settings()
-
-    def delete_all_favorites(self):
-        """Löscht alle Favoriten."""
-        if messagebox.askyesno("Bestätigung", "Möchten Sie wirklich alle Favoriten löschen?"):
-            self.favorites_tree.delete(*self.favorites_tree.get_children())
-            self.favorites = []
-            self.save_user_settings()
-
     def load_user_settings(self):
-        """Lädt die Benutzereinstellungen."""
         try:
             data = load_from_json(CONFIG['SETTINGS_FILE'])
             if data:
@@ -513,7 +618,9 @@ class EbayScraperGUI:
                 # Favoriten in TreeView laden
                 for favorite in self.favorites:
                     self.favorites_tree.insert(
-                        "", tk.END, values=(favorite[0], favorite[1]))
+                        "", tk.END, values=favorite)  # Jetzt werden alle drei Werte geladen
+                    
+                self.update_favorites_count()
             else:
                 self.settings = {
                     'max_pages': CONFIG['DEFAULT_MAX_PAGES'],
@@ -530,7 +637,6 @@ class EbayScraperGUI:
             self.favorites = []
 
     def save_user_settings(self):
-        """Speichert die Benutzereinstellungen."""
         try:
             data = {
                 'settings': self.settings,
@@ -545,7 +651,6 @@ class EbayScraperGUI:
             )
 
     def on_closing(self):
-        """Wird aufgerufen, wenn das Programm beendet wird."""
         try:
             self.save_user_settings()
         except Exception as e:
