@@ -36,19 +36,19 @@ def test_imports():
         print(f"✗ config: {e}")
     
     try:
-        from ebay_scraper import EbayScraper
+        from scraper.ebay_scraper import EbayScraper
         print("✓ ebay_scraper")
     except ImportError as e:
         print(f"✗ ebay_scraper: {e}")
     
     try:
-        from gui import EbayScraperGUI
+        from gui.gui import EbayScraperGUI
         print("✓ gui")
     except ImportError as e:
         print(f"✗ gui: {e}")
     
     try:
-        from utils import save_to_json, load_from_json
+        from utils.utils import save_to_json, load_from_json
         print("✓ utils")
     except ImportError as e:
         print(f"✗ utils: {e}")

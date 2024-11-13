@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 import threading
 import time
 from config import CONFIG
-from utils import save_to_json, load_from_json
+from utils.utils import save_to_json, load_from_json
 
 logger = logging.getLogger('AmazonScraper')
 
@@ -17,7 +17,7 @@ class AmazonScraper:
         """Initialisiert den AmazonScraper mit grundlegenden Einstellungen."""
         self.base_url = "https://www.amazon.de/s?k={}"
         self.proxies = []
-        self.results_file = 'amazon_results.json'  # Default Wert
+        self.results_file = 'utils/amazon_results.json'  # Default Wert
         self.retry_count = 3
         self.retry_delay = 2
         self.session = requests.Session()
@@ -203,6 +203,12 @@ class AmazonScraper:
         """Leert die Proxy-Liste."""
         self.proxies = []
 
+    
+    
     def get_proxy_count(self):
         """Gibt die Anzahl der verfügbaren Proxies zurück."""
         return len(self.proxies)
+    
+
+
+

@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 import threading
 import time
 from config import CONFIG
-from utils import save_to_json, load_from_json
+from utils.utils import save_to_json, load_from_json
 
 logger = logging.getLogger('EbayScraper')
 
@@ -51,7 +51,7 @@ class EbayScraper:
         """Initialisiert den EbayScraper mit grundlegenden Einstellungen."""
         self.base_url = "https://www.ebay.de/sch/i.html?_nkw={}"
         self.proxies = []
-        self.results_file = CONFIG['RESULTS_FILE']
+        self.results_file = 'utils/ebay_results.json'        
         self.retry_count = 3
         self.retry_delay = 2
         self.session = requests.Session()
@@ -264,8 +264,5 @@ class EbayScraper:
         """
         return len(self.proxies)
 
-if __name__ == "__main__":
-    # Beispiel für die direkte Verwendung
-    scraper = EbayScraper()
-    results = scraper.search("laptop", max_pages=1)
-    print(f"Gefundene Artikel: {len(results)}")
+
+    

@@ -2,9 +2,9 @@
 import tkinter as tk
 import logging
 import sys
-from gui import EbayScraperGUI
-from ebay_scraper import EbayScraper
-from amazon_scraper import AmazonScraper
+from gui.gui import EbayScraperGUI
+from scraper.ebay_scraper import EbayScraper
+from scraper.amazon_scraper import AmazonScraper
 from x11_config import configure_x11_environment, check_display_server
 
 def setup_logging():
@@ -13,7 +13,7 @@ def setup_logging():
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler('scraper.log'),
+            logging.FileHandler('utils/scraper.log'),
             logging.StreamHandler()
         ]
     )
