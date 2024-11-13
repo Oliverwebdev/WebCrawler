@@ -121,6 +121,3 @@ Besonderer Dank gilt:
 
 
 
-Error streaming diff: Error: HTTP 404 Not Found from http://127.0.0.1:11434/api/generate
-
-The model "llama3.1:8b" was not found. To download it, run `ollama run llama3.1:8b`.
