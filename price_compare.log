@@ -1,0 +1,2 @@
+2024-11-12 23:02:53,043 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-12 23:02:53,044 - EbayScraperGUI - CRITICAL - Kritischer Fehler in der Anwendung: name 'ModernEbayScraperGUI' is not defined

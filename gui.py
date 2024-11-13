@@ -667,6 +667,17 @@ class EbayScraperGUI:
             logger.error(f"Fehler beim Sortieren: {e}")
             return results
 
+    def open_link(self, link):
+        """Öffnet einen Link im Standard-Webbrowser."""
+        try:
+            webbrowser.open(link)
+        except Exception as e:
+            logger.error(f"Fehler beim Öffnen des Links: {e}")
+            messagebox.showerror(
+            "Fehler",
+            f"Der Link konnte nicht geöffnet werden:\n{str(e)}"
+        )
+    
     def create_result_card(self, item, source):
         """Erstellt eine Ergebniskarte mit verbessertem Layout."""
         try:
@@ -768,6 +779,8 @@ class EbayScraperGUI:
             logger.error(f"Fehler beim Erstellen der Ergebniskarte: {e}")
             self.show_error(f"Fehler beim Anzeigen eines Ergebnisses: {str(e)}")
 
+    
+    
     def _create_details_button(self, parent, link):
         try:
             def open_link():

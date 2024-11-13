@@ -21,3 +21,51 @@
 2024-11-12 18:23:04,142 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 174 Artikel
 2024-11-12 18:23:04,142 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 174 Artikel gefunden.
 2024-11-12 18:23:57,629 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-13 19:21:25,335 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-13 19:21:25,397 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-13 19:21:25,402 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-13 19:21:25,438 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-13 19:21:25,465 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-13 19:21:37,231 - EbayScraper - INFO - Starte Suche für: katzenfutter
+2024-11-13 19:21:38,658 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 100 Artikel
+2024-11-13 19:21:38,659 - EbayScraper - INFO - Suche abgeschlossen. 100 Artikel gefunden.
+2024-11-13 19:21:38,659 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-13 19:21:40,782 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 175 Artikel
+2024-11-13 19:21:40,782 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 175 Artikel gefunden.
+2024-11-13 19:21:51,597 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-13 19:43:20,054 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-13 19:43:20,119 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-13 19:43:20,122 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-13 19:43:20,147 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-13 19:43:20,173 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-13 19:43:32,546 - EbayScraper - INFO - Starte Suche für: katzenfutter
+2024-11-13 19:43:34,488 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 188 Artikel
+2024-11-13 19:43:34,489 - EbayScraper - INFO - Suche abgeschlossen. 188 Artikel gefunden.
+2024-11-13 19:43:34,489 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-13 19:43:36,537 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 178 Artikel
+2024-11-13 19:43:36,538 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 178 Artikel gefunden.
+2024-11-13 19:43:42,357 - EbayScraper - INFO - Starte Suche für: katzenfutter
+2024-11-13 19:43:44,221 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 130 Artikel
+2024-11-13 19:43:44,222 - EbayScraper - INFO - Suche abgeschlossen. 130 Artikel gefunden.
+2024-11-13 19:43:44,222 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-13 19:43:46,125 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 178 Artikel
+2024-11-13 19:43:46,125 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 178 Artikel gefunden.
+2024-11-13 19:44:03,838 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-13 19:46:05,330 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-13 19:46:05,398 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-13 19:46:05,403 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-13 19:46:05,430 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-13 19:46:05,450 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-13 19:46:07,549 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-13 20:11:23,289 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-13 20:11:23,337 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-13 20:11:23,343 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-13 20:11:23,383 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-13 20:11:23,421 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-13 20:11:28,408 - EbayScraper - INFO - Starte Suche für: katzenfutter
+2024-11-13 20:11:30,160 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 129 Artikel
+2024-11-13 20:11:30,161 - EbayScraper - INFO - Suche abgeschlossen. 129 Artikel gefunden.
+2024-11-13 20:11:30,161 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-13 20:11:32,369 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 176 Artikel
+2024-11-13 20:11:32,370 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 176 Artikel gefunden.
+2024-11-13 20:11:56,638 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
