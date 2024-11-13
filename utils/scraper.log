@@ -10,3 +10,15 @@
 2024-11-13 21:11:35,457 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 175 Artikel
 2024-11-13 21:11:35,457 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 175 Artikel gefunden.
 2024-11-13 21:11:41,504 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-13 21:12:25,862 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-13 21:12:25,919 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-13 21:12:25,931 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-13 21:12:25,979 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-13 21:12:26,029 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-13 21:12:32,932 - EbayScraper - INFO - Starte Suche für: skatzenfutter
+2024-11-13 21:12:35,254 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 2 Artikel
+2024-11-13 21:12:35,255 - EbayScraper - INFO - Suche abgeschlossen. 2 Artikel gefunden.
+2024-11-13 21:12:35,256 - AmazonScraper - INFO - Starte Amazon-Suche für: skatzenfutter
+2024-11-13 21:12:38,925 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 175 Artikel
+2024-11-13 21:12:38,926 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 175 Artikel gefunden.
+2024-11-13 21:12:41,508 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
