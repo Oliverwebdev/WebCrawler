@@ -1,0 +1,422 @@
+2024-11-15 02:42:26,040 - Main - INFO - Starte Anwendung...
+2024-11-15 02:42:26,040 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 02:42:26,041 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 02:42:26,041 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 02:42:26,041 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 02:42:26,041 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 02:42:26,042 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 02:42:26,042 - Main - DEBUG - Datenbank existiert noch nicht - wird erstellt
+2024-11-15 02:42:26,042 - Main - DEBUG - Importiere Module...
+2024-11-15 02:42:26,242 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 02:42:26,246 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:42:26,246 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:42:26,284 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:42:26,285 - Main - INFO - Display Server: X11
+2024-11-15 02:42:26,285 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 02:42:26,314 - DatabaseManager - ERROR - Fehler bei Datenbankinitialisierung: near "CONSTRAINT": syntax error
+2024-11-15 02:42:26,314 - Main - CRITICAL - Kritischer Fehler beim Programmstart: near "CONSTRAINT": syntax error
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 95, in main
+    db_manager = DatabaseManager()
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/oliver/Documents/Scrapper/database/database_manager.py", line 16, in __init__
+    self.setup_database()
+  File "/home/oliver/Documents/Scrapper/database/database_manager.py", line 28, in setup_database
+    self.conn.executescript(f.read())
+sqlite3.OperationalError: near "CONSTRAINT": syntax error
+2024-11-15 02:43:34,619 - Main - INFO - Starte Anwendung...
+2024-11-15 02:43:34,619 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 02:43:34,620 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 02:43:34,620 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 02:43:34,620 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 02:43:34,621 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 02:43:34,621 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 02:43:34,621 - Main - DEBUG - Importiere Module...
+2024-11-15 02:43:34,816 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 02:43:34,819 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:43:34,820 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:43:34,873 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:43:34,873 - Main - INFO - Display Server: X11
+2024-11-15 02:43:34,873 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 02:43:34,889 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 02:43:34,889 - Main - DEBUG - Erstelle GUI...
+2024-11-15 02:43:34,889 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 02:43:34,974 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 02:43:34,975 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 02:43:34,978 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 02:43:34,979 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 02:43:34,979 - Main - CRITICAL - Kritischer Fehler beim Programmstart: 'EbayScraperGUI' object has no attribute 'setup_main_window'
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 111, in main
+    app = EbayScraperGUI(root, ebay_scraper, amazon_scraper, db_manager)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 37, in __init__
+    self.setup_main_window()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EbayScraperGUI' object has no attribute 'setup_main_window'
+2024-11-15 02:45:01,401 - Main - INFO - Starte Anwendung...
+2024-11-15 02:45:01,401 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 02:45:01,402 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 02:45:01,402 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 02:45:01,402 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 02:45:01,402 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 02:45:01,402 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 02:45:01,403 - Main - DEBUG - Importiere Module...
+2024-11-15 02:45:01,598 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 02:45:01,602 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:45:01,602 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:45:01,662 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:45:01,663 - Main - INFO - Display Server: X11
+2024-11-15 02:45:01,663 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 02:45:01,666 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 02:45:01,666 - Main - DEBUG - Erstelle GUI...
+2024-11-15 02:45:01,667 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 02:45:01,771 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 02:45:01,771 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 02:45:01,775 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 02:45:01,776 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 02:45:01,776 - Main - CRITICAL - Kritischer Fehler beim Programmstart: 'EbayScraperGUI' object has no attribute 'create_components'
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 111, in main
+    app = EbayScraperGUI(root, ebay_scraper, amazon_scraper, db_manager)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 38, in __init__
+    self.create_components()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EbayScraperGUI' object has no attribute 'create_components'
+2024-11-15 02:47:07,110 - Main - INFO - Starte Anwendung...
+2024-11-15 02:47:07,110 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 02:47:07,110 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 02:47:07,111 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 02:47:07,111 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 02:47:07,111 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 02:47:07,111 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 02:47:07,111 - Main - DEBUG - Importiere Module...
+2024-11-15 02:47:07,410 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 02:47:07,416 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:47:07,416 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:47:07,486 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:47:07,486 - Main - INFO - Display Server: X11
+2024-11-15 02:47:07,486 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 02:47:07,489 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 02:47:07,489 - Main - DEBUG - Erstelle GUI...
+2024-11-15 02:47:07,489 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 02:47:07,608 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 02:47:07,608 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 02:47:07,613 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 02:47:07,614 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 02:47:07,615 - Main - CRITICAL - Kritischer Fehler beim Programmstart: 'EbayScraperGUI' object has no attribute 'create_components'
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 111, in main
+    app = EbayScraperGUI(root, ebay_scraper, amazon_scraper, db_manager)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 38, in __init__
+    self.create_components()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EbayScraperGUI' object has no attribute 'create_components'
+2024-11-15 02:48:32,438 - Main - INFO - Starte Anwendung...
+2024-11-15 02:48:32,439 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 02:48:32,439 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 02:48:32,439 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 02:48:32,439 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 02:48:32,439 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 02:48:32,440 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 02:48:32,440 - Main - DEBUG - Importiere Module...
+2024-11-15 02:48:32,625 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 02:48:32,629 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:48:32,629 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:48:32,676 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:48:32,676 - Main - INFO - Display Server: X11
+2024-11-15 02:48:32,676 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 02:48:32,677 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 02:48:32,678 - Main - DEBUG - Erstelle GUI...
+2024-11-15 02:48:32,678 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 02:48:32,757 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 02:48:32,757 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 02:48:32,761 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 02:48:32,761 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 02:48:32,777 - Main - CRITICAL - Kritischer Fehler beim Programmstart: 'EbayScraperGUI' object has no attribute 'favorites_window'
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 111, in main
+    app = EbayScraperGUI(root, ebay_scraper, amazon_scraper, db_manager)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 30, in __init__
+    self.create_components()
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 55, in create_components
+    self.create_header()
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 104, in create_header
+    command=self.favorites_window.show
+            ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EbayScraperGUI' object has no attribute 'favorites_window'
+2024-11-15 02:50:47,368 - Main - INFO - Starte Anwendung...
+2024-11-15 02:50:47,369 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 02:50:47,369 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 02:50:47,369 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 02:50:47,370 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 02:50:47,370 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 02:50:47,370 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 02:50:47,370 - Main - DEBUG - Importiere Module...
+2024-11-15 02:50:47,395 - Main - CRITICAL - Kritischer Fehler beim Programmstart: name 'self' is not defined
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 80, in main
+    from gui.gui import EbayScraperGUI
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 17, in <module>
+    class EbayScraperGUI:
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 56, in EbayScraperGUI
+    self.root,
+    ^^^^
+NameError: name 'self' is not defined
+2024-11-15 02:52:38,398 - Main - INFO - Starte Anwendung...
+2024-11-15 02:52:38,398 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 02:52:38,399 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 02:52:38,399 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 02:52:38,399 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 02:52:38,399 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 02:52:38,400 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 02:52:38,400 - Main - DEBUG - Importiere Module...
+2024-11-15 02:52:38,596 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 02:52:38,600 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:52:38,600 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:52:38,645 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:52:38,646 - Main - INFO - Display Server: X11
+2024-11-15 02:52:38,646 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 02:52:38,647 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 02:52:38,648 - Main - DEBUG - Erstelle GUI...
+2024-11-15 02:52:38,648 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 02:52:38,732 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 02:52:38,732 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 02:52:38,735 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 02:52:38,736 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 02:52:38,786 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 02:52:38,962 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 02:52:38,962 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 02:52:54,750 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 02:52:54,751 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-15 02:52:54,752 - AmazonScraper - ERROR - Kritischer Fehler bei der Amazon-Suche: 'AmazonScraper' object has no attribute '_build_search_url'
+2024-11-15 02:52:54,754 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 0 Ergebnisse gefunden.
+2024-11-15 02:53:03,434 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 02:53:03,435 - EbayScraper - INFO - Starte Suche für: katzenfutter
+2024-11-15 02:53:03,444 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.ebay.de:443
+2024-11-15 02:53:03,446 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.ebay.de:443
+2024-11-15 02:53:03,447 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.ebay.de:443
+2024-11-15 02:53:03,908 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=katzenfutter HTTP/11" 200 None
+2024-11-15 02:53:03,910 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=katzenfutter&_pgn=2 HTTP/11" 200 None
+2024-11-15 02:53:03,930 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=katzenfutter&_pgn=3 HTTP/11" 200 None
+2024-11-15 02:53:06,004 - EbayScraper - INFO - Suche abgeschlossen. 204 Artikel gefunden.
+2024-11-15 02:53:06,008 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 204 Ergebnisse gefunden.
+2024-11-15 02:55:42,533 - Main - INFO - Starte Anwendung...
+2024-11-15 02:55:42,533 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 02:55:42,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 02:55:42,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 02:55:42,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 02:55:42,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 02:55:42,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 02:55:42,535 - Main - DEBUG - Importiere Module...
+2024-11-15 02:55:42,723 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 02:55:42,727 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:55:42,727 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:55:42,764 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:55:42,765 - Main - INFO - Display Server: X11
+2024-11-15 02:55:42,765 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 02:55:42,766 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 02:55:42,766 - Main - DEBUG - Erstelle GUI...
+2024-11-15 02:55:42,766 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 02:55:42,854 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 02:55:42,854 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 02:55:42,858 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 02:55:42,858 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 02:55:42,896 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 02:55:43,046 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 02:55:43,046 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 02:55:51,527 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 02:55:51,528 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenfutter
+2024-11-15 02:55:51,534 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-15 02:55:51,537 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-15 02:55:51,539 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-15 02:55:51,717 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter HTTP/11" 200 None
+2024-11-15 02:55:51,719 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=3 HTTP/11" 200 None
+2024-11-15 02:55:51,722 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=2 HTTP/11" 200 None
+2024-11-15 02:55:54,067 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 180 Artikel gefunden.
+2024-11-15 02:55:54,075 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 180 Ergebnisse gefunden.
+2024-11-15 02:56:07,894 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 02:56:07,895 - EbayScraper - INFO - Starte Suche für: Katzenfutter
+2024-11-15 02:56:07,897 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.ebay.de:443
+2024-11-15 02:56:07,900 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.ebay.de:443
+2024-11-15 02:56:07,902 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.ebay.de:443
+2024-11-15 02:56:08,329 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=2 HTTP/11" 200 None
+2024-11-15 02:56:08,387 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter HTTP/11" 200 None
+2024-11-15 02:56:08,394 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=3 HTTP/11" 200 None
+2024-11-15 02:56:09,979 - EbayScraper - INFO - Suche abgeschlossen. 130 Artikel gefunden.
+2024-11-15 02:56:09,991 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 310 Ergebnisse gefunden.
+2024-11-15 02:57:14,735 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-15 03:03:35,213 - Main - INFO - Starte Anwendung...
+2024-11-15 03:03:35,213 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 03:03:35,214 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 03:03:35,214 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 03:03:35,214 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 03:03:35,214 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 03:03:35,215 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 03:03:35,215 - Main - DEBUG - Importiere Module...
+2024-11-15 03:03:35,403 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 03:03:35,406 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 03:03:35,406 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 03:03:35,456 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 03:03:35,456 - Main - INFO - Display Server: X11
+2024-11-15 03:03:35,457 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 03:03:35,458 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 03:03:35,458 - Main - DEBUG - Erstelle GUI...
+2024-11-15 03:03:35,458 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 03:03:35,536 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 03:03:35,537 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 03:03:35,540 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 03:03:35,540 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 03:03:35,576 - EbayScraperGUI - ERROR - Fehler beim Erstellen der Komponenten: 'ResultsSection' object has no attribute 'bind_double_click'
+2024-11-15 03:03:35,576 - Main - CRITICAL - Kritischer Fehler beim Programmstart: 'ResultsSection' object has no attribute 'bind_double_click'
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 111, in main
+    app = EbayScraperGUI(root, ebay_scraper, amazon_scraper, db_manager)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 35, in __init__
+    self.create_components()
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 78, in create_components
+    self.results_section.bind_double_click(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ResultsSection' object has no attribute 'bind_double_click'. Did you mean: 'on_double_click'?
+2024-11-15 03:07:33,664 - Main - INFO - Starte Anwendung...
+2024-11-15 03:07:33,664 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 03:07:33,664 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 03:07:33,664 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 03:07:33,665 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 03:07:33,665 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 03:07:33,665 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 03:07:33,665 - Main - DEBUG - Importiere Module...
+2024-11-15 03:07:33,855 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 03:07:33,860 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 03:07:33,860 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 03:07:33,904 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 03:07:33,905 - Main - INFO - Display Server: X11
+2024-11-15 03:07:33,905 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 03:07:33,907 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 03:07:33,907 - Main - DEBUG - Erstelle GUI...
+2024-11-15 03:07:33,908 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 03:07:33,995 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 03:07:33,995 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 03:07:33,999 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 03:07:33,999 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 03:07:34,043 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 03:07:34,222 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 03:07:34,222 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 03:07:43,929 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 03:07:43,930 - EbayScraper - INFO - Starte Suche für: Katzenfutter
+2024-11-15 03:07:43,940 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.ebay.de:443
+2024-11-15 03:07:43,944 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.ebay.de:443
+2024-11-15 03:07:43,947 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.ebay.de:443
+2024-11-15 03:07:44,444 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=2 HTTP/11" 200 None
+2024-11-15 03:07:44,446 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=3 HTTP/11" 200 None
+2024-11-15 03:07:44,504 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter HTTP/11" 200 None
+2024-11-15 03:07:46,366 - EbayScraper - INFO - Suche abgeschlossen. 158 Artikel gefunden.
+2024-11-15 03:07:46,367 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenfutter
+2024-11-15 03:07:46,368 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-15 03:07:46,369 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-15 03:07:46,370 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-15 03:07:46,543 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=3 HTTP/11" 200 None
+2024-11-15 03:07:46,546 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=2 HTTP/11" 200 None
+2024-11-15 03:07:46,552 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter HTTP/11" 200 None
+2024-11-15 03:07:48,917 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 180 Artikel gefunden.
+2024-11-15 03:07:48,932 - ResultsSection - DEBUG - 338 Ergebnisse aktualisiert
+2024-11-15 03:07:48,932 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 338 Ergebnisse gefunden.
+2024-11-15 03:07:52,770 - ResultsSection - WARNING - Kein Datenbankmanager verfügbar
+2024-11-15 03:07:55,013 - ResultsSection - WARNING - Kein Datenbankmanager verfügbar
+2024-11-15 03:07:55,673 - ResultsSection - WARNING - Kein Datenbankmanager verfügbar
+2024-11-15 03:10:38,875 - Main - INFO - Starte Anwendung...
+2024-11-15 03:10:38,875 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 03:10:38,875 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 03:10:38,876 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 03:10:38,876 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 03:10:38,876 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 03:10:38,876 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 03:10:38,876 - Main - DEBUG - Importiere Module...
+2024-11-15 03:10:38,879 - Main - CRITICAL - Kritischer Fehler beim Programmstart: expected an indented block after class definition on line 23 (gui.py, line 25)
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 80, in main
+    from gui.gui import EbayScraperGUI
+  File "/home/oliver/Documents/Scrapper/gui/gui.py", line 25
+    def __init__(self, root, ebay_scraper, amazon_scraper, db_manager):
+    ^^^
+IndentationError: expected an indented block after class definition on line 23
+2024-11-15 03:11:28,433 - Main - INFO - Starte Anwendung...
+2024-11-15 03:11:28,434 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 03:11:28,434 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 03:11:28,434 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 03:11:28,435 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 03:11:28,435 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 03:11:28,435 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 03:11:28,435 - Main - DEBUG - Importiere Module...
+2024-11-15 03:11:28,635 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 03:11:28,640 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 03:11:28,640 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 03:11:28,696 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 03:11:28,696 - Main - INFO - Display Server: X11
+2024-11-15 03:11:28,697 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 03:11:28,699 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 03:11:28,699 - Main - DEBUG - Erstelle GUI...
+2024-11-15 03:11:28,699 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 03:11:28,787 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 03:11:28,787 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 03:11:28,791 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 03:11:28,792 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 03:11:28,835 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 03:11:28,836 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 03:11:29,031 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 03:11:29,031 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 03:11:38,251 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 03:11:38,252 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenfutter
+2024-11-15 03:11:38,257 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-15 03:11:38,261 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-15 03:11:38,264 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-15 03:11:38,444 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=3 HTTP/11" 200 None
+2024-11-15 03:11:38,449 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter HTTP/11" 200 None
+2024-11-15 03:11:38,454 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=2 HTTP/11" 200 None
+2024-11-15 03:11:40,813 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 180 Artikel gefunden.
+2024-11-15 03:11:40,814 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 03:11:40,819 - ResultsSection - DEBUG - 180 Ergebnisse aktualisiert
+2024-11-15 03:11:40,820 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 180 Ergebnisse gefunden.
+2024-11-15 03:11:44,724 - ResultsSection - ERROR - Fehler beim Ändern des Favoritenstatus: 'Treeview' object has no attribute 'tag_add'
+2024-11-15 03:12:00,056 - ResultsSection - ERROR - Fehler beim Ändern des Favoritenstatus: 'Treeview' object has no attribute 'tag_add'
+2024-11-15 03:14:48,282 - Main - INFO - Starte Anwendung...
+2024-11-15 03:14:48,283 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 03:14:48,283 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 03:14:48,284 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 03:14:48,284 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 03:14:48,284 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 03:14:48,285 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 03:14:48,285 - Main - DEBUG - Importiere Module...
+2024-11-15 03:14:48,477 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 03:14:48,481 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 03:14:48,481 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 03:14:48,533 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 03:14:48,533 - Main - INFO - Display Server: X11
+2024-11-15 03:14:48,533 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 03:14:48,534 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 03:14:48,534 - Main - DEBUG - Erstelle GUI...
+2024-11-15 03:14:48,534 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 03:14:48,627 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 03:14:48,627 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 03:14:48,631 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 03:14:48,631 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 03:14:48,672 - ResultsSection - DEBUG - Favoriten geladen: 2 Einträge
+2024-11-15 03:14:48,674 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 03:14:48,850 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 03:14:48,850 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 03:14:56,112 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 03:14:56,114 - EbayScraper - INFO - Starte Suche für: Katzenfutter
+2024-11-15 03:14:56,120 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.ebay.de:443
+2024-11-15 03:14:56,124 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.ebay.de:443
+2024-11-15 03:14:56,128 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.ebay.de:443
+2024-11-15 03:14:56,574 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=3 HTTP/11" 200 None
+2024-11-15 03:14:56,576 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=2 HTTP/11" 200 None
+2024-11-15 03:14:56,617 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter HTTP/11" 200 None
+2024-11-15 03:14:58,049 - EbayScraper - INFO - Suche abgeschlossen. 129 Artikel gefunden.
+2024-11-15 03:14:58,050 - ResultsSection - DEBUG - Favoriten geladen: 2 Einträge
+2024-11-15 03:14:58,053 - ResultsSection - DEBUG - 129 Ergebnisse aktualisiert
+2024-11-15 03:14:58,090 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 129 Ergebnisse gefunden.

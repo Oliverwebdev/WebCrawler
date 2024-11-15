@@ -6,7 +6,6 @@ import threading
 import webbrowser
 from datetime import datetime
 from config import CONFIG
-from utils.utils import save_to_json, load_from_json
 from .components.search_section import SearchSection
 from .components.results_section import ResultsSection
 from .components.favorites_window import FavoritesWindow
@@ -15,17 +14,16 @@ from .components.status_bar import StatusBar
 logger = logging.getLogger('EbayScraperGUI')
 
 
+# gui.py
+
+logger = logging.getLogger('EbayScraperGUI')
+
+
 class EbayScraperGUI:
-    def __init__(self, root, ebay_scraper, amazon_scraper):
-        """
-        Initialisiert die Hauptanwendung.
-        
-        Args:
-            root: Tkinter Root Window
-            ebay_scraper: Instanz des EbayScrapers
-            amazon_scraper: Instanz des AmazonScrapers
-        """
+    def __init__(self, root, ebay_scraper, amazon_scraper, db_manager):
+        """Initialisiert die Hauptanwendung."""
         self.root = root
+        self.db_manager = db_manager  # Speichere db_manager als Instanzvariable
         self.ebay_scraper = ebay_scraper
         self.amazon_scraper = amazon_scraper
         self.search_active = False
@@ -37,290 +35,234 @@ class EbayScraperGUI:
         self.create_components()
         self.load_user_settings()
 
-        logger.info("GUI wurde initialisiert")
-
     def setup_main_window(self):
-        """Konfiguriert das Hauptfenster der Anwendung."""
-        self.root.title("eBay & Amazon Artikel-Suche")
-        self.root.geometry("1200x800")
-        self.root.minsize(1000, 600)
-        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
+        """Konfiguriert das Hauptfenster."""
+        self.root.title("eBay/Amazon Scraper")
+        self.root.minsize(800, 600)
 
-        # Main Frame
-        self.main_frame = ttk.Frame(self.root, style="Main.TFrame")
-        self.main_frame.pack(fill=tk.BOTH, expand=True)
+        # Erstelle Hauptframe
+        self.main_frame = ttk.Frame(self.root)
+        self.main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
     def setup_styles(self):
-        """Konfiguriert die Styles für die GUI."""
-        self.style = ttk.Style()
-        self.style.theme_use("clam")
-
-        styles = {
-            "Main.TFrame": {
-                "configure": {"background": "#f0f0f0", "padding": 10}
-            },
-            "Action.TButton": {
-                "configure": {
-                    "padding": 6,
-                    "background": "#4CAF50",
-                    "foreground": "white",
-                    "font": ("Helvetica", 12)
-                }
-            },
-            "Favorites.TButton": {
-                "configure": {
-                    "padding": 6,
-                    "background": "#FF69B4",
-                    "foreground": "white",
-                    "font": ("Helvetica", 12)
-                }
-            },
-            "Card.TFrame": {
-                "configure": {
-                    "background": "white",
-                    "relief": "raised",
-                    "borderwidth": 1,
-                    "padding": 10
-                }
-            },
-            "Info.TLabel": {
-                "configure": {"padding": 6, "font": ("Helvetica", 12)}
-            },
-            "Header.TLabel": {
-                "configure": {
-                    "font": ("Helvetica", 16, "bold"),
-                    "background": "#4CAF50",
-                    "foreground": "white",
-                    "padding": 10
-                }
-            }
-        }
-
-        for style_name, style_opts in styles.items():
-            self.style.configure(style_name, **style_opts["configure"])
+        """Konfiguriert das Aussehen der Anwendung."""
+        style = ttk.Style()
+        style.configure('TFrame', background='white')
+        style.configure('TLabel', background='white', font=('Helvetica', 10))
+        style.configure('TButton', font=('Helvetica', 10))
+        style.configure('Header.TLabel', font=('Helvetica', 12, 'bold'))
+        style.configure('Status.TLabel', font=('Helvetica', 9))
+        style.configure('Search.TButton', padding=5)
 
     def create_components(self):
         """Erstellt alle GUI-Komponenten."""
-        # Header
-        self.create_header()
+        try:
+            # Favorites Window
+            self.favorites_window = FavoritesWindow(self.root, self.db_manager)
 
-        # Search Section
-        self.search_section = SearchSection(
-            self.main_frame,
-            self.start_search
-        )
+            # Header
+            self.create_header()
 
-        # Results Section
-        self.results_section = ResultsSection(
-            self.main_frame,
-            self.sort_results
-        )
+            # Search Section
+            self.search_section = SearchSection(
+                self.main_frame, self.start_search)
 
-        # Status Bar
-        self.status_bar = StatusBar(self.main_frame)
+            # Results Section
+            self.results_section = ResultsSection(
+                self.main_frame, self.sort_results)
+            # Wichtig: Setze den Datenbankmanager direkt nach der Initialisierung
+            self.results_section.set_db_manager(self.db_manager)
 
-        # Favorites Window
-        self.favorites_window = FavoritesWindow(self.root)
+            # Setze Callbacks für Results Section
+            self.results_section.bind_double_click(
+                lambda event: self.open_link(
+                    self.results_section.get_selected_item()['link'])
+            )
 
-        # Setze initiale Callbacks
-        self.results_section.set_callbacks(
-            self.add_to_favorites,
-            self.open_link
-        )
+            # Status Bar
+            self.status_bar = StatusBar(self.main_frame)
+
+        except Exception as e:
+            logger.error(f"Fehler beim Erstellen der Komponenten: {e}")
+            raise
 
     def create_header(self):
-        """Erstellt den Header-Bereich der Anwendung."""
-        header_frame = ttk.Frame(self.main_frame)
-        header_frame.pack(fill=tk.X, pady=(0, 10))
+        """Erstellt den Header-Bereich."""
+        self.header_frame = ttk.Frame(self.main_frame)
+        self.header_frame.pack(fill=tk.X, pady=(0, 10))
 
-        header = ttk.Label(
-            header_frame,
-            text="eBay & Amazon Artikel-Suche",
-            style="Header.TLabel"
+        # Titel
+        title_label = ttk.Label(
+            self.header_frame,
+            text="eBay/Amazon Preisvergleich",
+            style='Header.TLabel'
         )
-        header.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        title_label.pack(side=tk.LEFT)
 
-        favorites_btn = ttk.Button(
-            header_frame,
-            text="❤ Favoriten",
-            command=self.show_favorites,
-            style="Favorites.TButton"
-        )
-        favorites_btn.pack(side=tk.RIGHT, padx=10)
+        # Buttons
+        button_frame = ttk.Frame(self.header_frame)
+        button_frame.pack(side=tk.RIGHT)
 
-    def start_search(self, search_params):
-        """
-        Startet eine neue Suche mit den gegebenen Parametern.
-        
-        Args:
-            search_params (dict): Suchparameter
-        """
-        if self.search_active:
+        ttk.Button(
+            button_frame,
+            text="Favoriten",
+            command=self.favorites_window.show
+        ).pack(side=tk.LEFT, padx=5)
+
+        ttk.Button(
+            button_frame,
+            text="Einstellungen",
+            command=self.show_settings
+        ).pack(side=tk.LEFT, padx=5)
+
+    def show_settings(self):
+        """Zeigt das Einstellungsfenster."""
+        settings_window = tk.Toplevel(self.root)
+        settings_window.title("Einstellungen")
+        settings_window.geometry("400x300")
+        settings_window.transient(self.root)
+        settings_window.grab_set()
+
+        # Einstellungsoptionen
+        settings_frame = ttk.Frame(settings_window, padding="20")
+        settings_frame.pack(fill=tk.BOTH, expand=True)
+
+        ttk.Label(settings_frame, text="Maximale Seitenanzahl:").pack(pady=5)
+        max_pages = ttk.Entry(settings_frame)
+        max_pages.insert(0, str(self.settings.get('max_pages', 3)))
+        max_pages.pack(pady=5)
+
+        ttk.Label(settings_frame,
+                  text="Standard-Suchzeitraum (Tage):").pack(pady=5)
+        search_period = ttk.Entry(settings_frame)
+        search_period.insert(
+            0, str(self.settings.get('default_search_period', 30)))
+        search_period.pack(pady=5)
+
+        def save_settings():
+            try:
+                self.settings['max_pages'] = int(max_pages.get())
+                self.settings['default_search_period'] = int(
+                    search_period.get())
+                self.save_user_settings()
+                settings_window.destroy()
+                messagebox.showinfo(
+                    "Erfolg", "Einstellungen wurden gespeichert")
+            except ValueError:
+                messagebox.showerror(
+                    "Fehler", "Bitte geben Sie gültige Zahlen ein")
+
+        ttk.Button(
+            settings_frame,
+            text="Speichern",
+            command=save_settings
+        ).pack(pady=20)
+
+    def start_search(self, keyword, source='both', min_price=None, max_price=None, condition=None):
+        """Startet eine neue Suche."""
+        if not keyword:
+            messagebox.showwarning(
+                "Warnung", "Bitte geben Sie einen Suchbegriff ein")
             return
 
+        if self.search_active:
+            messagebox.showwarning("Warnung", "Eine Suche läuft bereits")
+            return
+
+        self.search_active = True
+        self.status_bar.update_status("Suche läuft...")
+
+        def search_thread():
+            try:
+                if source in ['both', 'ebay']:
+                    self.current_ebay_results = self.ebay_scraper.search(
+                        keyword,
+                        self.settings.get('max_pages', 3),
+                        min_price,
+                        max_price,
+                        condition
+                    )
+
+                if source in ['both', 'amazon']:
+                    self.current_amazon_results = self.amazon_scraper.search(
+                        keyword,
+                        self.settings.get('max_pages', 3),
+                        min_price,
+                        max_price,
+                        condition
+                    )
+
+                all_results = self.current_ebay_results + self.current_amazon_results
+                self.root.after(
+                    0, lambda: self.results_section.update_results(all_results))
+                self.root.after(0, lambda: self.status_bar.update_status(
+                    f"Suche abgeschlossen. {
+                        len(all_results)} Ergebnisse gefunden."
+                ))
+
+            except Exception as e:
+                logger.error(f"Fehler bei der Suche: {str(e)}")
+                self.root.after(0, lambda: messagebox.showerror(
+                    "Fehler",
+                    f"Fehler bei der Suche: {str(e)}"
+                ))
+            finally:
+                self.search_active = False
+
+        threading.Thread(target=search_thread, daemon=True).start()
+
+    def sort_results(self, sort_by):
+        """Sortiert die Ergebnisse."""
         try:
-            keyword = search_params['keyword']
-            if not keyword:
-                messagebox.showwarning(
-                    "Warnung",
-                    "Bitte geben Sie einen Suchbegriff ein!"
-                )
-                return
+            all_results = self.current_ebay_results + self.current_amazon_results
 
-            self.search_active = True
-            self.update_gui_before_search()
+            if sort_by == 'price':
+                all_results.sort(key=lambda x: float(
+                    x['price'].replace('€', '').replace(',', '.').strip()))
+            else:
+                all_results.sort(key=lambda x: x[sort_by])
 
-            thread = threading.Thread(
-                target=self.perform_search,
-                args=(search_params,)
-            )
-            thread.daemon = True
-            thread.start()
+            self.results_section.update_results(all_results)
 
         except Exception as e:
-            logger.error(f"Fehler beim Starten der Suche: {e}")
-            self.show_error(f"Fehler beim Starten der Suche:\n{str(e)}")
-            self.search_active = False
+            logger.error(f"Fehler beim Sortieren: {str(e)}")
+            messagebox.showerror("Fehler", f"Fehler beim Sortieren: {str(e)}")
 
-    def perform_search(self, search_params):
-        """
-        Führt die Suche asynchron aus.
-        
-        Args:
-            search_params (dict): Suchparameter
-        """
+    def add_to_favorites(self, item):
+        """Fügt ein Item zu den Favoriten hinzu."""
         try:
-            ebay_results = self.ebay_scraper.search(**search_params)
-            amazon_results = self.amazon_scraper.search(**search_params)
-
-            self.root.after(0, lambda: self.update_results(
-                ebay_results, amazon_results))
-
+            self.db_manager.save_favorites([item])
+            messagebox.showinfo(
+                "Erfolg", "Artikel wurde zu den Favoriten hinzugefügt")
         except Exception as e:
-            logger.error(f"Fehler bei der Suche: {str(e)}")
-            self.root.after(0, lambda: self.show_error(str(e)))
-        finally:
-            self.root.after(0, self.search_completed)
+            logger.error(f"Fehler beim Hinzufügen zu Favoriten: {str(e)}")
+            messagebox.showerror(
+                "Fehler", f"Fehler beim Hinzufügen zu Favoriten: {str(e)}")
 
-    def update_gui_before_search(self):
-        """Aktualisiert die GUI-Elemente vor Beginn der Suche."""
-        self.search_section.set_search_state(True)
-        self.status_bar.set_progress(0)
-        self.status_bar.set_status("Suche läuft...")
-        self.results_section.clear_results()
-
-    def update_results(self, ebay_results, amazon_results):
-        """
-        Aktualisiert die Suchergebnisse in der GUI.
-        
-        Args:
-            ebay_results (list): Liste der eBay-Ergebnisse
-            amazon_results (list): Liste der Amazon-Ergebnisse
-        """
+    def open_link(self, url):
+        """Öffnet einen Link im Standardbrowser."""
         try:
-            self.current_ebay_results = ebay_results
-            self.current_amazon_results = amazon_results
-
-            # Aktualisiere die Ergebnisse in der ResultsSection
-            self.results_section.update_results(ebay_results, amazon_results)
-
-            # Setze die Callbacks für die Interaktionen
-            self.results_section.set_callbacks(
-                self.add_to_favorites,
-                self.open_link
-            )
-
+            webbrowser.open(url)
         except Exception as e:
-            logger.error(f"Fehler beim Aktualisieren der Ergebnisse: {e}")
-            self.show_error(f"Fehler beim Anzeigen der Ergebnisse:\n{str(e)}")
-
-    def sort_results(self, event=None):
-        """Callback für Sortierungsänderungen."""
-        try:
-            self.results_section.sort_results()
-        except Exception as e:
-            logger.error(f"Fehler beim Sortieren der Ergebnisse: {e}")
-            self.show_error(f"Fehler beim Sortieren der Ergebnisse:\n{str(e)}")
-
-    def show_favorites(self):
-        """Zeigt das Favoriten-Fenster an."""
-        self.favorites_window.show()
-
-    def add_to_favorites(self, item, source):
-        """
-        Fügt einen Artikel zu den Favoriten hinzu.
-        
-        Args:
-            item (dict): Der zu favorisierende Artikel
-            source (str): Quelle des Artikels (ebay/amazon)
-        """
-        if self.favorites_window.add_favorite(item, source):
-            self.save_user_settings()
-
-    def open_link(self, link):
-        """
-        Öffnet einen Link im Standard-Browser.
-        
-        Args:
-            link (str): Zu öffnende URL
-        """
-        try:
-            webbrowser.open(link)
-        except Exception as e:
-            logger.error(f"Fehler beim Öffnen des Links: {e}")
-            self.show_error(
-                f"Der Link konnte nicht geöffnet werden:\n{str(e)}")
-
-    def show_error(self, message):
-        """
-        Zeigt eine Fehlermeldung an.
-        
-        Args:
-            message (str): Anzuzeigende Fehlermeldung
-        """
-        messagebox.showerror("Fehler", message)
-        self.status_bar.set_status(f"Fehler: {message}")
-
-    def search_completed(self):
-        """Wird aufgerufen, wenn die Suche abgeschlossen ist."""
-        self.search_active = False
-        self.search_section.set_search_state(False)
-        self.status_bar.set_status("Suche abgeschlossen")
-        self.status_bar.set_progress(100)
+            logger.error(f"Fehler beim Öffnen des Links: {str(e)}")
+            messagebox.showerror(
+                "Fehler", f"Fehler beim Öffnen des Links: {str(e)}")
 
     def load_user_settings(self):
-        """Lädt die Benutzereinstellungen aus der Datei."""
+        """Lädt die Benutzereinstellungen."""
         try:
-            data = load_from_json(CONFIG['SETTINGS_FILE'])
-            if data:
-                self.settings = data.get('settings', {})
-                favorites = data.get('favorites', [])
-                self.favorites_window.load_favorites(favorites)
-            else:
-                self.settings = {
-                    'max_pages': CONFIG['DEFAULT_MAX_PAGES'],
-                    'default_search_period': CONFIG['DEFAULT_SEARCH_PERIOD']
-                }
-
+            self.settings = self.db_manager.get_settings()
         except Exception as e:
             logger.error(f"Fehler beim Laden der Einstellungen: {str(e)}")
-            messagebox.showerror(
-                "Fehler",
-                f"Fehler beim Laden der Einstellungen:\n{str(e)}"
-            )
             self.settings = {
                 'max_pages': CONFIG['DEFAULT_MAX_PAGES'],
                 'default_search_period': CONFIG['DEFAULT_SEARCH_PERIOD']
             }
 
     def save_user_settings(self):
-        """Speichert die Benutzereinstellungen in die Datei."""
+        """Speichert die Benutzereinstellungen."""
         try:
-            data = {
-                'settings': self.settings,
-                'favorites': self.favorites_window.get_favorites()
-            }
-            save_to_json(data, CONFIG['SETTINGS_FILE'])
+            self.db_manager.save_settings(self.settings)
             logger.info("Benutzereinstellungen erfolgreich gespeichert")
         except Exception as e:
             logger.error(f"Fehler beim Speichern der Einstellungen: {str(e)}")
@@ -329,16 +271,3 @@ class EbayScraperGUI:
                 f"Die Einstellungen konnten nicht gespeichert werden:\n{
                     str(e)}"
             )
-
-    def on_closing(self):
-        """Handler für das Schließen der Anwendung."""
-        try:
-            self.save_user_settings()
-            self.root.destroy()
-        except Exception as e:
-            logger.error(f"Fehler beim Schließen der Anwendung: {str(e)}")
-            messagebox.showerror(
-                "Fehler",
-                f"Fehler beim Speichern der Einstellungen:\n{str(e)}"
-            )
-            self.root.destroy()

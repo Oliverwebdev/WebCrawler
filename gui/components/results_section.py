@@ -1,176 +1,378 @@
+# gui/components/results_section.py
+
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import logging
-from .paginated_result_view import PaginatedResultView
+import webbrowser
 
 logger = logging.getLogger('ResultsSection')
 
 
 class ResultsSection:
-    def __init__(self, parent, on_sort_changed):
+    def __init__(self, parent, sort_callback):
         """
-        Initialisiert die ResultsSection mit zwei paginierten Views.
-
+        Initialisiert die Results Section.
+        
         Args:
-            parent: Übergeordnetes Widget
-            on_sort_changed: Callback für Sortierungsänderungen
+            parent: Übergeordnetes Tkinter-Widget
+            sort_callback: Callback-Funktion für Sortierung
         """
         self.parent = parent
-        self.on_sort_changed = on_sort_changed
-        self.sort_var = tk.StringVar(value="Relevanz")
-        self.count_var = tk.StringVar(
-            value="Gefundene Artikel: 0 (eBay), 0 (Amazon)")
-        self.ebay_results = []
-        self.amazon_results = []
+        self.sort_callback = sort_callback
+        self.db_manager = None  # Wird von der Hauptanwendung gesetzt
+        self.favorites = set()  # Set für schnellen Lookup
+        self.current_items = []  # Speichert aktuelle Suchergebnisse
+        self.external_double_click_callback = None
         self.create_widgets()
 
     def create_widgets(self):
-        """Erstellt das Layout mit Toolbar und zwei Ergebnisansichten."""
-        # Hauptcontainer
-        self.frame = ttk.LabelFrame(
-            self.parent,
-            text="Suchergebnisse",
-            padding=10
-        )
-        self.frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        """Erstellt die GUI-Elemente für die Ergebnisanzeige."""
+        # Hauptframe für Ergebnisse
+        self.results_frame = ttk.LabelFrame(
+            self.parent, text="Suchergebnisse", padding="5")
+        self.results_frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
 
-        # Toolbar mit Sortierung und Zähler
-        self.create_toolbar()
+        # Kontrollleiste (Sortierung und Filter)
+        self.create_control_bar()
 
-        # Container für die Ergebnisansichten
-        results_container = ttk.Frame(self.frame)
-        results_container.pack(fill=tk.BOTH, expand=True)
-        results_container.columnconfigure(0, weight=1)
-        results_container.columnconfigure(1, weight=1)
+        # Ergebnisliste
+        self.create_results_tree()
 
-        # Separator zwischen den Views
-        ttk.Separator(results_container, orient=tk.VERTICAL).grid(
-            row=0, column=1, sticky="ns", padx=10)
+        # Konfiguriere Style für Favoriten
+        self.configure_styles()
 
-        # eBay und Amazon Views
-        self.ebay_view = PaginatedResultView(results_container, "ebay")
-        self.amazon_view = PaginatedResultView(results_container, "amazon")
+    def create_control_bar(self):
+        """Erstellt die Kontrollleiste mit Sortierung und Filtern."""
+        self.controls_frame = ttk.Frame(self.results_frame)
+        self.controls_frame.pack(fill=tk.X, pady=(0, 5))
 
-        # Platziere Views nebeneinander
-        self.ebay_view.get_frame().grid(row=0, column=0, sticky="nsew")
-        self.amazon_view.get_frame().grid(row=0, column=2, sticky="nsew")
-
-    def create_toolbar(self):
-        """Erstellt die Toolbar mit Sortieroptionen und Zähler."""
-        toolbar = ttk.Frame(self.frame)
-        toolbar.pack(fill=tk.X, pady=(0, 5))
-
-        # Sortierungsbereich
-        sort_frame = ttk.Frame(toolbar)
+        # Linke Seite: Sortieroptionen
+        sort_frame = ttk.Frame(self.controls_frame)
         sort_frame.pack(side=tk.LEFT)
 
-        ttk.Label(sort_frame, text="Sortierung:").pack(side=tk.LEFT)
-        sort_combobox = ttk.Combobox(
+        ttk.Label(sort_frame, text="Sortieren nach:").pack(side=tk.LEFT)
+        self.sort_var = tk.StringVar(value="price")
+        self.sort_combo = ttk.Combobox(
             sort_frame,
             textvariable=self.sort_var,
-            values=["Relevanz", "Preis aufsteigend", "Preis absteigend"],
+            values=["price", "title", "location"],
             state="readonly",
-            width=20
+            width=15
         )
-        sort_combobox.pack(side=tk.LEFT, padx=5)
-        sort_combobox.bind('<<ComboboxSelected>>', self._handle_sort_change)
+        self.sort_combo.pack(side=tk.LEFT, padx=5)
+        self.sort_combo.bind('<<ComboboxSelected>>', self.on_sort)
 
-        # Ergebniszähler
-        ttk.Label(
-            toolbar,
-            textvariable=self.count_var,
-            font=("Helvetica", 12)
-        ).pack(side=tk.RIGHT)
+        # Rechte Seite: Favoritenfilter
+        filter_frame = ttk.Frame(self.controls_frame)
+        filter_frame.pack(side=tk.RIGHT)
 
-    def _handle_sort_change(self, event=None):
-        """Behandelt Änderungen der Sortierung."""
-        try:
-            self.sort_results()
-            # Aktualisiere beide Views mit den sortierten Ergebnissen
-            self.ebay_view.set_items(self.ebay_results)
-            self.amazon_view.set_items(self.amazon_results)
-        except Exception as e:
-            logger.error(f"Fehler beim Sortieren der Ergebnisse: {e}")
+        self.show_favorites_var = tk.BooleanVar(value=False)
+        self.favorites_filter = ttk.Checkbutton(
+            filter_frame,
+            text="Nur Favoriten anzeigen",
+            variable=self.show_favorites_var,
+            command=self.refresh_view
+        )
+        self.favorites_filter.pack(side=tk.RIGHT, padx=5)
 
-    def sort_results(self):
-        """Sortiert die Ergebnisse nach der ausgewählten Option."""
-        sort_option = self.sort_var.get()
+    def create_results_tree(self):
+        """Erstellt und konfiguriert den Treeview für Ergebnisse."""
+        # Frame für Treeview und Scrollbars
+        self.tree_frame = ttk.Frame(self.results_frame)
+        self.tree_frame.pack(fill=tk.BOTH, expand=True)
 
-        try:
-            if sort_option == "Preis aufsteigend":
-                self.ebay_results.sort(
-                    key=lambda x: self._extract_price(x['price']))
-                self.amazon_results.sort(
-                    key=lambda x: self._extract_price(x['price']))
-            elif sort_option == "Preis absteigend":
-                self.ebay_results.sort(
-                    key=lambda x: self._extract_price(x['price']),
-                    reverse=True
-                )
-                self.amazon_results.sort(
-                    key=lambda x: self._extract_price(x['price']),
-                    reverse=True
-                )
-        except Exception as e:
-            logger.error(f"Fehler beim Sortieren: {e}")
+        # Scrollbars
+        y_scrollbar = ttk.Scrollbar(self.tree_frame)
+        y_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-    def _extract_price(self, price_str):
-        """Extrahiert den numerischen Preis aus einem Preisstring."""
-        try:
-            clean_price = ''.join(
-                c for c in price_str if c.isdigit() or c in '.,')
-            clean_price = clean_price.replace(',', '.')
-            return float(clean_price)
-        except (ValueError, AttributeError, TypeError) as e:
-            logger.error(f"Fehler bei der Preisextraktion für {
-                         price_str}: {e}")
-            return 0.0
+        x_scrollbar = ttk.Scrollbar(self.tree_frame, orient=tk.HORIZONTAL)
+        x_scrollbar.pack(side=tk.BOTTOM, fill=tk.X)
 
-    def clear_results(self):
-        """Leert alle Ergebnisse und setzt die Views zurück."""
-        self.ebay_results = []
-        self.amazon_results = []
-        self.ebay_view.clear()
-        self.amazon_view.clear()
-        self.update_count(0, 0)
+        # Treeview
+        self.results_tree = ttk.Treeview(
+            self.tree_frame,
+            columns=(
+                "favorite", "title", "price", "shipping",
+                "location", "source", "link"
+            ),
+            show="headings",
+            yscrollcommand=y_scrollbar.set,
+            xscrollcommand=x_scrollbar.set
+        )
 
-    def update_results(self, ebay_results, amazon_results):
+        # Scrollbar Konfiguration
+        y_scrollbar.config(command=self.results_tree.yview)
+        x_scrollbar.config(command=self.results_tree.xview)
+
+        # Spalten konfigurieren
+        self.configure_tree_columns()
+
+        # Treeview platzieren
+        self.results_tree.pack(fill=tk.BOTH, expand=True)
+
+        # Event Bindings
+        self.results_tree.bind('<Button-1>', self.on_click)
+        self.results_tree.bind('<Return>', lambda e: self.open_selected_link())
+
+    def bind_double_click(self, callback):
         """
-        Aktualisiert die Ergebnisse beider Plattformen.
+        Bindet einen Callback an Doppelklick-Events.
         
         Args:
-            ebay_results: Liste der eBay-Ergebnisse
-            amazon_results: Liste der Amazon-Ergebnisse
+            callback: Funktion die bei Doppelklick aufgerufen wird
         """
+        self.results_tree.bind('<Double-1>', callback)
+        self.external_double_click_callback = callback
+
+    def configure_tree_columns(self):
+        """Konfiguriert die Spalten des Treeviews."""
+        # Spaltenüberschriften
+        columns = {
+            "favorite": ("★", 30),
+            "title": ("Titel", 300),
+            "price": ("Preis", 100),
+            "shipping": ("Versand", 150),
+            "location": ("Standort", 150),
+            "source": ("Quelle", 80),
+            "link": ("Link", 0)  # Versteckte Spalte
+        }
+
+        for col, (heading, width) in columns.items():
+            self.results_tree.heading(col, text=heading)
+            min_width = 30 if col == "favorite" else width
+            stretch = col != "favorite" and col != "link"
+            self.results_tree.column(
+                col,
+                width=width,
+                minwidth=min_width,
+                stretch=stretch
+            )
+
+    def configure_styles(self):
+        """Konfiguriert die visuellen Styles für den Treeview."""
+        self.results_tree.tag_configure('favorite', background='#fff3e6')
+
+    def set_db_manager(self, db_manager):
+        """
+        Setzt den Datenbankmanager und lädt initial die Favoriten.
+        
+        Args:
+            db_manager: Instanz des DatabaseManagers
+        """
+        self.db_manager = db_manager
+        self.load_favorites()
+
+    def load_favorites(self):
+        """Lädt die Favoriten aus der Datenbank."""
+        if self.db_manager:
+            try:
+                favorites = self.db_manager.get_favorites()
+                self.favorites = {fav['link'] for fav in favorites}
+                logger.debug(f"Favoriten geladen: {
+                             len(self.favorites)} Einträge")
+            except Exception as e:
+                logger.error(f"Fehler beim Laden der Favoriten: {e}")
+                self.favorites = set()
+
+    def on_click(self, event):
+        """
+        Behandelt Klicks auf die Treeview.
+        
+        Args:
+            event: Tkinter Event-Objekt
+        """
+        region = self.results_tree.identify_region(event.x, event.y)
+        if region == "cell":
+            column = self.results_tree.identify_column(event.x)
+            if column == "#1":  # Favoriten-Spalte
+                item = self.results_tree.identify_row(event.y)
+                self.toggle_favorite(item)
+
+    def toggle_favorite(self, item_id):
+        """
+        Schaltet den Favoriten-Status eines Items um.
+        
+        Args:
+            item_id: ID des Treeview-Items
+        """
+        if not self.db_manager:
+            logger.warning("Kein Datenbankmanager verfügbar")
+            return
+
+        values = self.results_tree.item(item_id)['values']
+        if not values:
+            return
+
+        link = values[6]  # Link ist an Index 6
+        item_data = {
+            'title': values[1],
+            'price': values[2],
+            'link': link,
+            'source': values[5]
+        }
+
         try:
-            self.ebay_results = ebay_results
-            self.amazon_results = amazon_results
+            if link in self.favorites:
+                # Entferne von Favoriten
+                self.db_manager.delete_favorite(link)
+                self.favorites.remove(link)
+                self.results_tree.set(item_id, "favorite", "☆")
+                # Entferne das favorite-Tag
+                current_tags = list(self.results_tree.item(item_id, 'tags'))
+                if 'favorite' in current_tags:
+                    current_tags.remove('favorite')
+                self.results_tree.item(item_id, tags=tuple(current_tags))
+                messagebox.showinfo(
+                    "Favoriten",
+                    "Artikel wurde aus den Favoriten entfernt"
+                )
+            else:
+                # Füge zu Favoriten hinzu
+                self.db_manager.save_favorites([item_data])
+                self.favorites.add(link)
+                self.results_tree.set(item_id, "favorite", "★")
+                # Füge das favorite-Tag hinzu
+                current_tags = list(self.results_tree.item(item_id, 'tags'))
+                if 'favorite' not in current_tags:
+                    current_tags.append('favorite')
+                self.results_tree.item(item_id, tags=tuple(current_tags))
+                messagebox.showinfo(
+                    "Favoriten",
+                    "Artikel wurde zu den Favoriten hinzugefügt"
+                )
 
-            # Sortiere Ergebnisse falls nötig
-            if self.sort_var.get() != "Relevanz":
-                self.sort_results()
+            if self.show_favorites_var.get():
+                self.refresh_view()
 
-            # Aktualisiere Views
-            self.ebay_view.set_items(self.ebay_results)
-            self.amazon_view.set_items(self.amazon_results)
+        except Exception as e:
+            logger.error(f"Fehler beim Ändern des Favoritenstatus: {e}")
+            messagebox.showerror(
+                "Fehler",
+                "Der Favoritenstatus konnte nicht geändert werden"
+            )
 
-            # Aktualisiere Zähler
-            self.update_count(len(ebay_results), len(amazon_results))
+    def clear_results(self):
+        """Löscht alle Einträge aus der Ergebnisliste."""
+        for item in self.results_tree.get_children():
+            self.results_tree.delete(item)
+        self.current_items = []
+
+    def update_results(self, items):
+        """
+        Aktualisiert die Ergebnisliste mit neuen Items.
+        
+        Args:
+            items: Liste der anzuzeigenden Items
+        """
+        self.clear_results()
+        self.load_favorites()  # Aktualisiere Favoriten
+        self.current_items = items
+
+        try:
+            for item in items:
+                # Überspringe wenn nur Favoriten angezeigt werden sollen
+                if self.show_favorites_var.get() and item['link'] not in self.favorites:
+                    continue
+
+                # Erstelle Tags für Favoriten
+                tags = ('favorite',) if item['link'] in self.favorites else ()
+
+                item_id = self.results_tree.insert(
+                    "",
+                    tk.END,
+                    values=(
+                        "★" if item['link'] in self.favorites else "☆",
+                        item.get('title', ''),
+                        item.get('price', ''),
+                        item.get('shipping', ''),
+                        item.get('location', ''),
+                        item.get('source', ''),
+                        item.get('link', '')
+                    ),
+                    tags=tags
+                )
+
+            logger.debug(f"{len(items)} Ergebnisse aktualisiert")
 
         except Exception as e:
             logger.error(f"Fehler beim Aktualisieren der Ergebnisse: {e}")
+            messagebox.showerror(
+                "Fehler",
+                "Die Ergebnisse konnten nicht aktualisiert werden"
+            )
 
-    def update_count(self, ebay_count, amazon_count):
-        """Aktualisiert den Ergebniszähler."""
-        self.count_var.set(
-            f"Gefundene Artikel: {ebay_count} (eBay), {amazon_count} (Amazon)"
-        )
+    def refresh_view(self):
+        """Aktualisiert die Ansicht basierend auf dem aktuellen Filter."""
+        self.update_results(self.current_items)
 
-    def set_callbacks(self, on_favorite_click, on_details_click):
-        """Setzt die Callbacks für beide Views."""
-        self.ebay_view.set_callbacks(on_favorite_click, on_details_click)
-        self.amazon_view.set_callbacks(on_favorite_click, on_details_click)
+    def on_sort(self, event=None):
+        """
+        Callback für Sortierung.
+        
+        Args:
+            event: Optional - Tkinter Event-Objekt
+        """
+        try:
+            sort_by = self.sort_var.get()
+            self.sort_callback(sort_by)
+        except Exception as e:
+            logger.error(f"Fehler beim Sortieren: {e}")
+            messagebox.showerror(
+                "Fehler",
+                "Die Ergebnisse konnten nicht sortiert werden"
+            )
 
-    def get_sort_option(self):
-        """Gibt die aktuelle Sortierungsoption zurück."""
-        return self.sort_var.get()
+    def on_double_click(self, event):
+        """
+        Behandelt Doppelklick-Events.
+        
+        Args:
+            event: Tkinter Event-Objekt
+        """
+        if self.external_double_click_callback:
+            self.external_double_click_callback(event)
+        else:
+            self.open_selected_link()
+
+    def open_selected_link(self):
+        """Öffnet den Link des ausgewählten Items."""
+        selection = self.results_tree.selection()
+        if not selection:
+            return
+
+        item_id = selection[0]
+        values = self.results_tree.item(item_id)['values']
+        if values:
+            link = values[6]  # Link ist an Index 6
+            try:
+                webbrowser.open(link)
+            except Exception as e:
+                logger.error(f"Fehler beim Öffnen des Links: {e}")
+                messagebox.showerror(
+                    "Fehler",
+                    "Der Link konnte nicht geöffnet werden"
+                )
+
+    def get_selected_item(self):
+        """
+        Gibt das ausgewählte Item zurück.
+        
+        Returns:
+            dict: Item-Daten oder None wenn nichts ausgewählt
+        """
+        selection = self.results_tree.selection()
+        if not selection:
+            return None
+
+        values = self.results_tree.item(selection[0])['values']
+        if not values or len(values) < 7:
+            return None
+
+        return {
+            'title': values[1],
+            'price': values[2],
+            'shipping': values[3],
+            'location': values[4],
+            'source': values[5],
+            'link': values[6]
+        }

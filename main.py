@@ -1,87 +1,134 @@
 # main.py
 import tkinter as tk
+from tkinter import messagebox
 import logging
 import sys
-from gui.gui import EbayScraperGUI
-from scraper.ebay_scraper import EbayScraper
-from scraper.amazon_scraper import AmazonScraper
-from x11_config import configure_x11_environment, check_display_server
+import os
+from pathlib import Path
 
-def setup_logging():
-    """Konfiguriert das Logging-System."""
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler('utils/scraper.log'),
-            logging.StreamHandler()
-        ]
-    )
+# Konfiguriere Logging sofort
+logging.basicConfig(
+    level=logging.DEBUG,  # Setze auf DEBUG für mehr Details
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('debug.log')
+    ]
+)
+
+logger = logging.getLogger('Main')
+
 
 def check_system_requirements():
-    """Überprüft Systemvoraussetzungen."""
-    logger = logging.getLogger('SystemCheck')
-    
+    """Überprüft Systemvoraussetzungen und Verzeichnisstruktur."""
     try:
-        # Prüfe Python-Version
-        if sys.version_info < (3, 7):
-            logger.error("Python 3.7 oder höher wird benötigt")
-            return False
-            
-        # Prüfe tkinter Installation
-        tk.Tk().destroy()
-        
-        # Prüfe Display-Server
-        display_server = check_display_server()
-        if display_server == "unbekannt":
-            logger.warning("Display-Server konnte nicht erkannt werden")
-            
+        logger.debug("Überprüfe Systemvoraussetzungen...")
+
+        # Überprüfe/Erstelle notwendige Verzeichnisse
+        required_dirs = ['utils', 'database',
+                         'scraper', 'gui', 'gui/components']
+        for directory in required_dirs:
+            Path(directory).mkdir(parents=True, exist_ok=True)
+            logger.debug(f"Verzeichnis überprüft/erstellt: {directory}")
+
+        # Überprüfe Datenbankdatei
+        if not Path('utils/scraper.db').exists():
+            logger.debug("Datenbank existiert noch nicht - wird erstellt")
+
         return True
-        
     except Exception as e:
-        logger.error(f"Systemanforderungen nicht erfüllt: {e}")
+        logger.error(f"Fehler bei Systemüberprüfung: {e}")
         return False
 
-def main():
-    """Hauptfunktion mit verbesserter Fehlerbehandlung."""
-    setup_logging()
-    logger = logging.getLogger('Main')
-    
+
+def create_gui():
+    """Erstellt das GUI-Fenster mit Fehlerbehandlung."""
     try:
+        logger.debug("Initialisiere GUI...")
+        root = tk.Tk()
+        root.title("eBay/Amazon Scraper")
+
+        # Setze Fenstergröße und -position
+        window_width = 800
+        window_height = 600
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
+        center_x = int(screen_width/2 - window_width/2)
+        center_y = int(screen_height/2 - window_height/2)
+
+        root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
+        logger.debug("GUI-Fenster erstellt und positioniert")
+
+        return root
+    except Exception as e:
+        logger.error(f"Fehler bei GUI-Erstellung: {e}")
+        return None
+
+
+def main():
+    """Hauptfunktion mit verbesserter Fehlerbehandlung und Debugging."""
+    try:
+        logger.info("Starte Anwendung...")
+
         # Prüfe Systemvoraussetzungen
         if not check_system_requirements():
+            logger.error("Systemvoraussetzungen nicht erfüllt")
             sys.exit(1)
-            
-        # Konfiguriere X11-Umgebung
-        configure_x11_environment()
-        
-        # Initialisiere Tk mit Fehlerbehandlung
-        root = tk.Tk()
-        root.withdraw()  # Verstecke Hauptfenster während der Initialisierung
-        
-        # Initialisiere Scraper
-        ebay_scraper = EbayScraper()
-        amazon_scraper = AmazonScraper()
-        
+
+        # Importiere erst nach Systemcheck
+        logger.debug("Importiere Module...")
+        from gui.gui import EbayScraperGUI
+        from scraper.ebay_scraper import EbayScraper
+        from scraper.amazon_scraper import AmazonScraper
+        from database.database_manager import DatabaseManager
+        from x11_config import configure_x11_environment, check_display_server
+
+        # Konfiguriere X11 wenn nötig
+        if sys.platform.startswith('linux'):
+            logger.debug("Konfiguriere X11...")
+            configure_x11_environment()
+            display_server = check_display_server()
+            logger.info(f"Display Server: {display_server}")
+
+        # Initialisiere Datenbank
+        logger.debug("Initialisiere Datenbank...")
+        db_manager = DatabaseManager()
+
         # Erstelle GUI
-        app = EbayScraperGUI(root, ebay_scraper, amazon_scraper)
-        
-        # Zeige Hauptfenster
-        root.deiconify()
-        
-        # Starte Event-Loop
+        logger.debug("Erstelle GUI...")
+        root = create_gui()
+        if not root:
+            logger.error("GUI konnte nicht erstellt werden")
+            sys.exit(1)
+
+        # Initialisiere Scraper
+        logger.debug("Initialisiere Scraper...")
+        ebay_scraper = EbayScraper(db_manager)
+        amazon_scraper = AmazonScraper(db_manager)
+
+        # Erstelle Hauptanwendung
+        logger.debug("Erstelle Hauptanwendung...")
+        app = EbayScraperGUI(root, ebay_scraper, amazon_scraper, db_manager)
+
+        # Führe Datenmigration durch
+        logger.debug("Führe Datenmigration durch...")
+        db_manager.migrate_from_json()
+
+        logger.info("Anwendung erfolgreich initialisiert")
         root.mainloop()
-        
+
     except Exception as e:
-        logger.critical(f"Kritischer Fehler beim Programmstart: {e}", exc_info=True)
+        logger.critical(f"Kritischer Fehler beim Programmstart: {
+                        e}", exc_info=True)
         try:
-            tk.messagebox.showerror(
+            messagebox.showerror(
                 "Kritischer Fehler",
                 f"Die Anwendung konnte nicht gestartet werden:\n{str(e)}"
             )
         except:
             print(f"Kritischer Fehler: {e}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

@@ -12,8 +12,10 @@ from utils.utils import save_to_json, load_from_json
 
 logger = logging.getLogger('EbayScraper')
 
+
 class UserAgentManager:
     """Verwaltet User Agents mit Fallback-Mechanismus"""
+
     def __init__(self):
         self.use_fake_ua = False
         self.fallback_agents = [
@@ -25,14 +27,15 @@ class UserAgentManager:
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Edge/120.0.0.0',
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 OPR/106.0.0.0',
         ]
-        
+
         try:
             from fake_useragent import UserAgent
             self.ua = UserAgent()
             self.use_fake_ua = True
             logger.info("Fake UserAgent erfolgreich initialisiert")
         except Exception as e:
-            logger.warning(f"Konnte fake-useragent nicht laden: {e}. Verwende Fallback.")
+            logger.warning(
+                f"Konnte fake-useragent nicht laden: {e}. Verwende Fallback.")
             self.use_fake_ua = False
 
     def get_user_agent(self):
@@ -43,20 +46,21 @@ class UserAgentManager:
         except Exception as e:
             logger.warning(f"Fehler beim Abrufen des fake user agent: {e}")
             self.use_fake_ua = False
-        
+
         return random.choice(self.fallback_agents)
 
+
 class EbayScraper:
-    def __init__(self):
-        """Initialisiert den EbayScraper mit grundlegenden Einstellungen."""
+    def __init__(self, db_manager):
+        """Initialisiert den EbayScraper mit Datenbankanbindung."""
         self.base_url = "https://www.ebay.de/sch/i.html?_nkw={}"
         self.proxies = []
-        self.results_file = 'utils/ebay_results.json'        
         self.retry_count = 3
         self.retry_delay = 2
         self.session = requests.Session()
         self.ua_manager = UserAgentManager()
-        self.lock = threading.Lock()  # Thread-Sicherheit für gemeinsam genutzte Ressourcen
+        self.lock = threading.Lock()
+        self.db_manager = db_manager
 
     def _get_headers(self):
         """Generiert Browser-Header für Anfragen."""
@@ -71,43 +75,35 @@ class EbayScraper:
 
     def search(self, keyword, max_pages=3, min_price=None, max_price=None, condition=None):
         """
-        Führt eine Suche auf eBay durch.
-        
-        Args:
-            keyword (str): Suchbegriff
-            max_pages (int): Maximale Anzahl der zu durchsuchenden Seiten
-            min_price (float): Minimaler Preis
-            max_price (float): Maximaler Preis
-            condition (str): Artikelzustand (neu, gebraucht, etc.)
-            
-        Returns:
-            list: Liste der gefundenen Artikel
+        Führt eine Suche auf eBay durch und speichert in der Datenbank.
         """
         logger.info(f"Starte Suche für: {keyword}")
         all_items = []
-        
+
         try:
-            urls = [self._build_search_url(keyword, page, min_price, max_price, condition) 
-                   for page in range(1, max_pages + 1)]
-            
-            # Verwende ThreadPoolExecutor für parallele Verarbeitung
+            urls = [self._build_search_url(keyword, page, min_price, max_price, condition)
+                    for page in range(1, max_pages + 1)]
+
             with ThreadPoolExecutor(max_workers=min(5, max_pages)) as executor:
-                future_to_url = {executor.submit(self._search_page, url): url for url in urls}
-                
+                future_to_url = {executor.submit(
+                    self._search_page, url): url for url in urls}
+
                 for future in future_to_url:
                     try:
                         items = future.result(timeout=30)
-                        with self.lock:  # Thread-sicheres Hinzufügen von Items
+                        with self.lock:
                             all_items.extend(items)
                     except Exception as e:
-                        logger.error(f"Fehler bei der Verarbeitung der Suchergebnisse: {str(e)}")
-            
+                        logger.error(
+                            f"Fehler bei der Verarbeitung der Suchergebnisse: {str(e)}")
+
             if all_items:
-                self._save_results(keyword, all_items)
-            
-            logger.info(f"Suche abgeschlossen. {len(all_items)} Artikel gefunden.")
+                self.db_manager.save_search_results('ebay', keyword, all_items)
+
+            logger.info(f"Suche abgeschlossen. {
+                        len(all_items)} Artikel gefunden.")
             return all_items
-            
+
         except Exception as e:
             logger.error(f"Kritischer Fehler bei der Suche: {str(e)}")
             return []
@@ -115,7 +111,7 @@ class EbayScraper:
     def _build_search_url(self, keyword, page, min_price, max_price, condition):
         """Erstellt die Such-URL mit allen Parametern."""
         url = self.base_url.format(keyword)
-        
+
         params = []
         if page > 1:
             params.append(f"_pgn={page}")
@@ -128,10 +124,10 @@ class EbayScraper:
                 params.append("LH_ItemCondition=1000")
             elif condition.lower() == "gebraucht":
                 params.append("LH_ItemCondition=3000")
-            
+
         if params:
             url += "&" + "&".join(params)
-            
+
         return url
 
     def _search_page(self, url):
@@ -145,27 +141,29 @@ class EbayScraper:
                     proxies={'http': proxy, 'https': proxy} if proxy else None,
                     timeout=CONFIG['DEFAULT_TIMEOUT']
                 )
-                
+
                 if response.status_code == 200:
                     soup = BeautifulSoup(response.text, 'html.parser')
                     items = self._parse_page(soup)
                     return items
                 else:
-                    logger.warning(f"Unerwarteter Status Code: {response.status_code}")
-                    
+                    logger.warning(f"Unerwarteter Status Code: {
+                                   response.status_code}")
+
             except requests.exceptions.RequestException as e:
-                logger.error(f"Request Fehler (Versuch {attempt + 1}/{self.retry_count}): {str(e)}")
+                logger.error(f"Request Fehler (Versuch {
+                             attempt + 1}/{self.retry_count}): {str(e)}")
                 if attempt < self.retry_count - 1:
                     time.sleep(self.retry_delay)
                 continue
-                
+
         return []
 
     def _parse_page(self, soup):
         """Extrahiert Artikelinformationen aus der HTML-Seite."""
         items = []
         listings = soup.find_all('div', class_='s-item__wrapper')
-        
+
         for listing in listings:
             try:
                 item = self._parse_listing(listing)
@@ -174,7 +172,7 @@ class EbayScraper:
             except Exception as e:
                 logger.error(f"Fehler beim Parsen eines Artikels: {str(e)}")
                 continue
-                
+
         return items
 
     def _parse_listing(self, listing):
@@ -183,12 +181,12 @@ class EbayScraper:
             title_element = listing.find('div', class_='s-item__title')
             if not title_element or "Shop on eBay" in title_element.get_text(strip=True):
                 return None
-                
+
             price_element = listing.find('span', class_='s-item__price')
             link_element = listing.find('a', class_='s-item__link')
             shipping_element = listing.find('span', class_='s-item__shipping')
             location_element = listing.find('span', class_='s-item__location')
-            
+
             if all([title_element, price_element, link_element]):
                 return {
                     'title': title_element.get_text(strip=True),
@@ -199,70 +197,28 @@ class EbayScraper:
                     'timestamp': datetime.now().isoformat()
                 }
             return None
-            
+
         except Exception as e:
             logger.error(f"Fehler beim Parsen eines Listings: {str(e)}")
             return None
 
-    def _save_results(self, keyword, items):
-        """Speichert die Suchergebnisse in einer JSON-Datei."""
-        data = {
-            'keyword': keyword,
-            'timestamp': datetime.now().isoformat(),
-            'items': items
-        }
-        
-        try:
-            with self.lock:  # Thread-sicheres Speichern
-                existing_data = []
-                try:
-                    existing_data = load_from_json(self.results_file) or []
-                except FileNotFoundError:
-                    pass
-                    
-                existing_data.append(data)
-                save_to_json(existing_data, self.results_file)
-                logger.info(f"Ergebnisse erfolgreich gespeichert: {len(items)} Artikel")
-                
-        except Exception as e:
-            logger.error(f"Fehler beim Speichern der Ergebnisse: {str(e)}")
-
     def get_saved_results(self, keyword=None):
-        """Lädt gespeicherte Suchergebnisse."""
+        """Lädt gespeicherte Suchergebnisse aus der Datenbank."""
         try:
-            with self.lock:  # Thread-sicheres Laden
-                data = load_from_json(self.results_file)
-                
-                if not data:
-                    return []
-                    
-                if keyword:
-                    data = [d for d in data if d['keyword'].lower() == keyword.lower()]
-                    
-                return data
-                
+            return self.db_manager.get_search_results('ebay', keyword) if keyword else []
         except Exception as e:
             logger.error(f"Fehler beim Laden der Ergebnisse: {str(e)}")
             return []
 
     def add_proxy(self, proxy):
-        """
-        Fügt einen Proxy zur Proxy-Liste hinzu.
-        """
+        """Fügt einen Proxy zur Proxy-Liste hinzu."""
         if proxy not in self.proxies:
             self.proxies.append(proxy)
-            
+
     def clear_proxies(self):
-        """
-        Leert die Proxy-Liste.
-        """
+        """Leert die Proxy-Liste."""
         self.proxies = []
 
     def get_proxy_count(self):
-        """
-        Gibt die Anzahl der verfügbaren Proxies zurück.
-        """
+        """Gibt die Anzahl der verfügbaren Proxies zurück."""
         return len(self.proxies)
-
-
-    
