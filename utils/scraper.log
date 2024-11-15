@@ -34,3 +34,74 @@
 2024-11-14 15:20:43,549 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 166 Artikel
 2024-11-14 15:20:43,550 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 166 Artikel gefunden.
 2024-11-14 15:21:01,180 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-14 16:31:06,451 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-14 16:31:06,504 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-14 16:31:06,509 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-14 16:31:06,532 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-14 16:31:06,555 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-14 16:31:11,831 - EbayScraper - INFO - Starte Suche für: katzenfutter
+2024-11-14 16:31:13,324 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 129 Artikel
+2024-11-14 16:31:13,325 - EbayScraper - INFO - Suche abgeschlossen. 129 Artikel gefunden.
+2024-11-14 16:31:13,325 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-14 16:31:13,456 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-14 16:31:15,504 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 171 Artikel
+2024-11-14 16:31:15,505 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 171 Artikel gefunden.
+2024-11-14 16:31:18,600 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-14 21:36:48,931 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-14 21:36:48,995 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-14 21:36:49,005 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-14 21:36:49,067 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-14 21:36:49,134 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-14 21:36:56,394 - EbayScraper - INFO - Starte Suche für: katzenfutter
+2024-11-14 21:36:58,753 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 158 Artikel
+2024-11-14 21:36:58,754 - EbayScraper - INFO - Suche abgeschlossen. 158 Artikel gefunden.
+2024-11-14 21:36:58,754 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-14 21:37:03,168 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 171 Artikel
+2024-11-14 21:37:03,169 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 171 Artikel gefunden.
+2024-11-15 01:49:51,401 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 01:49:51,458 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 01:49:51,467 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 01:49:51,521 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 01:49:51,582 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-15 01:50:01,232 - EbayScraper - INFO - Starte Suche für: katztenfutter
+2024-11-15 01:50:03,592 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 67 Artikel
+2024-11-15 01:50:03,593 - EbayScraper - INFO - Suche abgeschlossen. 67 Artikel gefunden.
+2024-11-15 01:50:03,593 - AmazonScraper - INFO - Starte Amazon-Suche für: katztenfutter
+2024-11-15 01:50:03,719 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 01:50:07,689 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 163 Artikel
+2024-11-15 01:50:07,690 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 163 Artikel gefunden.
+2024-11-15 01:50:20,429 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-15 02:07:19,718 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:07:19,772 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:07:19,778 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:07:19,816 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 02:07:19,870 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-15 02:07:27,362 - EbayScraper - INFO - Starte Suche für: Katzenfutter
+2024-11-15 02:07:29,317 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 158 Artikel
+2024-11-15 02:07:29,318 - EbayScraper - INFO - Suche abgeschlossen. 158 Artikel gefunden.
+2024-11-15 02:07:29,318 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenfutter
+2024-11-15 02:07:29,452 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:07:29,457 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:07:29,461 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:07:29,510 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:07:29,519 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:07:29,525 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:07:29,563 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:07:29,584 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:07:31,269 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 47 Artikel
+2024-11-15 02:07:31,270 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 47 Artikel gefunden.
+2024-11-15 02:07:31,270 - EbayScraperGUI - ERROR - Fehler beim Aktualisieren der Ergebnisse: 'ResultsSection' object has no attribute 'add_result_card'
+2024-11-15 02:10:45,716 - EbayScraperGUI - INFO - Benutzereinstellungen erfolgreich gespeichert
+2024-11-15 02:10:49,501 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 02:10:49,544 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 02:10:49,549 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 02:10:49,593 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 02:10:49,665 - EbayScraperGUI - INFO - GUI wurde initialisiert
+2024-11-15 02:10:55,213 - EbayScraper - INFO - Starte Suche für: katzenfutter
+2024-11-15 02:10:57,364 - EbayScraper - INFO - Ergebnisse erfolgreich gespeichert: 159 Artikel
+2024-11-15 02:10:57,365 - EbayScraper - INFO - Suche abgeschlossen. 159 Artikel gefunden.
+2024-11-15 02:10:57,365 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-15 02:10:57,505 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:10:57,558 - AmazonScraper - WARNING - Unerwarteter Status Code von Amazon: 503
+2024-11-15 02:11:00,096 - AmazonScraper - INFO - Amazon-Ergebnisse erfolgreich gespeichert: 175 Artikel
+2024-11-15 02:11:00,097 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 175 Artikel gefunden.

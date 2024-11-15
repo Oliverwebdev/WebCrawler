@@ -1,3 +1,4 @@
+# gui.py
 import tkinter as tk
 from tkinter import ttk, messagebox
 import logging
@@ -16,6 +17,14 @@ logger = logging.getLogger('EbayScraperGUI')
 
 class EbayScraperGUI:
     def __init__(self, root, ebay_scraper, amazon_scraper):
+        """
+        Initialisiert die Hauptanwendung.
+        
+        Args:
+            root: Tkinter Root Window
+            ebay_scraper: Instanz des EbayScrapers
+            amazon_scraper: Instanz des AmazonScrapers
+        """
         self.root = root
         self.ebay_scraper = ebay_scraper
         self.amazon_scraper = amazon_scraper
@@ -31,6 +40,7 @@ class EbayScraperGUI:
         logger.info("GUI wurde initialisiert")
 
     def setup_main_window(self):
+        """Konfiguriert das Hauptfenster der Anwendung."""
         self.root.title("eBay & Amazon Artikel-Suche")
         self.root.geometry("1200x800")
         self.root.minsize(1000, 600)
@@ -41,6 +51,7 @@ class EbayScraperGUI:
         self.main_frame.pack(fill=tk.BOTH, expand=True)
 
     def setup_styles(self):
+        """Konfiguriert die Styles für die GUI."""
         self.style = ttk.Style()
         self.style.theme_use("clam")
 
@@ -64,6 +75,14 @@ class EbayScraperGUI:
                     "font": ("Helvetica", 12)
                 }
             },
+            "Card.TFrame": {
+                "configure": {
+                    "background": "white",
+                    "relief": "raised",
+                    "borderwidth": 1,
+                    "padding": 10
+                }
+            },
             "Info.TLabel": {
                 "configure": {"padding": 6, "font": ("Helvetica", 12)}
             },
@@ -74,14 +93,6 @@ class EbayScraperGUI:
                     "foreground": "white",
                     "padding": 10
                 }
-            },
-            "Card.TFrame": {
-                "configure": {
-                    "background": "white",
-                    "relief": "raised",
-                    "borderwidth": 1,
-                    "padding": 10
-                }
             }
         }
 
@@ -89,6 +100,7 @@ class EbayScraperGUI:
             self.style.configure(style_name, **style_opts["configure"])
 
     def create_components(self):
+        """Erstellt alle GUI-Komponenten."""
         # Header
         self.create_header()
 
@@ -110,7 +122,14 @@ class EbayScraperGUI:
         # Favorites Window
         self.favorites_window = FavoritesWindow(self.root)
 
+        # Setze initiale Callbacks
+        self.results_section.set_callbacks(
+            self.add_to_favorites,
+            self.open_link
+        )
+
     def create_header(self):
+        """Erstellt den Header-Bereich der Anwendung."""
         header_frame = ttk.Frame(self.main_frame)
         header_frame.pack(fill=tk.X, pady=(0, 10))
 
@@ -130,6 +149,12 @@ class EbayScraperGUI:
         favorites_btn.pack(side=tk.RIGHT, padx=10)
 
     def start_search(self, search_params):
+        """
+        Startet eine neue Suche mit den gegebenen Parametern.
+        
+        Args:
+            search_params (dict): Suchparameter
+        """
         if self.search_active:
             return
 
@@ -158,6 +183,12 @@ class EbayScraperGUI:
             self.search_active = False
 
     def perform_search(self, search_params):
+        """
+        Führt die Suche asynchron aus.
+        
+        Args:
+            search_params (dict): Suchparameter
+        """
         try:
             ebay_results = self.ebay_scraper.search(**search_params)
             amazon_results = self.amazon_scraper.search(**search_params)
@@ -172,98 +203,67 @@ class EbayScraperGUI:
             self.root.after(0, self.search_completed)
 
     def update_gui_before_search(self):
+        """Aktualisiert die GUI-Elemente vor Beginn der Suche."""
         self.search_section.set_search_state(True)
         self.status_bar.set_progress(0)
         self.status_bar.set_status("Suche läuft...")
         self.results_section.clear_results()
 
     def update_results(self, ebay_results, amazon_results):
+        """
+        Aktualisiert die Suchergebnisse in der GUI.
+        
+        Args:
+            ebay_results (list): Liste der eBay-Ergebnisse
+            amazon_results (list): Liste der Amazon-Ergebnisse
+        """
         try:
             self.current_ebay_results = ebay_results
             self.current_amazon_results = amazon_results
 
-            self.results_section.clear_results()
+            # Aktualisiere die Ergebnisse in der ResultsSection
+            self.results_section.update_results(ebay_results, amazon_results)
 
-            # Sortiere und zeige Ergebnisse
-            self.apply_sorting_and_display_results()
-
-            self.results_section.update_count(
-                len(ebay_results),
-                len(amazon_results)
+            # Setze die Callbacks für die Interaktionen
+            self.results_section.set_callbacks(
+                self.add_to_favorites,
+                self.open_link
             )
 
         except Exception as e:
             logger.error(f"Fehler beim Aktualisieren der Ergebnisse: {e}")
             self.show_error(f"Fehler beim Anzeigen der Ergebnisse:\n{str(e)}")
 
-    def apply_sorting_and_display_results(self):
-        sort_option = self.results_section.get_sort_option()
-
-        # Sortiere Ergebnisse
-        sorted_ebay = self.sort_results_by_option(
-            self.current_ebay_results,
-            sort_option
-        )
-        sorted_amazon = self.sort_results_by_option(
-            self.current_amazon_results,
-            sort_option
-        )
-
-        # Zeige Ergebnisse
-        for item in sorted_ebay:
-            self.results_section.add_result_card(
-                item,
-                "ebay",
-                self.add_to_favorites,
-                self.open_link
-            )
-
-        for item in sorted_amazon:
-            self.results_section.add_result_card(
-                item,
-                "amazon",
-                self.add_to_favorites,
-                self.open_link
-            )
-
-    def sort_results_by_option(self, results, sort_option):
-        if not results:
-            return []
-
-        sorted_results = results.copy()
-
-        if sort_option == "Preis aufsteigend":
-            sorted_results.sort(key=lambda x: self.extract_price(x['price']))
-        elif sort_option == "Preis absteigend":
-            sorted_results.sort(
-                key=lambda x: self.extract_price(x['price']),
-                reverse=True
-            )
-
-        return sorted_results
-
-    def extract_price(self, price_str):
-        try:
-            clean_price = ''.join(
-                c for c in price_str if c.isdigit() or c in '.,')
-            clean_price = clean_price.replace(',', '.')
-            return float(clean_price)
-        except (ValueError, AttributeError, TypeError) as e:
-            logger.error(f"Fehler bei der Preisextraktion für {
-                         price_str}: {e}")
-            return 0.0
-
     def sort_results(self, event=None):
-        self.apply_sorting_and_display_results()
+        """Callback für Sortierungsänderungen."""
+        try:
+            self.results_section.sort_results()
+        except Exception as e:
+            logger.error(f"Fehler beim Sortieren der Ergebnisse: {e}")
+            self.show_error(f"Fehler beim Sortieren der Ergebnisse:\n{str(e)}")
 
     def show_favorites(self):
+        """Zeigt das Favoriten-Fenster an."""
         self.favorites_window.show()
 
     def add_to_favorites(self, item, source):
+        """
+        Fügt einen Artikel zu den Favoriten hinzu.
+        
+        Args:
+            item (dict): Der zu favorisierende Artikel
+            source (str): Quelle des Artikels (ebay/amazon)
+        """
         if self.favorites_window.add_favorite(item, source):
             self.save_user_settings()
 
     def open_link(self, link):
+        """
+        Öffnet einen Link im Standard-Browser.
+        
+        Args:
+            link (str): Zu öffnende URL
+        """
         try:
             webbrowser.open(link)
         except Exception as e:
@@ -272,16 +272,24 @@ class EbayScraperGUI:
                 f"Der Link konnte nicht geöffnet werden:\n{str(e)}")
 
     def show_error(self, message):
+        """
+        Zeigt eine Fehlermeldung an.
+        
+        Args:
+            message (str): Anzuzeigende Fehlermeldung
+        """
         messagebox.showerror("Fehler", message)
         self.status_bar.set_status(f"Fehler: {message}")
 
     def search_completed(self):
+        """Wird aufgerufen, wenn die Suche abgeschlossen ist."""
         self.search_active = False
         self.search_section.set_search_state(False)
         self.status_bar.set_status("Suche abgeschlossen")
         self.status_bar.set_progress(100)
 
     def load_user_settings(self):
+        """Lädt die Benutzereinstellungen aus der Datei."""
         try:
             data = load_from_json(CONFIG['SETTINGS_FILE'])
             if data:
@@ -306,6 +314,7 @@ class EbayScraperGUI:
             }
 
     def save_user_settings(self):
+        """Speichert die Benutzereinstellungen in die Datei."""
         try:
             data = {
                 'settings': self.settings,
@@ -322,6 +331,7 @@ class EbayScraperGUI:
             )
 
     def on_closing(self):
+        """Handler für das Schließen der Anwendung."""
         try:
             self.save_user_settings()
             self.root.destroy()
