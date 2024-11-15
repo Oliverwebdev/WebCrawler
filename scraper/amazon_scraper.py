@@ -61,17 +61,45 @@ class AmazonScraper:
         return url
 
     def _parse_price(self, price_element):
-        """Extrahiert und formatiert den Preis."""
+        """
+        Extrahiert und formatiert den Preis.
+        Handhabt deutsche Preisformate korrekt und extrahiert den tatsächlichen Preis.
+        """
         try:
             if not price_element:
                 return "Nicht verfügbar"
 
+            # Hole den Preistext und entferne Whitespace
             price_text = price_element.get_text().strip()
-            # Entferne alle Zeichen außer Zahlen, Komma und Punkt
-            price = ''.join(c for c in price_text if c.isdigit()
-                            or c in [',', '.'])
-            return f"{price}€" if price else "Nicht verfügbar"
-        except Exception:
+            
+            # Suche nach dem tatsächlichen Preis (üblicherweise das letzte Preisformat)
+            # Amazon zeigt manchmal mehrere Preise an (UVP, aktueller Preis etc.)
+            price_spans = price_element.find_all('span', {'class': 'a-offscreen'})
+            if price_spans:
+                # Nimm den letzten Preis (normalerweise der aktuelle Preis)
+                price_text = price_spans[-1].get_text().strip()
+            
+            # Entferne alle Nicht-Ziffern außer Komma und Punkt
+            cleaned = ''.join(c for c in price_text if c.isdigit() or c in [',', '.'])
+            
+            # Wenn ein Punkt vor einem Komma kommt, entferne den Punkt (Tausendertrennzeichen)
+            if '.' in cleaned and ',' in cleaned:
+                parts = cleaned.split(',')
+                before_comma = parts[0].replace('.', '')
+                return f"{before_comma},{parts[1]}€"
+                
+            # Wenn nur Zahlen und ein Komma, direkt formatieren
+            elif ',' in cleaned:
+                return f"{cleaned}€"
+                
+            # Wenn keine Dezimaltrennzeichen vorhanden sind
+            elif cleaned:
+                return f"{cleaned},00€"
+                
+            return "Nicht verfügbar"
+            
+        except Exception as e:
+            logger.error(f"Fehler beim Parsen des Preises: {e}")
             return "Nicht verfügbar"
 
     def _search_page(self, url):
@@ -133,15 +161,17 @@ class AmazonScraper:
                 shipping = shipping_element.get_text().strip(
                 ) if shipping_element else "Versand: siehe Website"
 
-                item = {
-                    'title': title,
-                    'price': price,
-                    'link': link,
-                    'shipping': shipping,
-                    'location': 'Amazon.de',  # Standard für Amazon
-                    'timestamp': datetime.now().isoformat()
-                }
-                items.append(item)
+                # Nur Produkte mit gültigem Preis hinzufügen
+                if price != "Nicht verfügbar":
+                    item = {
+                        'title': title,
+                        'price': price,
+                        'link': link,
+                        'shipping': shipping,
+                        'location': 'Amazon.de',  # Standard für Amazon
+                        'timestamp': datetime.now().isoformat()
+                    }
+                    items.append(item)
 
             except Exception as e:
                 logger.error(f"Fehler beim Parsen eines Produkts: {str(e)}")

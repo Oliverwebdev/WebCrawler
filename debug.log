@@ -420,3 +420,315 @@ IndentationError: expected an indented block after class definition on line 23
 2024-11-15 03:14:58,050 - ResultsSection - DEBUG - Favoriten geladen: 2 Einträge
 2024-11-15 03:14:58,053 - ResultsSection - DEBUG - 129 Ergebnisse aktualisiert
 2024-11-15 03:14:58,090 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 129 Ergebnisse gefunden.
+2024-11-15 03:21:32,802 - Main - INFO - Starte Anwendung...
+2024-11-15 03:21:32,802 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 03:21:32,803 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 03:21:32,803 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 03:21:32,803 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 03:21:32,803 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 03:21:32,803 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 03:21:32,804 - Main - DEBUG - Importiere Module...
+2024-11-15 03:21:33,004 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 03:21:33,009 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 03:21:33,009 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 03:21:33,065 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 03:21:33,066 - Main - INFO - Display Server: X11
+2024-11-15 03:21:33,066 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 03:21:33,067 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 03:21:33,068 - Main - DEBUG - Erstelle GUI...
+2024-11-15 03:21:33,068 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 03:21:33,150 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 03:21:33,150 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 03:21:33,153 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 03:21:33,154 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 03:21:33,195 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 03:21:33,199 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 03:21:33,375 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 03:21:33,375 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 03:21:41,372 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 03:21:41,373 - EbayScraper - INFO - Starte Suche für: Katzenfutter
+2024-11-15 03:21:41,383 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.ebay.de:443
+2024-11-15 03:21:41,385 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.ebay.de:443
+2024-11-15 03:21:41,386 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.ebay.de:443
+2024-11-15 03:21:41,875 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=2 HTTP/11" 200 None
+2024-11-15 03:21:41,879 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=3 HTTP/11" 200 None
+2024-11-15 03:21:41,880 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter HTTP/11" 200 None
+2024-11-15 03:21:43,628 - EbayScraper - INFO - Suche abgeschlossen. 175 Artikel gefunden.
+2024-11-15 03:21:43,629 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 03:21:43,634 - ResultsSection - DEBUG - 175 Ergebnisse aktualisiert
+2024-11-15 03:21:43,635 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 175 Ergebnisse gefunden.
+2024-11-15 03:21:52,947 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 03:21:52,948 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenfutter
+2024-11-15 03:21:52,949 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-15 03:21:52,952 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-15 03:21:52,953 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-15 03:21:53,122 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter HTTP/11" 200 None
+2024-11-15 03:21:53,130 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=2 HTTP/11" 200 None
+2024-11-15 03:21:53,134 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=3 HTTP/11" 200 None
+2024-11-15 03:21:55,517 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 180 Artikel gefunden.
+2024-11-15 03:21:55,519 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 03:21:55,531 - ResultsSection - DEBUG - 355 Ergebnisse aktualisiert
+2024-11-15 03:21:55,550 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 355 Ergebnisse gefunden.
+2024-11-15 15:46:41,500 - Main - INFO - Starte Anwendung...
+2024-11-15 15:46:41,500 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 15:46:41,500 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 15:46:41,500 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 15:46:41,501 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 15:46:41,501 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 15:46:41,501 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 15:46:41,501 - Main - DEBUG - Importiere Module...
+2024-11-15 15:46:41,679 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 15:46:41,682 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 15:46:41,682 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 15:46:41,726 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 15:46:41,727 - Main - INFO - Display Server: X11
+2024-11-15 15:46:41,727 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 15:46:41,729 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 15:46:41,729 - Main - DEBUG - Erstelle GUI...
+2024-11-15 15:46:41,729 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 15:46:41,794 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 15:46:41,795 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 15:46:41,798 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 15:46:41,798 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 15:46:41,821 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 15:46:41,823 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 15:46:41,954 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 15:46:41,954 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 15:46:53,849 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 15:46:53,850 - EbayScraper - INFO - Starte Suche für: Katzenfutter
+2024-11-15 15:46:53,863 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.ebay.de:443
+2024-11-15 15:46:53,865 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.ebay.de:443
+2024-11-15 15:46:53,869 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.ebay.de:443
+2024-11-15 15:46:54,425 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=3 HTTP/11" 200 None
+2024-11-15 15:46:54,428 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter&_pgn=2 HTTP/11" 200 None
+2024-11-15 15:46:54,557 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenfutter HTTP/11" 200 None
+2024-11-15 15:46:55,888 - EbayScraper - INFO - Suche abgeschlossen. 129 Artikel gefunden.
+2024-11-15 15:46:55,888 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenfutter
+2024-11-15 15:46:55,890 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-15 15:46:55,890 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-15 15:46:55,891 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-15 15:46:56,589 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=3 HTTP/11" 200 None
+2024-11-15 15:46:56,591 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=2 HTTP/11" 200 None
+2024-11-15 15:46:56,597 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter HTTP/11" 200 None
+2024-11-15 15:47:01,156 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 180 Artikel gefunden.
+2024-11-15 15:47:01,157 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 15:47:01,164 - ResultsSection - DEBUG - 309 Ergebnisse aktualisiert
+2024-11-15 15:47:01,164 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 309 Ergebnisse gefunden.
+2024-11-15 15:55:27,432 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 15:55:27,433 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenfutter
+2024-11-15 15:55:27,438 - urllib3.connectionpool - DEBUG - Resetting dropped connection: www.amazon.de
+2024-11-15 15:55:27,442 - urllib3.connectionpool - DEBUG - Resetting dropped connection: www.amazon.de
+2024-11-15 15:55:27,447 - urllib3.connectionpool - DEBUG - Resetting dropped connection: www.amazon.de
+2024-11-15 15:55:27,624 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter HTTP/11" 200 None
+2024-11-15 15:55:27,626 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=2 HTTP/11" 200 None
+2024-11-15 15:55:27,636 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenfutter&page=3 HTTP/11" 200 None
+2024-11-15 15:56:00,140 - Main - INFO - Starte Anwendung...
+2024-11-15 15:56:00,140 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 15:56:00,140 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 15:56:00,140 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 15:56:00,140 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 15:56:00,140 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 15:56:00,140 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 15:56:00,140 - Main - DEBUG - Importiere Module...
+2024-11-15 15:56:00,302 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 15:56:00,305 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 15:56:00,305 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 15:56:00,360 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 15:56:00,361 - Main - INFO - Display Server: X11
+2024-11-15 15:56:00,361 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 15:56:00,362 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 15:56:00,362 - Main - DEBUG - Erstelle GUI...
+2024-11-15 15:56:00,362 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 15:56:00,406 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 15:56:00,406 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 15:56:00,409 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 15:56:00,409 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 15:56:00,428 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 15:56:00,430 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 15:56:00,555 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 15:56:00,555 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 15:57:07,448 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 15:57:07,448 - EbayScraper - INFO - Starte Suche für: Katzenstreu
+2024-11-15 15:57:07,455 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.ebay.de:443
+2024-11-15 15:57:07,457 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.ebay.de:443
+2024-11-15 15:57:07,458 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.ebay.de:443
+2024-11-15 15:57:08,417 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenstreu HTTP/11" 200 None
+2024-11-15 15:57:08,424 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenstreu&_pgn=2 HTTP/11" 200 None
+2024-11-15 15:57:08,426 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Katzenstreu&_pgn=3 HTTP/11" 200 None
+2024-11-15 15:57:09,398 - EbayScraper - INFO - Suche abgeschlossen. 130 Artikel gefunden.
+2024-11-15 15:57:09,399 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenstreu
+2024-11-15 15:57:09,401 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-15 15:57:09,402 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-15 15:57:09,404 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-15 15:57:09,586 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu HTTP/11" 200 None
+2024-11-15 15:57:09,634 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu&page=2 HTTP/11" 200 None
+2024-11-15 15:57:09,635 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu&page=3 HTTP/11" 200 None
+2024-11-15 15:57:11,307 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 180 Artikel gefunden.
+2024-11-15 15:57:11,308 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 15:57:11,316 - ResultsSection - DEBUG - 310 Ergebnisse aktualisiert
+2024-11-15 15:57:11,317 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 310 Ergebnisse gefunden.
+2024-11-15 15:57:28,751 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 15:57:28,752 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenstreu
+2024-11-15 15:57:28,881 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu&page=2 HTTP/11" 200 None
+2024-11-15 15:57:28,882 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu&page=3 HTTP/11" 200 None
+2024-11-15 15:57:28,883 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu HTTP/11" 200 None
+2024-11-15 15:57:31,915 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 180 Artikel gefunden.
+2024-11-15 15:57:31,916 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 15:57:31,923 - ResultsSection - DEBUG - 310 Ergebnisse aktualisiert
+2024-11-15 15:57:31,924 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 310 Ergebnisse gefunden.
+2024-11-15 15:57:40,885 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 15:57:40,886 - AmazonScraper - INFO - Starte Amazon-Suche für: Katzenstreu
+2024-11-15 15:57:40,977 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu HTTP/11" 200 None
+2024-11-15 15:57:41,013 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu&page=3 HTTP/11" 200 None
+2024-11-15 15:57:41,045 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Katzenstreu&page=2 HTTP/11" 200 None
+2024-11-15 15:57:42,744 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 180 Artikel gefunden.
+2024-11-15 15:57:42,745 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 15:57:42,753 - ResultsSection - DEBUG - 310 Ergebnisse aktualisiert
+2024-11-15 15:57:42,753 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 310 Ergebnisse gefunden.
+2024-11-15 16:08:11,813 - Main - INFO - Starte Anwendung...
+2024-11-15 16:08:11,814 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 16:08:11,814 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 16:08:11,814 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 16:08:11,814 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 16:08:11,814 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 16:08:11,814 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 16:08:11,814 - Main - DEBUG - Importiere Module...
+2024-11-15 16:08:11,977 - Main - CRITICAL - Kritischer Fehler beim Programmstart: 'return' outside function (amazon_scraper.py, line 70)
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 82, in main
+    from scraper.amazon_scraper import AmazonScraper
+  File "/home/oliver/Documents/Scrapper/scraper/amazon_scraper.py", line 70
+    return "Nicht verfügbar"
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: 'return' outside function
+2024-11-15 16:08:29,003 - Main - INFO - Starte Anwendung...
+2024-11-15 16:08:29,003 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 16:08:29,003 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 16:08:29,004 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 16:08:29,004 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 16:08:29,004 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 16:08:29,004 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 16:08:29,004 - Main - DEBUG - Importiere Module...
+2024-11-15 16:08:29,164 - Main - CRITICAL - Kritischer Fehler beim Programmstart: expected 'except' or 'finally' block (amazon_scraper.py, line 73)
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 82, in main
+    from scraper.amazon_scraper import AmazonScraper
+  File "/home/oliver/Documents/Scrapper/scraper/amazon_scraper.py", line 73
+    price_text = price_element.get_text().strip()
+    ^^^^^^^^^^
+SyntaxError: expected 'except' or 'finally' block
+2024-11-15 16:12:50,065 - Main - INFO - Starte Anwendung...
+2024-11-15 16:12:50,066 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 16:12:50,066 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 16:12:50,066 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 16:12:50,066 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 16:12:50,066 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 16:12:50,066 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 16:12:50,066 - Main - DEBUG - Importiere Module...
+2024-11-15 16:12:50,233 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 16:12:50,235 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 16:12:50,235 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 16:12:50,294 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 16:12:50,294 - Main - INFO - Display Server: X11
+2024-11-15 16:12:50,295 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 16:12:50,297 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 16:12:50,297 - Main - DEBUG - Erstelle GUI...
+2024-11-15 16:12:50,297 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 16:12:50,348 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 16:12:50,348 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 16:12:50,351 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 16:12:50,351 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 16:12:50,372 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 16:12:50,374 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 16:12:50,501 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 16:12:50,501 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 16:13:03,922 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 16:13:03,924 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-15 16:13:03,930 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-15 16:13:03,934 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-15 16:13:03,938 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-15 16:13:04,109 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=katzenfutter&page=3 HTTP/11" 200 None
+2024-11-15 16:13:04,113 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=katzenfutter&page=2 HTTP/11" 200 None
+2024-11-15 16:13:04,119 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=katzenfutter HTTP/11" 200 None
+2024-11-15 16:13:06,334 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 175 Artikel gefunden.
+2024-11-15 16:13:06,335 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 16:13:06,339 - ResultsSection - DEBUG - 175 Ergebnisse aktualisiert
+2024-11-15 16:13:06,340 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 175 Ergebnisse gefunden.
+2024-11-15 16:16:31,963 - Main - INFO - Starte Anwendung...
+2024-11-15 16:16:31,963 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 16:16:31,964 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 16:16:31,964 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 16:16:31,964 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 16:16:31,964 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 16:16:31,964 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 16:16:31,964 - Main - DEBUG - Importiere Module...
+2024-11-15 16:16:32,121 - Main - CRITICAL - Kritischer Fehler beim Programmstart: expected 'except' or 'finally' block (amazon_scraper.py, line 88)
+Traceback (most recent call last):
+  File "/home/oliver/Documents/Scrapper/main.py", line 82, in main
+    from scraper.amazon_scraper import AmazonScraper
+  File "/home/oliver/Documents/Scrapper/scraper/amazon_scraper.py", line 88
+    if '.' in cleaned and ',' in cleaned:
+    ^^
+SyntaxError: expected 'except' or 'finally' block
+2024-11-15 16:19:46,116 - Main - INFO - Starte Anwendung...
+2024-11-15 16:19:46,117 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 16:19:46,117 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 16:19:46,117 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 16:19:46,117 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 16:19:46,117 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 16:19:46,117 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 16:19:46,117 - Main - DEBUG - Importiere Module...
+2024-11-15 16:19:46,277 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 16:19:46,282 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 16:19:46,282 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 16:19:46,341 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 16:19:46,342 - Main - INFO - Display Server: X11
+2024-11-15 16:19:46,342 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 16:19:46,344 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 16:19:46,344 - Main - DEBUG - Erstelle GUI...
+2024-11-15 16:19:46,344 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 16:19:46,402 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 16:19:46,402 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 16:19:46,405 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 16:19:46,405 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 16:19:46,424 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 16:19:46,426 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 16:19:46,559 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 16:19:46,559 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-15 16:19:53,990 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-15 16:19:53,991 - AmazonScraper - INFO - Starte Amazon-Suche für: katzenfutter
+2024-11-15 16:19:53,999 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-15 16:19:54,001 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-15 16:19:54,004 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-15 16:19:54,178 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=katzenfutter HTTP/11" 200 None
+2024-11-15 16:19:54,184 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=katzenfutter&page=3 HTTP/11" 200 None
+2024-11-15 16:19:54,188 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=katzenfutter&page=2 HTTP/11" 200 None
+2024-11-15 16:19:56,287 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 175 Artikel gefunden.
+2024-11-15 16:19:56,287 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 16:19:56,291 - ResultsSection - DEBUG - 175 Ergebnisse aktualisiert
+2024-11-15 16:19:56,292 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 175 Ergebnisse gefunden.
+2024-11-15 16:20:09,534 - Main - INFO - Starte Anwendung...
+2024-11-15 16:20:09,534 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-15 16:20:09,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-15 16:20:09,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-15 16:20:09,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: scraper
+2024-11-15 16:20:09,534 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-15 16:20:09,535 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-15 16:20:09,535 - Main - DEBUG - Importiere Module...
+2024-11-15 16:20:09,698 - Main - DEBUG - Konfiguriere X11...
+2024-11-15 16:20:09,700 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-15 16:20:09,700 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-15 16:20:09,761 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-15 16:20:09,761 - Main - INFO - Display Server: X11
+2024-11-15 16:20:09,761 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-15 16:20:09,762 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-15 16:20:09,762 - Main - DEBUG - Erstelle GUI...
+2024-11-15 16:20:09,762 - Main - DEBUG - Initialisiere GUI...
+2024-11-15 16:20:09,808 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-15 16:20:09,808 - Main - DEBUG - Initialisiere Scraper...
+2024-11-15 16:20:09,813 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-15 16:20:09,813 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-15 16:20:09,832 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-15 16:20:09,833 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-15 16:20:09,970 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-15 16:20:09,970 - Main - INFO - Anwendung erfolgreich initialisiert
