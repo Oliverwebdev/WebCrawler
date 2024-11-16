@@ -59,7 +59,7 @@ def create_gui() -> Optional[tk.Tk]:
     try:
         logger.debug("Initialisiere GUI...")
         root = tk.Tk()
-        root.title("Shop Scraper")
+        root.title("AllYouCanShop")
 
         # Setze Fenstergröße und -position
         window_width = 800

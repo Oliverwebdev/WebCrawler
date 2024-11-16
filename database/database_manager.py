@@ -146,6 +146,28 @@ class DatabaseManager:
             logger.error(f"Fehler beim Löschen aller Favoriten: {e}")
             return False
 
+    def clear_search_results(self, keyword: Optional[str] = None) -> bool:
+        """
+        Löscht Suchergebnisse aus der Datenbank.
+        
+        Args:
+            keyword: Optional - Wenn angegeben, werden nur Ergebnisse für dieses Keyword gelöscht
+        
+        Returns:
+            bool: True wenn erfolgreich, False bei Fehler
+        """
+        try:
+            if keyword:
+                self.conn.execute('DELETE FROM search_results WHERE keyword = ?', (keyword,))
+            else:
+                self.conn.execute('DELETE FROM search_results')
+            self.conn.commit()
+            logger.debug(f"Suchergebnisse gelöscht: {'alle' if not keyword else f'für {keyword}'}")
+            return True
+        except Exception as e:
+            logger.error(f"Fehler beim Löschen der Suchergebnisse: {e}")
+            return False
+
     def save_search_results(self, source: str, keyword: str, items: List[Dict[str, Any]]) -> bool:
         """Speichert Suchergebnisse in der Datenbank."""
         try:
@@ -213,3 +235,4 @@ class DatabaseManager:
         """Schließt die Datenbankverbindung beim Beenden."""
         if self.conn:
             self.conn.close()
+

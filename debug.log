@@ -2711,3 +2711,823 @@ o_global.toggles = Object.freeze({
 2024-11-16 17:01:14,660 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
 2024-11-16 17:01:14,664 - ResultsSection - DEBUG - 221 Ergebnisse aktualisiert
 2024-11-16 17:01:14,664 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 221 Ergebnisse gefunden.
+2024-11-16 17:14:18,984 - Main - INFO - Starte Anwendung...
+2024-11-16 17:14:18,984 - Main - DEBUG - Überprüfe Systemvoraussetzungen...
+2024-11-16 17:14:18,985 - Main - DEBUG - Verzeichnis überprüft/erstellt: utils
+2024-11-16 17:14:18,985 - Main - DEBUG - Verzeichnis überprüft/erstellt: database
+2024-11-16 17:14:18,985 - Main - DEBUG - Verzeichnis überprüft/erstellt: scrapers
+2024-11-16 17:14:18,985 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui
+2024-11-16 17:14:18,985 - Main - DEBUG - Verzeichnis überprüft/erstellt: gui/components
+2024-11-16 17:14:18,985 - Main - DEBUG - Importiere Module...
+2024-11-16 17:14:19,010 - Main - DEBUG - Konfiguriere X11...
+2024-11-16 17:14:19,012 - X11Config - INFO - X11-Umgebung erfolgreich konfiguriert
+2024-11-16 17:14:19,012 - X11Config - INFO - Erkannter Display-Server: X11
+2024-11-16 17:14:19,062 - X11Config - INFO - Verfügbare Auflösungen: Scree
+2024-11-16 17:14:19,062 - Main - INFO - Display Server: X11
+2024-11-16 17:14:19,062 - Main - DEBUG - Initialisiere Datenbank...
+2024-11-16 17:14:19,063 - DatabaseManager - INFO - Datenbank erfolgreich initialisiert
+2024-11-16 17:14:19,063 - Main - DEBUG - Erstelle GUI...
+2024-11-16 17:14:19,063 - Main - DEBUG - Initialisiere GUI...
+2024-11-16 17:14:19,112 - Main - DEBUG - GUI-Fenster erstellt und positioniert
+2024-11-16 17:14:19,112 - Main - DEBUG - Initialisiere Scraper...
+2024-11-16 17:14:19,291 - EbayScraper - INFO - Fake UserAgent erfolgreich initialisiert
+2024-11-16 17:14:19,291 - Main - DEBUG - Scraper erfolgreich initialisiert
+2024-11-16 17:14:19,291 - Main - DEBUG - Erstelle Hauptanwendung...
+2024-11-16 17:14:19,311 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-16 17:14:19,312 - Main - DEBUG - Führe Datenmigration durch...
+2024-11-16 17:14:19,451 - DatabaseManager - INFO - Migration erfolgreich abgeschlossen
+2024-11-16 17:14:19,451 - Main - INFO - Anwendung erfolgreich initialisiert
+2024-11-16 17:14:35,180 - SearchSection - DEBUG - Starte Suche: Quelle=all, Keyword=Playstation 6, Preis=None-None, Zustand=None
+2024-11-16 17:14:35,181 - StatusBar - DEBUG - Status aktualisiert: Suche läuft...
+2024-11-16 17:14:35,182 - AllYouCanShopGUI - DEBUG - Lösche alte Suchergebnisse für: Playstation 6
+2024-11-16 17:14:35,183 - DatabaseManager - DEBUG - Suchergebnisse gelöscht: für Playstation 6
+2024-11-16 17:14:35,183 - AllYouCanShopGUI - DEBUG - Starte Suche mit Quelle: all
+2024-11-16 17:14:35,184 - EbayScraper - INFO - Starte Suche für: Playstation 6
+2024-11-16 17:14:35,185 - AmazonScraper - INFO - Starte Amazon-Suche für: Playstation 6
+2024-11-16 17:14:35,193 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.ebay.de:443
+2024-11-16 17:14:35,197 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.ebay.de:443
+2024-11-16 17:14:35,199 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.ebay.de:443
+2024-11-16 17:14:35,203 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.amazon.de:443
+2024-11-16 17:14:35,205 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.amazon.de:443
+2024-11-16 17:14:35,208 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.amazon.de:443
+2024-11-16 17:14:35,209 - BaseScraper - INFO - otto: Starte Suche für: Playstation 6
+2024-11-16 17:14:35,210 - OttoScraper - DEBUG - Generierte Otto-URL: https://www.otto.de/suche/playstation+6/
+2024-11-16 17:14:35,210 - OttoScraper - DEBUG - Generierte Otto-URL: https://www.otto.de/suche/playstation+6/?page=2
+2024-11-16 17:14:35,210 - OttoScraper - DEBUG - Generierte Otto-URL: https://www.otto.de/suche/playstation+6/?page=3
+2024-11-16 17:14:35,211 - BaseScraper - DEBUG - otto: Starte Suche auf URL: https://www.otto.de/suche/playstation+6/
+2024-11-16 17:14:35,212 - BaseScraper - DEBUG - otto: Starte Suche auf URL: https://www.otto.de/suche/playstation+6/?page=2
+2024-11-16 17:14:35,215 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.otto.de:443
+2024-11-16 17:14:35,215 - BaseScraper - DEBUG - otto: Starte Suche auf URL: https://www.otto.de/suche/playstation+6/?page=3
+2024-11-16 17:14:35,217 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): www.otto.de:443
+2024-11-16 17:14:35,219 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (3): www.otto.de:443
+2024-11-16 17:14:35,405 - urllib3.connectionpool - DEBUG - https://www.otto.de:443 "GET /suche/playstation+6/?page=3 HTTP/11" 301 0
+2024-11-16 17:14:35,418 - urllib3.connectionpool - DEBUG - https://www.otto.de:443 "GET /suche/playstation+6/?page=2 HTTP/11" 301 0
+2024-11-16 17:14:35,419 - urllib3.connectionpool - DEBUG - https://www.otto.de:443 "GET /suche/playstation+6/ HTTP/11" 301 0
+2024-11-16 17:14:35,449 - urllib3.connectionpool - DEBUG - https://www.otto.de:443 "GET /suche/playstation%2B6/?page=3 HTTP/11" 200 None
+2024-11-16 17:14:35,476 - urllib3.connectionpool - DEBUG - https://www.otto.de:443 "GET /suche/playstation%2B6/?page=2 HTTP/11" 200 None
+2024-11-16 17:14:35,487 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Playstation+6&page=2 HTTP/11" 200 None
+2024-11-16 17:14:35,539 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Playstation+6&page=3 HTTP/11" 200 None
+2024-11-16 17:14:35,566 - urllib3.connectionpool - DEBUG - https://www.amazon.de:443 "GET /s?k=Playstation+6 HTTP/11" 200 None
+2024-11-16 17:14:35,598 - urllib3.connectionpool - DEBUG - https://www.otto.de:443 "GET /suche/playstation%2B6/ HTTP/11" 200 None
+2024-11-16 17:14:35,724 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Playstation%206 HTTP/11" 200 None
+2024-11-16 17:14:35,732 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Playstation%206&_pgn=3 HTTP/11" 200 None
+2024-11-16 17:14:35,744 - urllib3.connectionpool - DEBUG - https://www.ebay.de:443 "GET /sch/i.html?_nkw=Playstation%206&_pgn=2 HTTP/11" 200 None
+2024-11-16 17:14:35,864 - BaseScraper - DEBUG - otto: HTML erfolgreich geparst
+2024-11-16 17:14:35,868 - BaseScraper - DEBUG - otto: HTML erfolgreich geparst
+2024-11-16 17:14:35,909 - OttoScraper - DEBUG - HTML Sample: 
+<!DOCTYPE html>
+
+<html class="" data-pagecluster="Suchergebnisseite" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="de" http-equiv="content-language"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suchergebnis für playstation+6 | OTTO</title>
+<meta content="Gefunden auf Otto.de » Große Auswahl ✓ Top Marken ✓ Ratenkauf &amp; Kauf auf Rechnung möglich » Bestelle jetzt!" name="description">
+<meta content="noindex,follow" name="robots">
+<meta content="Gefunden auf Otto.de" property="og:title">
+<script>
+"use strict";
+
+var o_global = o_global || {};
+
+o_global.toggles = Object.freeze({
+    "EPR_RECONSENT": false,
+    "tr_handle_auxclick": true,
+    "EPR_ENABLE_ONETRUST": true,
+    "ASSETS_PARTIALLY_SUPPORTED_NOTIFICATION": true,
+    "ASSETS_device_preferences": true,
+    "EMR_PXC": true,
+    "RUM_PageCluster": true,
+    "RUM_Viewport": true,
+    "RUM_JavascriptErrors_Artikeldetailseite": true,
+    "RUM_CustomEvents_verintRuntimeError": false,
+    "
+2024-11-16 17:14:35,916 - OttoScraper - DEBUG - Gefunden via article: 138
+2024-11-16 17:14:35,929 - OttoScraper - DEBUG - Gefunden via class: 202
+2024-11-16 17:14:35,941 - OttoScraper - DEBUG - Gefunden via data-attributes: 146
+2024-11-16 17:14:35,944 - OttoScraper - DEBUG - HTML Sample: 
+<!DOCTYPE html>
+
+<html class="" data-pagecluster="Suchergebnisseite" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="de" http-equiv="content-language"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suchergebnis für playstation+6 | OTTO</title>
+<meta content="Gefunden auf Otto.de » Große Auswahl ✓ Top Marken ✓ Ratenkauf &amp; Kauf auf Rechnung möglich » Bestelle jetzt!" name="description">
+<meta content="noindex,follow" name="robots">
+<meta content="Gefunden auf Otto.de" property="og:title">
+<script>
+"use strict";
+
+var o_global = o_global || {};
+
+o_global.toggles = Object.freeze({
+    "EPR_RECONSENT": false,
+    "tr_handle_auxclick": true,
+    "EPR_ENABLE_ONETRUST": true,
+    "ASSETS_PARTIALLY_SUPPORTED_NOTIFICATION": true,
+    "ASSETS_device_preferences": true,
+    "EMR_PXC": true,
+    "RUM_PageCluster": true,
+    "RUM_Viewport": true,
+    "RUM_JavascriptErrors_Artikeldetailseite": true,
+    "RUM_CustomEvents_verintRuntimeError": false,
+    "
+2024-11-16 17:14:35,961 - OttoScraper - DEBUG - Gefunden via article: 138
+2024-11-16 17:14:35,975 - OttoScraper - DEBUG - Gefunden via class: 202
+2024-11-16 17:14:36,003 - OttoScraper - DEBUG - Gefunden via data-attributes: 146
+2024-11-16 17:14:36,064 - OttoScraper - DEBUG - Gefundene Produkte nach Deduplizierung: 181
+2024-11-16 17:14:36,070 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="93557522" data-id="1844690122" data-list-position="54" data-local-list-position="54" data-origin="semantical" data-product-
+2024-11-16 17:14:36,070 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="47404323" data-id="1737533846" data-list-position="38" data-local-list-position="38" data-origin="semantical" data-product-
+2024-11-16 17:14:36,070 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P350UFXP8" data-id="S0P350UF" data-list-position="24" data-local-list-position="24" data-origin="semantical" data-product
+2024-11-16 17:14:36,071 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C0F0PS" data-id="S0C0F0PS" data-list-position="119" data-local-list-position="119" data-origin="semantical" data-product-
+2024-11-16 17:14:36,071 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/2cb58998-90ea-5094-b4b6-bf41a84adce7?$responsive_f
+2024-11-16 17:14:36,071 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="72585521" data-id="1844690149" data-list-position="103" data-local-list-position="103" data-origin="semantical" data-produc
+2024-11-16 17:14:36,071 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0I0E0Z0" data-id="S0I0E0Z0" data-list-position="104" data-local-list-position="104" data-origin="semantical" data-product-
+2024-11-16 17:14:36,087 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 4 Slim, 500GB" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='https://i.ot
+2024-11-16 17:14:36,093 - OttoScraper - DEBUG - Gefundene Produkte nach Deduplizierung: 181
+2024-11-16 17:14:36,093 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Digital Edition (Slim) inkl. zweitem DualSense Wireless-Controller 1TB" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loadi
+2024-11-16 17:14:36,093 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0LQLF8" data-id="S0C7A0LQ" data-list-position="45" data-local-list-position="45" data-origin="semantical" data-product
+2024-11-16 17:14:36,094 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0LY4MY" data-id="S0C7A0LY" data-list-position="93" data-local-list-position="93" data-origin="semantical" data-product
+2024-11-16 17:14:36,094 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="93557522" data-id="1844690122" data-list-position="54" data-local-list-position="54" data-origin="semantical" data-product-
+2024-11-16 17:14:36,094 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0X22080" data-id="S0X22080" data-list-position="107" data-local-list-position="107" data-origin="semantical" data-product-
+2024-11-16 17:14:36,095 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="47404323" data-id="1737533846" data-list-position="38" data-local-list-position="38" data-origin="semantical" data-product-
+2024-11-16 17:14:36,096 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcGxheXN0YXRpb24tNS1kaWdpdGFsLXNsaW0taW5rbC16d2VpdGVuLWNvbnRyb2xsZXItZmFyYmUtd2FlaGxiYXItQ
+2024-11-16 17:14:36,096 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P350UFXP8" data-id="S0P350UF" data-list-position="24" data-local-list-position="24" data-origin="semantical" data-product
+2024-11-16 17:14:36,097 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1799990874">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:36,098 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C0F0PS" data-id="S0C0F0PS" data-list-position="119" data-local-list-position="119" data-origin="semantical" data-product-
+2024-11-16 17:14:36,099 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="44747610" data-id="1343457137" data-list-position="132" data-local-list-position="132" data-origin="semantical" data-produc
+2024-11-16 17:14:36,099 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0LT4MY" data-id="S0C7A0LT" data-list-position="16" data-local-list-position="16" data-origin="semantical" data-product
+2024-11-16 17:14:36,100 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="37824322" data-id="1683761527" data-list-position="131" data-local-list-position="131" data-origin="semantical" data-produc
+2024-11-16 17:14:36,100 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/2cb58998-90ea-5094-b4b6-bf41a84adce7?$responsive_f
+2024-11-16 17:14:36,101 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Q2E03O" data-id="S0Q2E03O" data-list-position="49" data-local-list-position="49" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,101 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="72585521" data-id="1844690149" data-list-position="103" data-local-list-position="103" data-origin="semantical" data-produc
+2024-11-16 17:14:36,102 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="91607011" data-id="1170617135" data-list-position="76" data-local-list-position="76" data-origin="semantical" data-product-
+2024-11-16 17:14:36,102 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0I0E0Z0" data-id="S0I0E0Z0" data-list-position="104" data-local-list-position="104" data-origin="semantical" data-product-
+2024-11-16 17:14:36,102 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0V4V0ZN" data-id="S0V4V0ZN" data-list-position="81" data-local-list-position="81" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,103 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 4 Slim, 500GB" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='https://i.ot
+2024-11-16 17:14:36,103 - OttoScraper - DEBUG - Container Sample: <img alt="Playstation PS5 Konsole Slim Edition Disc Laufwerk mit 1 Controller (Bundle), 1TB SSD Console, 4k, Gaming Konsole" class="find_tile__productImage find_tile__productImage--animated find_tile_
+2024-11-16 17:14:36,103 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Digital Edition (Slim) inkl. zweitem DualSense Wireless-Controller 1TB" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loadi
+2024-11-16 17:14:36,103 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/d44c1f2b-571c-569f-a877-042b6c742592?$responsive_f
+2024-11-16 17:14:36,104 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0LY4MY" data-id="S0C7A0LY" data-list-position="93" data-local-list-position="93" data-origin="semantical" data-product
+2024-11-16 17:14:36,104 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0HA10J0N7UF">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:36,105 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0X22080" data-id="S0X22080" data-list-position="107" data-local-list-position="107" data-origin="semantical" data-product-
+2024-11-16 17:14:36,105 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="50255853" data-id="1526308407" data-list-position="71" data-local-list-position="71" data-origin="semantical" data-product-
+2024-11-16 17:14:36,105 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcGxheXN0YXRpb24tNS1kaWdpdGFsLXNsaW0taW5rbC16d2VpdGVuLWNvbnRyb2xsZXItZmFyYmUtd2FlaGxiYXItQ
+2024-11-16 17:14:36,106 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="3" data-article-number="77946915" data-id="1170617126" data-list-position="73" data-local-list-position="73" data-origin="seman
+2024-11-16 17:14:36,106 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1799990874">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:36,107 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0LTLF8" data-id="S0C7A0LT" data-list-position="16" data-local-list-position="16" data-origin="semantical" data-product
+2024-11-16 17:14:36,107 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="44747610" data-id="1343457137" data-list-position="132" data-local-list-position="132" data-origin="semantical" data-produc
+2024-11-16 17:14:36,109 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="15" data-article-number="35872053" data-id="1395810692" data-list-position="17" data-local-list-position="17" data-origin="sema
+2024-11-16 17:14:36,109 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="37824322" data-id="1683761527" data-list-position="131" data-local-list-position="131" data-origin="semantical" data-produc
+2024-11-16 17:14:36,110 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="32534139" data-id="1844690103" data-list-position="58" data-local-list-position="58" data-origin="semantical" data-product-
+2024-11-16 17:14:36,110 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Q2E03O" data-id="S0Q2E03O" data-list-position="49" data-local-list-position="49" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,111 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="19194269" data-id="1844690158" data-list-position="36" data-local-list-position="36" data-origin="semantical" data-product-
+2024-11-16 17:14:36,112 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="91607011" data-id="1170617135" data-list-position="76" data-local-list-position="76" data-origin="semantical" data-product-
+2024-11-16 17:14:36,112 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0LZ" data-id="S0C7A0LZ" data-list-position="87" data-local-list-position="87" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,113 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0V4V0ZN" data-id="S0V4V0ZN" data-list-position="81" data-local-list-position="81" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,114 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/6fe42ff5-385f-4576-b5a4-09877f93e4d1?$responsive_f
+2024-11-16 17:14:36,114 - OttoScraper - DEBUG - Container Sample: <img alt="Playstation PS5 Konsole Slim Edition Disc Laufwerk mit 1 Controller (Bundle), 1TB SSD Console, 4k, Gaming Konsole" class="find_tile__productImage find_tile__productImage--animated find_tile_
+2024-11-16 17:14:36,115 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1kaWdpdGFsLWVkaXRpb24tc2xpbS1pbmtsLXp3ZWl0ZW0tZHVhbHNlbnNlLXdpcmVsZXNzLWNvbnRyb2xsZXItM
+2024-11-16 17:14:36,115 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/d44c1f2b-571c-569f-a877-042b6c742592?$responsive_f
+2024-11-16 17:14:36,116 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0B8101T81E" data-id="S0B8101T" data-list-position="13" data-local-list-position="13" data-origin="semantical" data-product
+2024-11-16 17:14:36,116 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0HA10J0N7UF">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:36,117 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0TC50H5" data-id="S0TC50H5" data-list-position="6" data-local-list-position="6" data-origin="semantical" data-product-id="
+2024-11-16 17:14:36,118 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="50255853" data-id="1526308407" data-list-position="71" data-local-list-position="71" data-origin="semantical" data-product-
+2024-11-16 17:14:36,120 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 4 PlayStation 4 Slim, 500GB - 389,00€
+2024-11-16 17:14:36,120 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="3" data-article-number="77946915" data-id="1170617126" data-list-position="73" data-local-list-position="73" data-origin="seman
+2024-11-16 17:14:36,121 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="2" data-article-number="S0YB90GAQIC" data-id="S0YB90GA" data-list-position="26" data-local-list-position="26" data-origin="sema
+2024-11-16 17:14:36,122 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="15" data-article-number="35872053" data-id="1395810692" data-list-position="17" data-local-list-position="17" data-origin="sema
+2024-11-16 17:14:36,122 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="94719743" data-id="1851486472" data-list-position="108" data-local-list-position="108" data-origin="semantical" data-produc
+2024-11-16 17:14:36,123 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="32534139" data-id="1844690103" data-list-position="58" data-local-list-position="58" data-origin="semantical" data-product-
+2024-11-16 17:14:36,124 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/20057523?$responsive_ft2_webp$" type="image/webp"/
+2024-11-16 17:14:36,124 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="19194269" data-id="1844690158" data-list-position="36" data-local-list-position="36" data-origin="semantical" data-product-
+2024-11-16 17:14:36,124 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="62637121" data-id="1677373361" data-list-position="120" data-local-list-position="120" data-origin="semantical" data-produc
+2024-11-16 17:14:36,125 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0LZ" data-id="S0C7A0LZ" data-list-position="87" data-local-list-position="87" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,125 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="45696760" data-id="1869347138" data-list-position="59" data-local-list-position="59" data-origin="semantical" data-product-
+2024-11-16 17:14:36,125 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/6fe42ff5-385f-4576-b5a4-09877f93e4d1?$responsive_f
+2024-11-16 17:14:36,126 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0VA3079" data-id="S0VA3079" data-list-position="122" data-local-list-position="122" data-origin="semantical" data-product-
+2024-11-16 17:14:36,126 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1kaWdpdGFsLWVkaXRpb24tc2xpbS1pbmtsLXp3ZWl0ZW0tZHVhbHNlbnNlLXdpcmVsZXNzLWNvbnRyb2xsZXItM
+2024-11-16 17:14:36,126 - OttoScraper - DEBUG - Container Sample: <div class="reptile_tile__similarProducts js_reptile_tile__similarProducts">
+<button class="reptile_tile__similarProductsButton js_reptile_tile__similarProductsButton">
+<oc-icon-v1 size="50" type="inp
+2024-11-16 17:14:36,127 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0TC50H5" data-id="S0TC50H5" data-list-position="6" data-local-list-position="6" data-origin="semantical" data-product-id="
+2024-11-16 17:14:36,128 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcHM1LWRpc2stZWRpdGlvbi1zbGltLWlua2wtendlaXRlbS1kdWFsc2Vuc2Utd2lyZWxlc3MtY29udHJvbGxlci0xd
+2024-11-16 17:14:36,131 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 4 PlayStation 4 Slim, 500GB - 389,00€
+2024-11-16 17:14:36,132 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Y1R079" data-id="S0Y1R079" data-list-position="95" data-local-list-position="95" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,132 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="94719743" data-id="1851486472" data-list-position="108" data-local-list-position="108" data-origin="semantical" data-produc
+2024-11-16 17:14:36,133 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0G6S0FI" data-id="S0G6S0FI" data-list-position="115" data-local-list-position="115" data-origin="semantical" data-product-
+2024-11-16 17:14:36,133 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/20057523?$responsive_ft2_webp$" type="image/webp"/
+2024-11-16 17:14:36,133 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0MCM0NC" data-id="S0MCM0NC" data-list-position="42" data-local-list-position="42" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,134 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="62637121" data-id="1677373361" data-list-position="120" data-local-list-position="120" data-origin="semantical" data-produc
+2024-11-16 17:14:36,134 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="54317706" data-id="1617341550" data-list-position="77" data-local-list-position="77" data-origin="semantical" data-product-
+2024-11-16 17:14:36,135 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="45696760" data-id="1869347138" data-list-position="59" data-local-list-position="59" data-origin="semantical" data-product-
+2024-11-16 17:14:36,135 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P680B4" data-id="S0P680B4" data-list-position="9" data-local-list-position="9" data-origin="semantical" data-product-id="
+2024-11-16 17:14:36,135 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0VA3079" data-id="S0VA3079" data-list-position="122" data-local-list-position="122" data-origin="semantical" data-product-
+2024-11-16 17:14:36,135 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="1" data-article-number="S0ACW0CV" data-id="S0ACW0CV" data-list-position="129" data-local-list-position="129" data-origin="semantical" data-product-
+2024-11-16 17:14:36,136 - OttoScraper - DEBUG - Container Sample: <div class="reptile_tile__similarProducts js_reptile_tile__similarProducts">
+<button class="reptile_tile__similarProductsButton js_reptile_tile__similarProductsButton">
+<oc-icon-v1 size="50" type="inp
+2024-11-16 17:14:36,136 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="66852242" data-id="1881389964" data-list-position="55" data-local-list-position="55" data-origin="semantical" data-product-
+2024-11-16 17:14:36,136 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcHM1LWRpc2stZWRpdGlvbi1zbGltLWlua2wtendlaXRlbS1kdWFsc2Vuc2Utd2lyZWxlc3MtY29udHJvbGxlci0xd
+2024-11-16 17:14:36,137 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="86373312" data-id="1700330591" data-list-position="69" data-local-list-position="69" data-origin="semantical" data-product-
+2024-11-16 17:14:36,137 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Y1R079" data-id="S0Y1R079" data-list-position="95" data-local-list-position="95" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,137 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0XJ" data-id="S0P2E0XJ" data-list-position="74" data-local-list-position="74" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,138 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0G6S0FI" data-id="S0G6S0FI" data-list-position="115" data-local-list-position="115" data-origin="semantical" data-product-
+2024-11-16 17:14:36,138 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/4b00e34f-c4e2-57eb-9f6d-d5866e50e027?$responsive_f
+2024-11-16 17:14:36,138 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0MCM0NC" data-id="S0MCM0NC" data-list-position="42" data-local-list-position="42" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,139 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-digital-edition-slim-inkl-zweitem-dualsense-wireless-controller-1tb-1861967623/#variationId=1861967682" title="PlayStatio
+2024-11-16 17:14:36,139 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="54317706" data-id="1617341550" data-list-position="77" data-local-list-position="77" data-origin="semantical" data-product-
+2024-11-16 17:14:36,139 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="25920625" data-id="1206508228" data-list-position="92" data-local-list-position="92" data-origin="semantical" data-product-
+2024-11-16 17:14:36,140 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P680B4" data-id="S0P680B4" data-list-position="9" data-local-list-position="9" data-origin="semantical" data-product-id="
+2024-11-16 17:14:36,140 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="1" data-article-number="S0S8Z0CDKJW" data-id="S0S8Z0CD" data-list-position="35" data-local-list-position="35" data-origin="semantical" data-product
+2024-11-16 17:14:36,140 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0EA10V4C6R" data-id="S0EA10V4" data-list-position="23" data-local-list-position="23" data-origin="semantical" data-product
+2024-11-16 17:14:36,141 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Q2E02O" data-id="S0Q2E02O" data-list-position="133" data-local-list-position="133" data-origin="semantical" data-product-
+2024-11-16 17:14:36,141 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="1" data-article-number="S0ACW0CV" data-id="S0ACW0CV" data-list-position="129" data-local-list-position="129" data-origin="semantical" data-product-
+2024-11-16 17:14:36,141 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0M1SBK" data-id="S0C7A0M1" data-list-position="61" data-local-list-position="61" data-origin="semantical" data-product
+2024-11-16 17:14:36,142 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="66852242" data-id="1881389964" data-list-position="55" data-local-list-position="55" data-origin="semantical" data-product-
+2024-11-16 17:14:36,142 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="29254815" data-id="1790587333" data-list-position="15" data-local-list-position="15" data-origin="semantical" data-product-
+2024-11-16 17:14:36,142 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="86373312" data-id="1700330591" data-list-position="69" data-local-list-position="69" data-origin="semantical" data-product-
+2024-11-16 17:14:36,143 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1802445948">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:36,143 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0XJ" data-id="S0P2E0XJ" data-list-position="74" data-local-list-position="74" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,144 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-ps5-disk-edition-slim-inkl-zweitem-dualsense-wireless-controller-1tb-4k-uhd-gaming-schnelle-ladezeiten-vr-unterstuetzung-C1
+2024-11-16 17:14:36,144 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/4b00e34f-c4e2-57eb-9f6d-d5866e50e027?$responsive_f
+2024-11-16 17:14:36,144 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/5a0ead1c-5c02-5cd2-8bfd-e988c83a17d4?$responsive_f
+2024-11-16 17:14:36,144 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-digital-edition-slim-inkl-zweitem-dualsense-wireless-controller-1tb-1861967623/#variationId=1861967682" title="PlayStatio
+2024-11-16 17:14:36,145 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="92603846" data-id="1802445989" data-list-position="12" data-local-list-position="12" data-origin="semantical" data-product-
+2024-11-16 17:14:36,146 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="2" data-article-number="S0YB90GABSW" data-id="S0YB90GA" data-list-position="26" data-local-list-position="26" data-origin="sema
+2024-11-16 17:14:36,152 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="68232659" data-id="785842807" data-list-position="43" data-local-list-position="43" data-origin="semantical" data-product-i
+2024-11-16 17:14:36,187 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="25920625" data-id="1206508228" data-list-position="92" data-local-list-position="92" data-origin="semantical" data-product-
+2024-11-16 17:14:36,187 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Digital Edition" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='https://
+2024-11-16 17:14:36,202 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="1" data-article-number="S0S8Z0CDKJW" data-id="S0S8Z0CD" data-list-position="35" data-local-list-position="35" data-origin="semantical" data-product
+2024-11-16 17:14:36,208 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="39976301" data-id="1771938082" data-list-position="34" data-local-list-position="34" data-origin="semantical" data-product-
+2024-11-16 17:14:36,258 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Q2E02O" data-id="S0Q2E02O" data-list-position="133" data-local-list-position="133" data-origin="semantical" data-product-
+2024-11-16 17:14:36,281 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S089V0JN" data-id="S089V0JN" data-list-position="27" data-local-list-position="27" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,302 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="29254815" data-id="1790587333" data-list-position="15" data-local-list-position="15" data-origin="semantical" data-product-
+2024-11-16 17:14:36,319 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0G7K0KJ" data-id="S0G7K0KJ" data-list-position="51" data-local-list-position="51" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,319 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1802445948">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:36,335 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="64489221" data-id="1695292149" data-list-position="50" data-local-list-position="50" data-origin="semantical" data-product-
+2024-11-16 17:14:36,372 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-ps5-disk-edition-slim-inkl-zweitem-dualsense-wireless-controller-1tb-4k-uhd-gaming-schnelle-ladezeiten-vr-unterstuetzung-C1
+2024-11-16 17:14:36,377 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0BCK01X" data-id="S0BCK01X" data-list-position="68" data-local-list-position="68" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,404 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/5a0ead1c-5c02-5cd2-8bfd-e988c83a17d4?$responsive_f
+2024-11-16 17:14:36,456 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="55177944" data-id="1894962789" data-list-position="117" data-local-list-position="117" data-origin="semantical" data-produc
+2024-11-16 17:14:36,493 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="92603846" data-id="1802445989" data-list-position="12" data-local-list-position="12" data-origin="semantical" data-product-
+2024-11-16 17:14:36,504 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0LAR0O8" data-id="S0LAR0O8" data-list-position="128" data-local-list-position="128" data-origin="semantical" data-product-
+2024-11-16 17:14:36,630 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="68232659" data-id="785842807" data-list-position="43" data-local-list-position="43" data-origin="semantical" data-product-i
+2024-11-16 17:14:36,641 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0W3K0VNL86" data-id="S0W3K0VN" data-list-position="52" data-local-list-position="52" data-origin="semantical" data-product
+2024-11-16 17:14:36,667 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Digital Edition" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='https://
+2024-11-16 17:14:36,682 - OttoScraper - DEBUG - Container Sample: <button class="reptile_tile__similarProductsButton js_reptile_tile__similarProductsButton">
+<oc-icon-v1 size="50" type="inplace-zoom"></oc-icon-v1>
+<span class="oc-copy-75">Mehr davon</span>
+</button>
+2024-11-16 17:14:36,688 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="39976301" data-id="1771938082" data-list-position="34" data-local-list-position="34" data-origin="semantical" data-product-
+2024-11-16 17:14:36,704 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="36004956" data-id="777641068" data-list-position="109" data-local-list-position="109" data-origin="semantical" data-product
+2024-11-16 17:14:36,709 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S089V0JN" data-id="S089V0JN" data-list-position="27" data-local-list-position="27" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,736 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0QVJVC" data-id="S0C7A0QV" data-list-position="138" data-local-list-position="138" data-origin="semantical" data-produ
+2024-11-16 17:14:36,769 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0G7K0KJ" data-id="S0G7K0KJ" data-list-position="51" data-local-list-position="51" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,790 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="7" data-article-number="90692139" data-id="1451286298" data-list-position="39" data-local-list-position="39" data-origin="seman
+2024-11-16 17:14:36,806 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="64489221" data-id="1695292149" data-list-position="50" data-local-list-position="50" data-origin="semantical" data-product-
+2024-11-16 17:14:36,831 - BaseScraper - DEBUG - otto: HTML erfolgreich geparst
+2024-11-16 17:14:36,832 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0XAP0LEPGS" data-id="S0XAP0LE" data-list-position="25" data-local-list-position="25" data-origin="semantical" data-product
+2024-11-16 17:14:36,854 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0BCK01X" data-id="S0BCK01X" data-list-position="68" data-local-list-position="68" data-origin="semantical" data-product-id
+2024-11-16 17:14:36,870 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Q2E025" data-id="S0Q2E025" data-list-position="101" data-local-list-position="101" data-origin="semantical" data-product-
+2024-11-16 17:14:36,906 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="55177944" data-id="1894962789" data-list-position="117" data-local-list-position="117" data-origin="semantical" data-produc
+2024-11-16 17:14:36,910 - OttoScraper - DEBUG - HTML Sample: 
+<!DOCTYPE html>
+
+<html class="" data-pagecluster="Suchergebnisseite" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="de" http-equiv="content-language"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suchergebnis für playstation+6 | OTTO</title>
+<meta content="Gefunden auf Otto.de » Große Auswahl ✓ Top Marken ✓ Ratenkauf &amp; Kauf auf Rechnung möglich » Bestelle jetzt!" name="description">
+<meta content="noindex,follow" name="robots">
+<meta content="Gefunden auf Otto.de" property="og:title">
+<script>
+"use strict";
+
+var o_global = o_global || {};
+
+o_global.toggles = Object.freeze({
+    "EPR_RECONSENT": false,
+    "tr_handle_auxclick": true,
+    "EPR_ENABLE_ONETRUST": true,
+    "ASSETS_PARTIALLY_SUPPORTED_NOTIFICATION": true,
+    "ASSETS_device_preferences": true,
+    "EMR_PXC": true,
+    "RUM_PageCluster": true,
+    "RUM_Viewport": true,
+    "RUM_JavascriptErrors_Artikeldetailseite": true,
+    "RUM_CustomEvents_verintRuntimeError": false,
+    "
+2024-11-16 17:14:36,932 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="53158225" data-id="1811165013" data-list-position="18" data-local-list-position="18" data-origin="semantical" data-product-
+2024-11-16 17:14:36,937 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0LAR0O8" data-id="S0LAR0O8" data-list-position="128" data-local-list-position="128" data-origin="semantical" data-product-
+2024-11-16 17:14:36,954 - OttoScraper - DEBUG - Gefunden via article: 120
+2024-11-16 17:14:37,020 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0L7R0V5Z1FN">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,042 - OttoScraper - DEBUG - Container Sample: <button class="reptile_tile__similarProductsButton js_reptile_tile__similarProductsButton">
+<oc-icon-v1 size="50" type="inplace-zoom"></oc-icon-v1>
+<span class="oc-copy-75">Mehr davon</span>
+</button>
+2024-11-16 17:14:37,058 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="14919735" data-id="1637532311" data-list-position="28" data-local-list-position="28" data-origin="semantical" data-product-
+2024-11-16 17:14:37,074 - OttoScraper - DEBUG - Gefunden via class: 205
+2024-11-16 17:14:37,074 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="36004956" data-id="777641068" data-list-position="109" data-local-list-position="109" data-origin="semantical" data-product
+2024-11-16 17:14:37,096 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="54709707" data-id="1458532181" data-list-position="29" data-local-list-position="29" data-origin="semantical" data-product-
+2024-11-16 17:14:37,118 - OttoScraper - DEBUG - Gefunden via data-attributes: 132
+2024-11-16 17:14:37,124 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0W3K0VN92P" data-id="S0W3K0VN" data-list-position="52" data-local-list-position="52" data-origin="semantical" data-product
+2024-11-16 17:14:37,135 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0WY" data-id="S0P2E0WY" data-list-position="124" data-local-list-position="124" data-origin="semantical" data-product-
+2024-11-16 17:14:37,151 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Q2E025" data-id="S0Q2E025" data-list-position="101" data-local-list-position="101" data-origin="semantical" data-product-
+2024-11-16 17:14:37,208 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1kaXNrLWVkaXRpb24tc2xpbS1DMTc5OTk3MzIzNC8jdmFyaWF0aW9uSWQ9MTc5OTk5MDg3NA=="> <picture c
+2024-11-16 17:14:37,265 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="53158225" data-id="1811165013" data-list-position="18" data-local-list-position="18" data-origin="semantical" data-product-
+2024-11-16 17:14:37,304 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0D0K0ULYBM7">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,336 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="7" data-article-number="68093103" data-id="1451286298" data-list-position="39" data-local-list-position="39" data-origin="seman
+2024-11-16 17:14:37,342 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="90750238" data-id="1601529617" data-list-position="88" data-local-list-position="88" data-origin="semantical" data-product-
+2024-11-16 17:14:37,354 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0L7R0V5Z1FN">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,360 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0FA10Q6" data-id="S0FA10Q6" data-list-position="127" data-local-list-position="127" data-origin="semantical" data-product-
+2024-11-16 17:14:37,365 - OttoScraper - DEBUG - Gefundene Produkte nach Deduplizierung: 187
+2024-11-16 17:14:37,376 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="14919735" data-id="1637532311" data-list-position="28" data-local-list-position="28" data-origin="semantical" data-product-
+2024-11-16 17:14:37,382 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-playstation-5-digital-slim-inkl-zweiten-controller-farbe-waehlbar-C1799990864/#variationId=1799990865" title="PlayStation 5
+2024-11-16 17:14:37,392 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0P680B4" data-id="S0P680B4" data-list-position="29" data-local-list-position="29" data-product-id="S0P680B4" data-product-listing-
+2024-11-16 17:14:37,403 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="54709707" data-id="1458532181" data-list-position="29" data-local-list-position="29" data-origin="semantical" data-product-
+2024-11-16 17:14:37,419 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="36816966" data-id="1763901804" data-list-position="125" data-local-list-position="125" data-origin="semantical" data-produc
+2024-11-16 17:14:37,451 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="5"></div>
+2024-11-16 17:14:37,462 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0WY" data-id="S0P2E0WY" data-list-position="124" data-local-list-position="124" data-origin="semantical" data-product-
+2024-11-16 17:14:37,473 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0GAE0F7" data-id="S0GAE0F7" data-list-position="100" data-local-list-position="100" data-origin="semantical" data-product-
+2024-11-16 17:14:37,473 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="50255853" data-id="1526308407" data-list-position="85" data-local-list-position="85" data-product-id="1526308407" data-product-list
+2024-11-16 17:14:37,480 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1kaXNrLWVkaXRpb24tc2xpbS1DMTc5OTk3MzIzNC8jdmFyaWF0aW9uSWQ9MTc5OTk5MDg3NA=="> <picture c
+2024-11-16 17:14:37,489 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S04410P04MY" data-id="S04410P0" data-list-position="123" data-local-list-position="123" data-origin="semantical" data-produ
+2024-11-16 17:14:37,495 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="7"></div>
+2024-11-16 17:14:37,521 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0D0K0ULYBM7">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,537 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0MCM0PR" data-id="S0MCM0PR" data-list-position="78" data-local-list-position="78" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,537 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S093Q0KD" data-id="S093Q0KD" data-list-position="113" data-local-list-position="113" data-product-id="S093Q0KD" data-product-listin
+2024-11-16 17:14:37,568 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="90750238" data-id="1601529617" data-list-position="88" data-local-list-position="88" data-origin="semantical" data-product-
+2024-11-16 17:14:37,584 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0WK" data-id="S0P2E0WK" data-list-position="89" data-local-list-position="89" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,600 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="2" data-article-number="44747610" data-id="1343457137" data-list-position="114" data-local-list-position="114" data-product-id="1343457
+2024-11-16 17:14:37,620 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0FA10Q6" data-id="S0FA10Q6" data-list-position="127" data-local-list-position="127" data-origin="semantical" data-product-
+2024-11-16 17:14:37,636 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0LQ4ZY" data-id="S0C7A0LQ" data-list-position="45" data-local-list-position="45" data-origin="semantical" data-product
+2024-11-16 17:14:37,661 - OttoScraper - DEBUG - Container Sample: <div class="reptile_searchResult san_searchResult reptile__tilelistColumnsTwoThree reptile_searchResult--hideProductComparison reptile_searchResult--showInstallment" data-layout="gq" id="reptile_simil
+2024-11-16 17:14:37,663 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0QVORY" data-id="S0C7A0QV" data-list-position="138" data-local-list-position="138" data-origin="semantical" data-produ
+2024-11-16 17:14:37,664 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNC1zbGltLTUwMGdiLUM1NDk4MDYxNjkvI3ZhcmlhdGlvbklkPVMwVEM1MEg1UDNaSA=="> <picture class="fi
+2024-11-16 17:14:37,665 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="17293334" data-id="1206508284" data-list-position="78" data-local-list-position="78" data-product-id="1206508284" data-product-list
+2024-11-16 17:14:37,666 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-playstation-5-digital-slim-inkl-zweiten-controller-farbe-waehlbar-C1799990864/#variationId=1799990865" title="PlayStation 5
+2024-11-16 17:14:37,666 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0JCH0RN" data-id="S0JCH0RN" data-list-position="97" data-local-list-position="97" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,667 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/2cb58998-90ea-5094-b4b6-bf41a84adce7?$responsive_f
+2024-11-16 17:14:37,667 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="36816966" data-id="1763901804" data-list-position="125" data-local-list-position="125" data-origin="semantical" data-produc
+2024-11-16 17:14:37,668 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S08AY0P8" data-id="S08AY0P8" data-list-position="118" data-local-list-position="118" data-origin="semantical" data-product-
+2024-11-16 17:14:37,668 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="9"></div>
+2024-11-16 17:14:37,668 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0GAE0F7" data-id="S0GAE0F7" data-list-position="100" data-local-list-position="100" data-origin="semantical" data-product-
+2024-11-16 17:14:37,669 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="40592528" data-id="1229056945" data-list-position="137" data-local-list-position="137" data-origin="semantical" data-produc
+2024-11-16 17:14:37,669 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="6"></div>
+2024-11-16 17:14:37,669 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S04410P04MY" data-id="S04410P0" data-list-position="123" data-local-list-position="123" data-origin="semantical" data-produ
+2024-11-16 17:14:37,669 - DatabaseManager - ERROR - Fehler beim Speichern der Suchergebnisse: bad parameter or other API misuse
+2024-11-16 17:14:37,670 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S057N0HI" data-id="S057N0HI" data-list-position="20" data-local-list-position="20" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,670 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcGxheXN0YXRpb24tNS1kaWdpdGFsLXNsaW0taW5rbC16d2VpdGVuLWNvbnRyb2xsZXItZmFyYmUtd2FlaGxiYXItQ
+2024-11-16 17:14:37,670 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0MCM0PR" data-id="S0MCM0PR" data-list-position="78" data-local-list-position="78" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,670 - EbayScraper - INFO - Suche abgeschlossen. 130 Artikel gefunden.
+2024-11-16 17:14:37,671 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="17293334" data-id="1206508284" data-list-position="62" data-local-list-position="62" data-origin="semantical" data-product-
+2024-11-16 17:14:37,671 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="21254048" data-id="1914416905" data-list-position="31" data-local-list-position="31" data-product-id="1914416905" data-product-list
+2024-11-16 17:14:37,671 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0M3JVC" data-id="S0C7A0M3" data-list-position="44" data-local-list-position="44" data-origin="semantical" data-product
+2024-11-16 17:14:37,672 - AllYouCanShopGUI - DEBUG - ebay: 130 Ergebnisse gefunden
+2024-11-16 17:14:37,672 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0WT" data-id="S0P2E0WT" data-list-position="112" data-local-list-position="112" data-origin="semantical" data-product-
+2024-11-16 17:14:37,672 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="43605200" data-id="1802445947" data-list-position="22" data-local-list-position="22" data-product-id="1802445947" data-product-list
+2024-11-16 17:14:37,673 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0WK" data-id="S0P2E0WK" data-list-position="89" data-local-list-position="89" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,673 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="68347659" data-id="1907145773" data-list-position="33" data-local-list-position="33" data-origin="semantical" data-product-
+2024-11-16 17:14:37,674 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="4" data-article-number="S0W3K0VN32W" data-id="S0W3K0VN" data-list-position="57" data-local-list-position="57" data-product-id="S0W3K0VN
+2024-11-16 17:14:37,674 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0QR4MY" data-id="S0C7A0QR" data-list-position="135" data-local-list-position="135" data-origin="semantical" data-produ
+2024-11-16 17:14:37,674 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0R730S1" data-id="S0R730S1" data-list-position="19" data-local-list-position="19" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,675 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="41461767" data-id="1754722567" data-list-position="94" data-local-list-position="94" data-product-id="1754722567" data-product-list
+2024-11-16 17:14:37,675 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNC1zbGltLTUwMGdiLUM1NDk4MDYxNjkvI3ZhcmlhdGlvbklkPVMwVEM1MEg1UDNaSA=="> <picture class="fi
+2024-11-16 17:14:37,676 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0D0K0UL" data-id="S0D0K0UL" data-list-position="8" data-local-list-position="8" data-origin="semantical" data-product-id="
+2024-11-16 17:14:37,676 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="28060713" data-id="1861967623" data-list-position="26" data-local-list-position="26" data-product-id="1861967623" data-product-list
+2024-11-16 17:14:37,677 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0XAP0LE6BT" data-id="S0XAP0LE" data-list-position="25" data-local-list-position="25" data-origin="semantical" data-product
+2024-11-16 17:14:37,680 - OttoScraper - DEBUG - Gefundenes Produkt: Hama Hama Hama Lade-Station Ständer Stand Docking Charger für Sony PS4 Slim Pro Controller Playstation 4 DualShock 4 Playstation-Halterung, (Set, 2-tlg., 2-Teilig, mit LED-Beleuchtung, Rutschfest) - 18,90€
+2024-11-16 17:14:37,681 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0W980YB" data-id="S0W980YB" data-list-position="13" data-local-list-position="13" data-product-id="S0W980YB" data-product-listing-
+2024-11-16 17:14:37,681 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0JCH0RN" data-id="S0JCH0RN" data-list-position="97" data-local-list-position="97" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,682 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0EA10V4AVU" data-id="S0EA10V4" data-list-position="23" data-local-list-position="23" data-origin="semantical" data-product
+2024-11-16 17:14:37,682 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="Style3, Wagner + Liesk GbR" data-amount-colors="0" data-article-number="S000L0G0" data-funder-legal-name="Style3, Wagner + Liesk G
+2024-11-16 17:14:37,682 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S08AY0P8" data-id="S08AY0P8" data-list-position="118" data-local-list-position="118" data-origin="semantical" data-product-
+2024-11-16 17:14:37,683 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="27918635" data-id="1700330708" data-list-position="113" data-local-list-position="113" data-origin="semantical" data-produc
+2024-11-16 17:14:37,683 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0Y4R073" data-id="S0Y4R073" data-list-position="65" data-local-list-position="65" data-product-id="S0Y4R073" data-product-listing-
+2024-11-16 17:14:37,684 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S057N0HI" data-id="S057N0HI" data-list-position="20" data-local-list-position="20" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,684 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="31252650" data-id="1659263871" data-list-position="134" data-local-list-position="134" data-origin="semantical" data-produc
+2024-11-16 17:14:37,684 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="25920625" data-id="1206508228" data-list-position="102" data-local-list-position="102" data-product-id="1206508228" data-product-li
+2024-11-16 17:14:37,685 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="17293334" data-id="1206508284" data-list-position="62" data-local-list-position="62" data-origin="semantical" data-product-
+2024-11-16 17:14:37,685 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0HA10FM" data-id="S0HA10FM" data-list-position="67" data-local-list-position="67" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,685 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="4"></div>
+2024-11-16 17:14:37,685 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="40592528" data-id="1229056945" data-list-position="137" data-local-list-position="137" data-origin="semantical" data-produc
+2024-11-16 17:14:37,686 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="33722648" data-id="1917267445" data-list-position="80" data-local-list-position="80" data-origin="semantical" data-product-
+2024-11-16 17:14:37,686 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S026Q0B9" data-id="S026Q0B9" data-list-position="87" data-local-list-position="87" data-product-id="S026Q0B9" data-product-listing-
+2024-11-16 17:14:37,686 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0WT" data-id="S0P2E0WT" data-list-position="112" data-local-list-position="112" data-origin="semantical" data-product-
+2024-11-16 17:14:37,687 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0VAE0T5" data-id="S0VAE0T5" data-list-position="86" data-local-list-position="86" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,687 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0BCK01X" data-id="S0BCK01X" data-list-position="105" data-local-list-position="105" data-product-id="S0BCK01X" data-product-listin
+2024-11-16 17:14:37,687 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="68347659" data-id="1907145773" data-list-position="33" data-local-list-position="33" data-origin="semantical" data-product-
+2024-11-16 17:14:37,687 - AmazonScraper - INFO - Amazon-Suche abgeschlossen. 56 Artikel gefunden.
+2024-11-16 17:14:37,688 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0L7R0V5" data-id="S0L7R0V5" data-list-position="4" data-local-list-position="4" data-origin="semantical" data-product-id="
+2024-11-16 17:14:37,689 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0FA10YC" data-id="S0FA10YC" data-list-position="33" data-local-list-position="33" data-product-id="S0FA10YC" data-product-listing-
+2024-11-16 17:14:37,689 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0R730S1" data-id="S0R730S1" data-list-position="19" data-local-list-position="19" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,691 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Digital Edition - 539,90€
+2024-11-16 17:14:37,691 - AllYouCanShopGUI - DEBUG - amazon: 56 Ergebnisse gefunden
+2024-11-16 17:14:37,691 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0EA10V4IO8Y">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,693 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0D0K0UL" data-id="S0D0K0UL" data-list-position="8" data-local-list-position="8" data-origin="semantical" data-product-id="
+2024-11-16 17:14:37,693 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1799990865">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:37,694 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/kwmobile-spielekonsolen-tasche-konsolen-aufkleber-fuer-sony-playstation-5-disc-edition-1-tlg-aufkleber-folie-mit-carbon-design-in-schwa
+2024-11-16 17:14:37,697 - OttoScraper - DEBUG - Gefundenes Produkt: Hama Hama Hama Lade-Station Ständer Stand Docking Charger für Sony PS4 Slim Pro Controller Playstation 4 DualShock 4 Playstation-Halterung, (Set, 2-tlg., 2-Teilig, mit LED-Beleuchtung, Rutschfest) - 18,90€
+2024-11-16 17:14:37,698 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="64244911" data-id="1677856866" data-list-position="121" data-local-list-position="121" data-origin="semantical" data-produc
+2024-11-16 17:14:37,698 - OttoScraper - DEBUG - Container Sample: <img alt="kwmobile Spielekonsolen-Tasche Konsolen Aufkleber für Sony Playstation 5 Disc Edition (1-tlg), Aufkleber Folie mit Carbon Design in Schwarz" class="find_tile__productImage find_tile__product
+2024-11-16 17:14:37,698 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="27918635" data-id="1700330708" data-list-position="113" data-local-list-position="113" data-origin="semantical" data-produc
+2024-11-16 17:14:37,699 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S009B0GL" data-id="S009B0GL" data-list-position="72" data-local-list-position="72" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,699 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1802445990">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:37,700 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0B8101TQMX" data-id="S0B8101T" data-list-position="13" data-local-list-position="13" data-origin="semantical" data-product
+2024-11-16 17:14:37,700 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="76489965" data-id="1664465016" data-list-position="90" data-local-list-position="90" data-origin="semantical" data-product-
+2024-11-16 17:14:37,701 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="47404323" data-id="1737533846" data-list-position="62" data-local-list-position="62" data-product-id="1737533846" data-product-list
+2024-11-16 17:14:37,701 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S02200U51QC" data-id="S02200U5" data-list-position="116" data-local-list-position="116" data-origin="semantical" data-produ
+2024-11-16 17:14:37,702 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="21" data-article-number="44330663" data-id="1200695681" data-list-position="60" data-local-list-position="60" data-origin="sema
+2024-11-16 17:14:37,702 - OttoScraper - DEBUG - Container Sample: <img alt="CSL PlayStation-Controller (1 St., USB Controller für Android, PC / PS3 / Direct-Input / X-Input)" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--l
+2024-11-16 17:14:37,703 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="31252650" data-id="1659263871" data-list-position="134" data-local-list-position="134" data-origin="semantical" data-produc
+2024-11-16 17:14:37,704 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0SC408H" data-id="S0SC408H" data-list-position="83" data-local-list-position="83" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,704 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="3"></div>
+2024-11-16 17:14:37,705 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0HA10FM" data-id="S0HA10FM" data-list-position="67" data-local-list-position="67" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,705 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S02200U51J3" data-id="S02200U5" data-list-position="116" data-local-list-position="116" data-origin="semantical" data-produ
+2024-11-16 17:14:37,705 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0L7R0V5" data-id="S0L7R0V5" data-list-position="25" data-local-list-position="25" data-product-id="S0L7R0V5" data-product-listing-
+2024-11-16 17:14:37,706 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0M1ORY" data-id="S0C7A0M1" data-list-position="61" data-local-list-position="61" data-origin="semantical" data-product
+2024-11-16 17:14:37,706 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="43605200" data-id="1802445947" data-list-position="2" data-local-list-position="2" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,707 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="29254815" data-id="1790587333" data-list-position="38" data-local-list-position="38" data-product-id="1790587333" data-product-list
+2024-11-16 17:14:37,707 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="33722648" data-id="1917267445" data-list-position="80" data-local-list-position="80" data-origin="semantical" data-product-
+2024-11-16 17:14:37,709 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Disk Edition (Slim) inkl. zweitem DualSense Wireless-Controller - 609,99€
+2024-11-16 17:14:37,710 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S048T0EC" data-id="S048T0EC" data-list-position="92" data-local-list-position="92" data-product-id="S048T0EC" data-product-listing-
+2024-11-16 17:14:37,710 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0VAE0T5" data-id="S0VAE0T5" data-list-position="86" data-local-list-position="86" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,710 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0NBE0IX" data-id="S0NBE0IX" data-list-position="37" data-local-list-position="37" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,711 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="68232659" data-id="785842807" data-list-position="67" data-local-list-position="67" data-product-id="785842807" data-product-listin
+2024-11-16 17:14:37,712 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0L7R0V5" data-id="S0L7R0V5" data-list-position="4" data-local-list-position="4" data-origin="semantical" data-product-id="
+2024-11-16 17:14:37,713 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S07CC0AE" data-id="S07CC0AE" data-list-position="75" data-local-list-position="75" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,713 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="72449229" data-id="1170617144" data-list-position="104" data-local-list-position="104" data-product-id="1170617144" data-product-li
+2024-11-16 17:14:37,716 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Digital Edition - 539,90€
+2024-11-16 17:14:37,717 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-disk-edition-slim-C1799973234/#variationId=1799990874" title="PlayStation 5 Disk Edition (Slim)"> <p class="find_tile__br
+2024-11-16 17:14:37,717 - OttoScraper - DEBUG - Container Sample: <div class="reptile_tile__similarProducts js_reptile_tile__similarProducts">
+<button class="reptile_tile__similarProductsButton js_reptile_tile__similarProductsButton">
+<oc-icon-v1 size="50" type="inp
+2024-11-16 17:14:37,717 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1799990865">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:37,718 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0O5P00S" data-id="S0O5P00S" data-list-position="21" data-local-list-position="21" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,718 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="27766864" data-id="1753396610" data-list-position="73" data-local-list-position="73" data-product-id="1753396610" data-product-list
+2024-11-16 17:14:37,718 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="64244911" data-id="1677856866" data-list-position="121" data-local-list-position="121" data-origin="semantical" data-produc
+2024-11-16 17:14:37,719 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="1" data-article-number="S0K9006UKJW" data-id="S0K9006U" data-list-position="41" data-local-list-position="41" data-origin="semantical" data-product
+2024-11-16 17:14:37,719 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0M200FBJE1U">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,719 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S009B0GL" data-id="S009B0GL" data-list-position="72" data-local-list-position="72" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,720 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="55859517" data-id="1786937840" data-list-position="126" data-local-list-position="126" data-origin="semantical" data-produc
+2024-11-16 17:14:37,720 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="62637121" data-id="1677373361" data-list-position="119" data-local-list-position="119" data-product-id="1677373361" data-product-li
+2024-11-16 17:14:37,720 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="76489965" data-id="1664465016" data-list-position="90" data-local-list-position="90" data-origin="semantical" data-product-
+2024-11-16 17:14:37,721 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0I8X06U" data-id="S0I8X06U" data-list-position="53" data-local-list-position="53" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,721 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S089V0JN" data-id="S089V0JN" data-list-position="41" data-local-list-position="41" data-product-id="S089V0JN" data-product-listing-
+2024-11-16 17:14:37,722 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="21" data-article-number="44330663" data-id="1200695681" data-list-position="60" data-local-list-position="60" data-origin="sema
+2024-11-16 17:14:37,723 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="37182017" data-id="1911638860" data-list-position="47" data-local-list-position="47" data-origin="semantical" data-product-
+2024-11-16 17:14:37,723 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 PS5 Disk Edition (Slim) + PS5 Astro Bot" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror
+2024-11-16 17:14:37,724 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0SC408H" data-id="S0SC408H" data-list-position="83" data-local-list-position="83" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,725 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0XX" data-id="S0P2E0XX" data-list-position="70" data-local-list-position="70" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,725 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3Ava3dtb2JpbGUtc3BpZWxla29uc29sZW4tdGFzY2hlLWtvbnNvbGVuLWF1ZmtsZWJlci1mdWVyLXNvbnktcGxheXN0YXRpb24tNS1kaXNjL
+2024-11-16 17:14:37,726 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="43605200" data-id="1802445947" data-list-position="2" data-local-list-position="2" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,726 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0J420WMQ44" data-id="S0J420WM" data-list-position="91" data-local-list-position="91" data-origin="semantical" data-product
+2024-11-16 17:14:37,726 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0V4V0ZN" data-id="S0V4V0ZN" data-list-position="91" data-local-list-position="91" data-product-id="S0V4V0ZN" data-product-listing-
+2024-11-16 17:14:37,729 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Disk Edition (Slim) inkl. zweitem DualSense Wireless-Controller - 609,99€
+2024-11-16 17:14:37,730 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Y4R073" data-id="S0Y4R073" data-list-position="48" data-local-list-position="48" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,730 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/csl-playstation-controller-spar-set-2-st-usb-controller-fuer-android-pc-ps3-direct-input-x-input-S0M200FB/#variationId=S0M200FBJE1U" ti
+2024-11-16 17:14:37,731 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0NBE0IX" data-id="S0NBE0IX" data-list-position="37" data-local-list-position="37" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,731 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0X8" data-id="S0P2E0X8" data-list-position="114" data-local-list-position="114" data-origin="semantical" data-product-
+2024-11-16 17:14:37,732 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0MCM0NC" data-id="S0MCM0NC" data-list-position="70" data-local-list-position="70" data-product-id="S0MCM0NC" data-product-listing-
+2024-11-16 17:14:37,732 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S07CC0AE" data-id="S07CC0AE" data-list-position="75" data-local-list-position="75" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,732 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S02AJ08W" data-id="S02AJ08W" data-list-position="96" data-local-list-position="96" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,733 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="5" data-article-number="49191730" data-id="1799990864" data-list-position="21" data-local-list-position="21" data-product-id="179999086
+2024-11-16 17:14:37,733 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-disk-edition-slim-C1799973234/#variationId=1799990874" title="PlayStation 5 Disk Edition (Slim)"> <p class="find_tile__br
+2024-11-16 17:14:37,734 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcHM1LWtvbnNvbGUtc2xpbS1lZGl0aW9uLWRpc2MtbGF1ZndlcmstbWl0LTEtY29udHJvbGxlci1idW5kbGUtMXRiL
+2024-11-16 17:14:37,735 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="Ganz Einfach GmbH" data-amount-colors="0" data-article-number="S0M200FB1J3" data-funder-legal-name="Ganz Einfach GmbH" data-id="S0
+2024-11-16 17:14:37,735 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0O5P00S" data-id="S0O5P00S" data-list-position="21" data-local-list-position="21" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,736 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="56466157" data-id="1764520551" data-list-position="30" data-local-list-position="30" data-origin="semantical" data-product-
+2024-11-16 17:14:37,738 - OttoScraper - DEBUG - Gefundenes Produkt: CSL CSL PlayStation-Controller (1 St., USB Controller für Android, PC / PS3 / Direct-Input / X-Input) - 19,95€
+2024-11-16 17:14:37,738 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="1" data-article-number="S0K9006UKJW" data-id="S0K9006U" data-list-position="41" data-local-list-position="41" data-origin="semantical" data-product
+2024-11-16 17:14:37,739 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="41461767" data-id="1754722567" data-list-position="84" data-local-list-position="84" data-origin="semantical" data-product-
+2024-11-16 17:14:37,739 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="7" data-article-number="S0C7A0LTJVC" data-id="S0C7A0LT" data-list-position="36" data-local-list-position="36" data-product-id="S0C7A0LT
+2024-11-16 17:14:37,740 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0I8X06U" data-id="S0I8X06U" data-list-position="53" data-local-list-position="53" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,740 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-4-slim-500gb-C549806169/#variationId=S0TC50H5P3ZH" title="PlayStation 4 Slim, 500GB"> <p class="find_tile__brand">PlayStati
+2024-11-16 17:14:37,741 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1844690132">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:37,741 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="61544813" data-id="1676826909" data-list-position="130" data-local-list-position="130" data-origin="semantical" data-produc
+2024-11-16 17:14:37,741 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="19296635" data-id="1170617117" data-list-position="57" data-local-list-position="57" data-origin="semantical" data-product-
+2024-11-16 17:14:37,742 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0P2E0XU" data-id="S0P2E0XU" data-list-position="77" data-local-list-position="77" data-product-id="S0P2E0XU" data-product-listing-
+2024-11-16 17:14:37,742 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="37182017" data-id="1911638860" data-list-position="47" data-local-list-position="47" data-origin="semantical" data-product-
+2024-11-16 17:14:37,742 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="73417117" data-id="1909589193" data-list-position="82" data-local-list-position="82" data-origin="semantical" data-product-
+2024-11-16 17:14:37,743 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0Q2E03O" data-id="S0Q2E03O" data-list-position="83" data-local-list-position="83" data-product-id="S0Q2E03O" data-product-listing-
+2024-11-16 17:14:37,743 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0XX" data-id="S0P2E0XX" data-list-position="70" data-local-list-position="70" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,743 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S020I01E" data-id="S020I01E" data-list-position="111" data-local-list-position="111" data-origin="semantical" data-product-
+2024-11-16 17:14:37,744 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0J7G05F" data-id="S0J7G05F" data-list-position="20" data-local-list-position="20" data-product-id="S0J7G05F" data-product-listing-
+2024-11-16 17:14:37,744 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0J420WMQ44" data-id="S0J420WM" data-list-position="91" data-local-list-position="91" data-origin="semantical" data-product
+2024-11-16 17:14:37,745 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0TC50H5P3ZH">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,746 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="91607011" data-id="1170617135" data-list-position="89" data-local-list-position="89" data-product-id="1170617135" data-product-list
+2024-11-16 17:14:37,747 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0Y4R073" data-id="S0Y4R073" data-list-position="48" data-local-list-position="48" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,747 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/hama-hama-lade-station-staender-stand-docking-charger-fuer-sony-ps4-slim-pro-controller-playstation-4-dualshock-4-playstation-halterung
+2024-11-16 17:14:37,748 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Disk Edition (Slim) + Helldivers 2" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null
+2024-11-16 17:14:37,748 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0X8" data-id="S0P2E0X8" data-list-position="114" data-local-list-position="114" data-origin="semantical" data-product-
+2024-11-16 17:14:37,750 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0HA10J0" data-id="S0HA10J0" data-list-position="7" data-local-list-position="7" data-origin="semantical" data-product-id="
+2024-11-16 17:14:37,750 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="55177944" data-id="1894962789" data-list-position="98" data-local-list-position="98" data-product-id="1894962789" data-product-list
+2024-11-16 17:14:37,751 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S02AJ08W" data-id="S02AJ08W" data-list-position="96" data-local-list-position="96" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,753 - OttoScraper - DEBUG - Gefundenes Produkt: Playstation Playstation PS5 Konsole Slim Edition Disc Laufwerk mit 1 Controller (Bundle), 1TB SSD Console, 4k, Gaming Konsole - 629,00€
+2024-11-16 17:14:37,753 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="14919735" data-id="1637532311" data-list-position="51" data-local-list-position="51" data-product-id="1637532311" data-product-list
+2024-11-16 17:14:37,753 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcHM1LWtvbnNvbGUtc2xpbS1lZGl0aW9uLWRpc2MtbGF1ZndlcmstbWl0LTEtY29udHJvbGxlci1idW5kbGUtMXRiL
+2024-11-16 17:14:37,754 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0O5P00V" data-id="S0O5P00V" data-list-position="22" data-local-list-position="22" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,755 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="92603846" data-id="1802445989" data-list-position="3" data-local-list-position="3" data-product-id="1802445989" data-product-listin
+2024-11-16 17:14:37,755 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="56466157" data-id="1764520551" data-list-position="30" data-local-list-position="30" data-origin="semantical" data-product-
+2024-11-16 17:14:37,755 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="63112548" data-id="1726490994" data-list-position="85" data-local-list-position="85" data-origin="semantical" data-product-
+2024-11-16 17:14:37,758 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Disk Edition (Slim) + MARVEL’S SPIDER-MAN 2 - 614,99€
+2024-11-16 17:14:37,758 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="41461767" data-id="1754722567" data-list-position="84" data-local-list-position="84" data-origin="semantical" data-product-
+2024-11-16 17:14:37,758 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0G7K0N9" data-id="S0G7K0N9" data-list-position="14" data-local-list-position="14" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,759 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Disk Edition (Slim) + MARVEL’S SPIDER-MAN 2" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.one
+2024-11-16 17:14:37,759 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-4-slim-500gb-C549806169/#variationId=S0TC50H5P3ZH" title="PlayStation 4 Slim, 500GB"> <p class="find_tile__brand">PlayStati
+2024-11-16 17:14:37,759 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S093Q0KD" data-id="S093Q0KD" data-list-position="110" data-local-list-position="110" data-origin="semantical" data-product-
+2024-11-16 17:14:37,759 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0MCM0PR" data-id="S0MCM0PR" data-list-position="10" data-local-list-position="10" data-product-id="S0MCM0PR" data-product-listing-
+2024-11-16 17:14:37,760 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="19296635" data-id="1170617117" data-list-position="57" data-local-list-position="57" data-origin="semantical" data-product-
+2024-11-16 17:14:37,760 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Disk Edition (Slim) inkl. zweitem DualSense Wireless-Controller" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="laz
+2024-11-16 17:14:37,760 - OttoScraper - DEBUG - Container Sample: <button class="reptile_tile__similarProductsButton js_reptile_tile__similarProductsButton">
+<oc-icon-v1 size="50" type="inplace-zoom"></oc-icon-v1>
+<span class="oc-copy-75">Mehr davon</span>
+</button>
+2024-11-16 17:14:37,761 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="73417117" data-id="1909589193" data-list-position="82" data-local-list-position="82" data-origin="semantical" data-product-
+2024-11-16 17:14:37,761 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-digital-edition-C1732250733/#variationId=S0L7R0V5Z1FN" title="PlayStation 5 Digital Edition"> <p class="find_tile__brand"
+2024-11-16 17:14:37,762 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="37045338" data-id="1844690131" data-list-position="6" data-local-list-position="6" data-product-id="1844690131" data-product-listin
+2024-11-16 17:14:37,763 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S020I01E" data-id="S020I01E" data-list-position="111" data-local-list-position="111" data-origin="semantical" data-product-
+2024-11-16 17:14:37,763 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0M3LF8" data-id="S0C7A0M3" data-list-position="44" data-local-list-position="44" data-origin="semantical" data-product
+2024-11-16 17:14:37,766 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Disk Edition (Slim) + Helldivers 2 - 579,99€
+2024-11-16 17:14:37,766 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0TC50H5P3ZH">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,767 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0VA3064" data-id="S0VA3064" data-list-position="64" data-local-list-position="64" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,767 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="10"></div>
+2024-11-16 17:14:37,767 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/hama-hama-lade-station-staender-stand-docking-charger-fuer-sony-ps4-slim-pro-controller-playstation-4-dualshock-4-playstation-halterung
+2024-11-16 17:14:37,768 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/00db8bb4-0a49-4806-90a6-8e7ecea2b1af?$responsive_f
+2024-11-16 17:14:37,768 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="2" data-article-number="S0YB90GABSW" data-id="S0YB90GA" data-list-position="46" data-local-list-position="46" data-product-id="S0YB90GA
+2024-11-16 17:14:37,769 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0HA10J0" data-id="S0HA10J0" data-list-position="7" data-local-list-position="7" data-origin="semantical" data-product-id="
+2024-11-16 17:14:37,769 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="89281148" data-id="1375213668" data-list-position="136" data-local-list-position="136" data-origin="semantical" data-produc
+2024-11-16 17:14:37,770 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="SellerX Commerce GmbH" data-amount-colors="0" data-article-number="S0V4V0ZN" data-funder-legal-name="SellerX Commerce GmbH" data-i
+2024-11-16 17:14:37,772 - OttoScraper - DEBUG - Gefundenes Produkt: Playstation Playstation PS5 Konsole Slim Edition Disc Laufwerk mit 1 Controller (Bundle), 1TB SSD Console, 4k, Gaming Konsole - 629,00€
+2024-11-16 17:14:37,773 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/4bfab987-d37a-5b61-8a98-2bf1db603a79?$responsive_f
+2024-11-16 17:14:37,775 - OttoScraper - DEBUG - Gefundenes Produkt: kwmobile kwmobile Spielekonsolen-Tasche Konsolen Aufkleber für Sony Playstation 5 Disc Edition (1-tlg), Aufkleber Folie mit Carbon Design in Schwarz - 12,99€
+2024-11-16 17:14:37,775 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0O5P00V" data-id="S0O5P00V" data-list-position="22" data-local-list-position="22" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,775 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="98781566" data-id="1676826909" data-list-position="130" data-local-list-position="130" data-origin="semantical" data-produc
+2024-11-16 17:14:37,776 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="12"></div>
+2024-11-16 17:14:37,776 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="63112548" data-id="1726490994" data-list-position="85" data-local-list-position="85" data-origin="semantical" data-product-
+2024-11-16 17:14:37,776 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="61027359" data-id="1692506715" data-list-position="98" data-local-list-position="98" data-origin="semantical" data-product-
+2024-11-16 17:14:37,776 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S02C80KA" data-id="S02C80KA" data-list-position="68" data-local-list-position="68" data-product-id="S02C80KA" data-product-listing-
+2024-11-16 17:14:37,777 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0G7K0N9" data-id="S0G7K0N9" data-list-position="14" data-local-list-position="14" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,777 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Digital Edition (Slim)" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='h
+2024-11-16 17:14:37,777 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0N6Q0BW" data-id="S0N6Q0BW" data-list-position="116" data-local-list-position="116" data-product-id="S0N6Q0BW" data-product-listin
+2024-11-16 17:14:37,778 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S093Q0KD" data-id="S093Q0KD" data-list-position="110" data-local-list-position="110" data-origin="semantical" data-product-
+2024-11-16 17:14:37,779 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0U8R0ZL" data-id="S0U8R0ZL" data-list-position="63" data-local-list-position="63" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,781 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data js_find_colorChange" data-advertiser-legal-name="Otto (GmbH &amp; Co KG)" data-amount-colors="5" data-article-number="49191730" data-funder-legal-name="Essence
+2024-11-16 17:14:37,782 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Disk Edition (Slim) inkl. zweitem DualSense Wireless-Controller" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="laz
+2024-11-16 17:14:37,783 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-ps5-konsole-slim-edition-disc-laufwerk-mit-1-controller-bundle-1tb-ssd-console-4k-gaming-konsole-S0HA10J0/#variationId=S0HA
+2024-11-16 17:14:37,787 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Digital Edition (Slim) - 449,99€
+2024-11-16 17:14:37,787 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-digital-edition-C1732250733/#variationId=S0L7R0V5Z1FN" title="PlayStation 5 Digital Edition"> <p class="find_tile__brand"
+2024-11-16 17:14:37,787 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S048T0EC" data-id="S048T0EC" data-list-position="102" data-local-list-position="102" data-origin="semantical" data-product-
+2024-11-16 17:14:37,788 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="1" data-article-number="S0K9006UKJW" data-id="S0K9006U" data-list-position="60" data-local-list-position="60" data-product-id="S0K9006U" data-product-listi
+2024-11-16 17:14:37,788 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="38902925" data-id="1786937840" data-list-position="126" data-local-list-position="126" data-origin="semantical" data-produc
+2024-11-16 17:14:37,788 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0M830PT" data-id="S0M830PT" data-list-position="31" data-local-list-position="31" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,789 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="72585521" data-id="1844690149" data-list-position="93" data-local-list-position="93" data-product-id="1844690149" data-product-list
+2024-11-16 17:14:37,789 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0VA3064" data-id="S0VA3064" data-list-position="64" data-local-list-position="64" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,789 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0VA30AE" data-id="S0VA30AE" data-list-position="66" data-local-list-position="66" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,790 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-playstation-5-slim-1tb-mit-blu-ray-laufwerk-plus-2-controller-wunschfarbe-S0EA10V4/#variationId=S0EA10V4IO8Y" title="Playst
+2024-11-16 17:14:37,790 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/00db8bb4-0a49-4806-90a6-8e7ecea2b1af?$responsive_f
+2024-11-16 17:14:37,790 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0N6Q0BW" data-id="S0N6Q0BW" data-list-position="79" data-local-list-position="79" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,791 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-playstation-5-digital-slim-inkl-zweiten-controller-farbe-waehlbar-C1799990864/#variationId=1799990865" title="PlayStation 5
+2024-11-16 17:14:37,791 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="89281148" data-id="1375213668" data-list-position="136" data-local-list-position="136" data-origin="semantical" data-produc
+2024-11-16 17:14:37,791 - OttoScraper - DEBUG - Container Sample: <img alt="Hama Hama Lade-Station Ständer Stand Docking Charger für Sony PS4 Slim Pro Controller Playstation 4 DualShock 4 Playstation-Halterung, (Set, 2-tlg., 2-Teilig, mit LED-Beleuchtung, Rutschfest
+2024-11-16 17:14:37,791 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="19"></div>
+2024-11-16 17:14:37,792 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/4bfab987-d37a-5b61-8a98-2bf1db603a79?$responsive_f
+2024-11-16 17:14:37,792 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="96081721" data-id="905938059" data-list-position="106" data-local-list-position="106" data-origin="semantical" data-product
+2024-11-16 17:14:37,792 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1907145774">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:37,792 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="61027359" data-id="1692506715" data-list-position="98" data-local-list-position="98" data-origin="semantical" data-product-
+2024-11-16 17:14:37,793 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S02C80KA" data-id="S02C80KA" data-list-position="40" data-local-list-position="40" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,793 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="Ganz Einfach GmbH" data-amount-colors="0" data-article-number="S0Y2102G1J3" data-funder-legal-name="Ganz Einfach GmbH" data-id="S0
+2024-11-16 17:14:37,794 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Digital Edition (Slim)" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='h
+2024-11-16 17:14:37,794 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="21254048" data-id="1914416905" data-list-position="10" data-local-list-position="10" data-origin="semantical" data-product-
+2024-11-16 17:14:37,794 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S057N0HI" data-id="S057N0HI" data-list-position="39" data-local-list-position="39" data-product-id="S057N0HI" data-product-listing-
+2024-11-16 17:14:37,795 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0U8R0ZL" data-id="S0U8R0ZL" data-list-position="63" data-local-list-position="63" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,796 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvaGFtYS1oYW1hLWxhZGUtc3RhdGlvbi1zdGFlbmRlci1zdGFuZC1kb2NraW5nLWNoYXJnZXItZnVlci1zb255LXBzNC1zbGltLXByby1jb
+2024-11-16 17:14:37,796 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="73417117" data-id="1909589193" data-list-position="71" data-local-list-position="71" data-product-id="1909589193" data-product-list
+2024-11-16 17:14:37,797 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-ps5-konsole-slim-edition-disc-laufwerk-mit-1-controller-bundle-1tb-ssd-console-4k-gaming-konsole-S0HA10J0/#variationId=S0HA
+2024-11-16 17:14:37,797 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1kaWdpdGFsLWVkaXRpb24tQzE3MzIyNTA3MzMvI3ZhcmlhdGlvbklkPVMwTDdSMFY1WjFGTg=="> <picture c
+2024-11-16 17:14:37,798 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="54317706" data-id="1617341550" data-list-position="90" data-local-list-position="90" data-product-id="1617341550" data-product-list
+2024-11-16 17:14:37,798 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S048T0EC" data-id="S048T0EC" data-list-position="102" data-local-list-position="102" data-origin="semantical" data-product-
+2024-11-16 17:14:37,800 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="37683917" data-id="1799990873" data-list-position="3" data-local-list-position="3" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,800 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="Ganz Einfach GmbH" data-amount-colors="0" data-article-number="S0U2003F1J3" data-funder-legal-name="Ganz Einfach GmbH" data-id="S0
+2024-11-16 17:14:37,801 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0M830PT" data-id="S0M830PT" data-list-position="31" data-local-list-position="31" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,803 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Disk Edition (Slim) - 549,99€
+2024-11-16 17:14:37,803 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0HA10FME5WC">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,804 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0VA30AE" data-id="S0VA30AE" data-list-position="66" data-local-list-position="66" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,804 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0FA10YC" data-id="S0FA10YC" data-list-position="11" data-local-list-position="11" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,804 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0U8R0ZL" data-id="S0U8R0ZL" data-list-position="81" data-local-list-position="81" data-product-id="S0U8R0ZL" data-product-listing-
+2024-11-16 17:14:37,805 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0N6Q0BW" data-id="S0N6Q0BW" data-list-position="79" data-local-list-position="79" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,805 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0XU" data-id="S0P2E0XU" data-list-position="46" data-local-list-position="46" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,806 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="SONNI lnternational Handel UG (haftungsbeschränkt)" data-amount-colors="0" data-article-number="S093Q0KD" data-funder-legal-name="
+2024-11-16 17:14:37,806 - OttoScraper - DEBUG - Container Sample: <img alt="Hama Hama Lade-Station Ständer Stand Docking Charger für Sony PS4 Slim Pro Controller Playstation 4 DualShock 4 Playstation-Halterung, (Set, 2-tlg., 2-Teilig, mit LED-Beleuchtung, Rutschfest
+2024-11-16 17:14:37,806 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="72449229" data-id="1170617144" data-list-position="99" data-local-list-position="99" data-origin="semantical" data-product-
+2024-11-16 17:14:37,807 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="95651744" data-id="1302132845" data-list-position="115" data-local-list-position="115" data-product-id="1302132845" data-product-li
+2024-11-16 17:14:37,807 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="96081721" data-id="905938059" data-list-position="106" data-local-list-position="106" data-origin="semantical" data-product
+2024-11-16 17:14:37,807 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="83224550" data-id="1802245048" data-list-position="105" data-local-list-position="105" data-origin="semantical" data-produc
+2024-11-16 17:14:37,808 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="68347659" data-id="1907145773" data-list-position="5" data-local-list-position="5" data-product-id="1907145773" data-product-listin
+2024-11-16 17:14:37,808 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S02C80KA" data-id="S02C80KA" data-list-position="40" data-local-list-position="40" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,809 - OttoScraper - DEBUG - Container Sample: <div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-v1>
+</div>
+2024-11-16 17:14:37,811 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 PS5 Disk Edition (Slim) + PS5 Astro Bot - 609,99€
+2024-11-16 17:14:37,812 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="21254048" data-id="1914416905" data-list-position="10" data-local-list-position="10" data-origin="semantical" data-product-
+2024-11-16 17:14:37,812 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="75767367" data-id="1894962794" data-list-position="32" data-local-list-position="32" data-origin="semantical" data-product-
+2024-11-16 17:14:37,813 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0I8X06U" data-id="S0I8X06U" data-list-position="76" data-local-list-position="76" data-product-id="S0I8X06U" data-product-listing-
+2024-11-16 17:14:37,813 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvaGFtYS1oYW1hLWxhZGUtc3RhdGlvbi1zdGFlbmRlci1zdGFuZC1kb2NraW5nLWNoYXJnZXItZnVlci1zb255LXBzNC1zbGltLXByby1jb
+2024-11-16 17:14:37,814 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="82016223" data-id="1867730183" data-list-position="65" data-local-list-position="65" data-origin="semantical" data-product-
+2024-11-16 17:14:37,814 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="32534139" data-id="1844690103" data-list-position="66" data-local-list-position="66" data-product-id="1844690103" data-product-list
+2024-11-16 17:14:37,815 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1kaWdpdGFsLWVkaXRpb24tQzE3MzIyNTA3MzMvI3ZhcmlhdGlvbklkPVMwTDdSMFY1WjFGTg=="> <picture c
+2024-11-16 17:14:37,815 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="1" data-article-number="S089A0NNKJW" data-id="S089A0NN" data-list-position="94" data-local-list-position="94" data-origin="semantical" data-product
+2024-11-16 17:14:37,816 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="81247055" data-id="1773945388" data-list-position="111" data-local-list-position="111" data-product-id="1773945388" data-product-li
+2024-11-16 17:14:37,817 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="37683917" data-id="1799990873" data-list-position="3" data-local-list-position="3" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,818 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="28060713" data-id="1861967623" data-list-position="5" data-local-list-position="5" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,818 - OttoScraper - DEBUG - Container Sample: <div class="exactag" data-trigger="sanProductList" id="reptile-exactag"></div>
+2024-11-16 17:14:37,821 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Disk Edition (Slim) - 549,99€
+2024-11-16 17:14:37,823 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Digital Edition (Slim) inkl. zweitem DualSense Wireless-Controller 1TB - 509,99€
+2024-11-16 17:14:37,823 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0JCH0DR" data-id="S0JCH0DR" data-list-position="97" data-local-list-position="97" data-product-id="S0JCH0DR" data-product-listing-
+2024-11-16 17:14:37,824 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0FA10YC" data-id="S0FA10YC" data-list-position="11" data-local-list-position="11" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,824 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Disk Edition (Slim)" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='http
+2024-11-16 17:14:37,825 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="7" data-article-number="S0C7A0M3JVC" data-id="S0C7A0M3" data-list-position="63" data-local-list-position="63" data-product-id="S0C7A0M3
+2024-11-16 17:14:37,825 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0P2E0XU" data-id="S0P2E0XU" data-list-position="46" data-local-list-position="46" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,826 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="5" data-article-number="49191730" data-id="1799990864" data-list-position="1" data-local-list-position="1" data-origin="semanti
+2024-11-16 17:14:37,828 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="82016223" data-id="1867730183" data-list-position="84" data-local-list-position="84" data-product-id="1867730183" data-product-list
+2024-11-16 17:14:37,828 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="72449229" data-id="1170617144" data-list-position="99" data-local-list-position="99" data-origin="semantical" data-product-
+2024-11-16 17:14:37,833 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Digital Edition (Slim) - 449,99€
+2024-11-16 17:14:37,833 - OttoScraper - DEBUG - Container Sample: <div class="promo-widget-container" data-async-widgets='{"tileSlotWidgets":[],"footerSlotWidgets":[{"widgetType":"SEARCH_RESULT_PAGE_PARTNER_BENEFIT","urlPath":"/benefit-context/teaser/assets?dreson=%
+2024-11-16 17:14:37,834 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="83224550" data-id="1802245048" data-list-position="105" data-local-list-position="105" data-origin="semantical" data-produc
+2024-11-16 17:14:37,834 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="S0C7A0QRODH" data-id="S0C7A0QR" data-list-position="135" data-local-list-position="135" data-origin="semantical" data-produ
+2024-11-16 17:14:37,834 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0JCH0RN" data-id="S0JCH0RN" data-list-position="86" data-local-list-position="86" data-product-id="S0JCH0RN" data-product-listing-
+2024-11-16 17:14:37,835 - OttoScraper - DEBUG - Container Sample: <div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-v1>
+</div>
+2024-11-16 17:14:37,835 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1861967682">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:37,835 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0VA3064" data-id="S0VA3064" data-list-position="101" data-local-list-position="101" data-product-id="S0VA3064" data-product-listin
+2024-11-16 17:14:37,836 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="75767367" data-id="1894962794" data-list-position="32" data-local-list-position="32" data-origin="semantical" data-product-
+2024-11-16 17:14:37,836 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="27766864" data-id="1753396610" data-list-position="56" data-local-list-position="56" data-origin="semantical" data-product-
+2024-11-16 17:14:37,837 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0TC50H5" data-id="S0TC50H5" data-list-position="27" data-local-list-position="27" data-product-id="S0TC50H5" data-product-listing-
+2024-11-16 17:14:37,837 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="82016223" data-id="1867730183" data-list-position="65" data-local-list-position="65" data-origin="semantical" data-product-
+2024-11-16 17:14:37,837 - OttoScraper - DEBUG - Erfolgreich 8 Otto-Produkte geparst
+2024-11-16 17:14:37,838 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="60839621" data-id="1617341474" data-list-position="42" data-local-list-position="42" data-product-id="1617341474" data-product-list
+2024-11-16 17:14:37,838 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="1" data-article-number="S089A0NNKJW" data-id="S089A0NN" data-list-position="94" data-local-list-position="94" data-origin="semantical" data-product
+2024-11-16 17:14:37,838 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S02AJ08W" data-id="S02AJ08W" data-list-position="59" data-local-list-position="59" data-product-id="S02AJ08W" data-product-listing-
+2024-11-16 17:14:37,839 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="28060713" data-id="1861967623" data-list-position="5" data-local-list-position="5" data-origin="semantical" data-product-id
+2024-11-16 17:14:37,840 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="63659948" data-id="1652026152" data-list-position="18" data-local-list-position="18" data-product-id="1652026152" data-product-list
+2024-11-16 17:14:37,842 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Digital Edition (Slim) inkl. zweitem DualSense Wireless-Controller 1TB - 509,99€
+2024-11-16 17:14:37,842 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0O5P00S" data-id="S0O5P00S" data-list-position="34" data-local-list-position="34" data-product-id="S0O5P00S" data-product-listing-
+2024-11-16 17:14:37,842 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Disk Edition (Slim)" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='http
+2024-11-16 17:14:37,843 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="2" data-article-number="S04410P0JVC" data-id="S04410P0" data-list-position="100" data-local-list-position="100" data-product-id="S04410
+2024-11-16 17:14:37,844 - OttoScraper - DEBUG - Container Sample: <article class="product similar js_find_colorChange" data-amount-colors="5" data-article-number="49191730" data-id="1799990864" data-list-position="1" data-local-list-position="1" data-origin="semanti
+2024-11-16 17:14:37,844 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0NBE0IX" data-id="S0NBE0IX" data-list-position="53" data-local-list-position="53" data-product-id="S0NBE0IX" data-product-listing-
+2024-11-16 17:14:37,850 - OttoScraper - DEBUG - Gefundenes Produkt: PlayStation 5 PlayStation 5 Digital Edition (Slim) - 449,99€
+2024-11-16 17:14:37,850 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1799990865">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:37,851 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-1861967682">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-
+2024-11-16 17:14:37,851 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="11"></div>
+2024-11-16 17:14:37,852 - OttoScraper - DEBUG - Container Sample: <article class="product similar" data-amount-colors="0" data-article-number="27766864" data-id="1753396610" data-list-position="56" data-local-list-position="56" data-origin="semantical" data-product-
+2024-11-16 17:14:37,852 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/771c3e9c-4161-5fd6-9bbd-e77cd807a091?$responsive_f
+2024-11-16 17:14:37,852 - OttoScraper - DEBUG - Erfolgreich 8 Otto-Produkte geparst
+2024-11-16 17:14:37,852 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="YANGJ UG (haftungsbeschränkt)" data-amount-colors="0" data-article-number="S078O0YA" data-funder-legal-name="YANGJ UG (haftungsbes
+2024-11-16 17:14:37,853 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="2"></div>
+2024-11-16 17:14:37,853 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="Ganz Einfach GmbH" data-amount-colors="0" data-article-number="S0Y2103V1J3" data-funder-legal-name="Ganz Einfach GmbH" data-id="S0
+2024-11-16 17:14:37,853 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0SC408H" data-id="S0SC408H" data-list-position="117" data-local-list-position="117" data-product-id="S0SC408H" data-product-listin
+2024-11-16 17:14:37,854 - OttoScraper - DEBUG - Container Sample: <img alt="Playstation PS5 Konsole Slim Disk Laufwerk + Gran Turismo 7 Spiel Bundle 1TB (Bundle), Bundle Set Console" class="find_tile__productImage find_tile__productImage--animated find_tile__product
+2024-11-16 17:14:37,854 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1kaXNrLWVkaXRpb24tc2xpbS1wbHVzLWhlbGxkaXZlcnMtMi0xODQ0NjkwMTMxLyN2YXJpYXRpb25JZD0xODQ0N
+2024-11-16 17:14:37,854 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0D0K0UL" data-id="S0D0K0UL" data-list-position="30" data-local-list-position="30" data-product-id="S0D0K0UL" data-product-listing-
+2024-11-16 17:14:37,854 - OttoScraper - DEBUG - Container Sample: <img alt="Playstation Playstation 5 Slim 1TB mit Blu-ray Laufwerk + 2 Controller Wunschfarbe" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading
+2024-11-16 17:14:37,854 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1wczUtZGlzay1lZGl0aW9uLXNsaW0tcGx1cy1wczUtYXN0cm8tYm90LTE5MDcxNDU3NzMvI3ZhcmlhdGlvbklkP
+2024-11-16 17:14:37,855 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="8"></div>
+2024-11-16 17:14:37,855 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="65876815" data-id="1789417528" data-list-position="19" data-local-list-position="19" data-product-id="1789417528" data-product-list
+2024-11-16 17:14:37,855 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="14"></div>
+2024-11-16 17:14:37,855 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="93557522" data-id="1844690122" data-list-position="58" data-local-list-position="58" data-product-id="1844690122" data-product-list
+2024-11-16 17:14:37,855 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="40592528" data-id="1229056945" data-list-position="120" data-local-list-position="120" data-product-id="1229056945" data-product-li
+2024-11-16 17:14:37,856 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="Ganz Einfach GmbH" data-amount-colors="0" data-article-number="S02200U51QC" data-funder-legal-name="Ganz Einfach GmbH" data-id="S0
+2024-11-16 17:14:37,856 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="53158225" data-id="1811165013" data-list-position="45" data-local-list-position="45" data-product-id="1811165013" data-product-list
+2024-11-16 17:14:37,856 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcGxheXN0YXRpb24tNS1zbGltLTF0Yi1taXQtYmx1LXJheS1sYXVmd2Vyay1wbHVzLTItY29udHJvbGxlci13dW5zY
+2024-11-16 17:14:37,876 - OttoScraper - DEBUG - Container Sample: <div class="reptile_searchResult san_searchResult reptile__tilelistColumnsTwoThree reptile_searchResult--hideProductComparison reptile_searchResult--showInstallment" data-context-layout="galleryQuad" 
+2024-11-16 17:14:37,921 - OttoScraper - DEBUG - Gefundenes Produkt: Ähnliche Artikel - 449,99€
+2024-11-16 17:14:37,921 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="1"></div>
+2024-11-16 17:14:37,921 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="37824322" data-id="1683761527" data-list-position="107" data-local-list-position="107" data-product-id="1683761527" data-product-li
+2024-11-16 17:14:37,922 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/f1a285ee-9de6-5db6-b5f7-b6a96fb84afd?$responsive_f
+2024-11-16 17:14:37,922 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-ps5-konsole-slim-disk-laufwerk-plus-gran-turismo-7-spiel-bundle-1tb-bundle-bundle-set-console-S0HA10FM/#variationId=S0HA10F
+2024-11-16 17:14:37,922 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S026Q0B7" data-id="S026Q0B7" data-list-position="88" data-local-list-position="88" data-product-id="S026Q0B7" data-product-listing-
+2024-11-16 17:14:37,922 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0FA10Q6" data-id="S0FA10Q6" data-list-position="69" data-local-list-position="69" data-product-id="S0FA10Q6" data-product-listing-
+2024-11-16 17:14:37,922 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="64244911" data-id="1677856866" data-list-position="118" data-local-list-position="118" data-product-id="1677856866" data-product-li
+2024-11-16 17:14:37,923 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S08AY0P8" data-id="S08AY0P8" data-list-position="108" data-local-list-position="108" data-product-id="S08AY0P8" data-product-listin
+2024-11-16 17:14:37,923 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="45696760" data-id="1869347138" data-list-position="74" data-local-list-position="74" data-product-id="1869347138" data-product-list
+2024-11-16 17:14:37,923 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="18"></div>
+2024-11-16 17:14:37,923 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S043S0CQ" data-id="S043S0CQ" data-list-position="12" data-local-list-position="12" data-product-id="S043S0CQ" data-product-listing-
+2024-11-16 17:14:37,924 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="75358807" data-id="1171965786" data-list-position="11" data-local-list-position="11" data-product-id="1171965786" data-product-list
+2024-11-16 17:14:37,924 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="4" data-article-number="S0P350UF3S4" data-id="S0P350UF" data-list-position="49" data-local-list-position="49" data-product-id="S0P350UF
+2024-11-16 17:14:37,925 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="7" data-article-number="S0C7A0LQ4ZY" data-id="S0C7A0LQ" data-list-position="75" data-local-list-position="75" data-product-id="S0C7A0LQ
+2024-11-16 17:14:37,925 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0P2E0XJ" data-id="S0P2E0XJ" data-list-position="110" data-local-list-position="110" data-product-id="S0P2E0XJ" data-product-listin
+2024-11-16 17:14:37,926 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tNS1kaXNrLWVkaXRpb24tc2xpbS1pbmtsLW1hcnZlbHMtc3BpZGVyLW1hbi0yLUMxODAyNDQ1OTg5LyN2YXJpYXRpb
+2024-11-16 17:14:37,926 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S07CC0AE" data-id="S07CC0AE" data-list-position="112" data-local-list-position="112" data-product-id="S07CC0AE" data-product-listin
+2024-11-16 17:14:37,926 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/b0b12236-19eb-4491-b0e9-e23627d6a46d?$responsive_f
+2024-11-16 17:14:37,926 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="1" data-article-number="S0S8Z0CDKJW" data-id="S0S8Z0CD" data-list-position="50" data-local-list-position="50" data-product-id="S0S8Z0CD" data-product-listi
+2024-11-16 17:14:37,927 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0VA30AE" data-id="S0VA30AE" data-list-position="103" data-local-list-position="103" data-product-id="S0VA30AE" data-product-listin
+2024-11-16 17:14:37,927 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="56466157" data-id="1764520551" data-list-position="55" data-local-list-position="55" data-product-id="1764520551" data-product-list
+2024-11-16 17:14:37,928 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0HA10FM" data-id="S0HA10FM" data-list-position="7" data-local-list-position="7" data-product-id="S0HA10FM" data-product-listing-ty
+2024-11-16 17:14:37,932 - OttoScraper - DEBUG - Gefundenes Produkt: Playstation Playstation PS5 Konsole Slim Disk Laufwerk + Gran Turismo 7 Spiel Bundle 1TB (Bundle), Bundle Set Console - 669,00€
+2024-11-16 17:14:37,932 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="76489965" data-id="1664465016" data-list-position="99" data-local-list-position="99" data-product-id="1664465016" data-product-list
+2024-11-16 17:14:37,932 - OttoScraper - DEBUG - Container Sample: <div class="find_tile__productImageContainer" data-qa="ftfind-product-image-S0V4V0ZN0C6C">
+<div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-ta
+2024-11-16 17:14:37,933 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0G7K0KJ" data-id="S0G7K0KJ" data-list-position="17" data-local-list-position="17" data-product-id="S0G7K0KJ" data-product-listing-
+2024-11-16 17:14:37,933 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-disk-edition-slim-plus-helldivers-2-1844690131/#variationId=1844690132" title="PlayStation 5 Disk Edition (Slim) + Helldi
+2024-11-16 17:14:37,933 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/e590521c-163e-42a5-b70d-6a3408b82e03?$responsive_f
+2024-11-16 17:14:37,934 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="37683917" data-id="1799990873" data-list-position="23" data-local-list-position="23" data-product-id="1799990873" data-product-list
+2024-11-16 17:14:37,934 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="75767367" data-id="1894962794" data-list-position="52" data-local-list-position="52" data-product-id="1894962794" data-product-list
+2024-11-16 17:14:37,934 - OttoScraper - DEBUG - Container Sample: <img alt="PlayStation 5 Digital Edition (Slim)" class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading" loading="lazy" onerror="this.onerror=null;this.src='h
+2024-11-16 17:14:37,934 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="96081721" data-id="905938059" data-list-position="109" data-local-list-position="109" data-product-id="905938059" data-product-list
+2024-11-16 17:14:37,935 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-ps5-disk-edition-slim-plus-ps5-astro-bot-1907145773/#variationId=1907145774" title="PlayStation 5 PS5 Disk Edition (Slim)
+2024-11-16 17:14:37,935 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="7" data-article-number="S0B8101T4MY" data-id="S0B8101T" data-list-position="15" data-local-list-position="15" data-product-id="S0B8101T
+2024-11-16 17:14:37,936 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/a80369fd-4c7c-584d-a303-2a429ead6623?$responsive_f
+2024-11-16 17:14:37,936 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="15000061" data-id="1789417609" data-list-position="14" data-local-list-position="14" data-product-id="1789417609" data-product-list
+2024-11-16 17:14:37,936 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="16"></div>
+2024-11-16 17:14:37,937 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="15" data-article-number="29465213" data-id="1395810692" data-list-position="44" data-local-list-position="44" data-product-id="13958106
+2024-11-16 17:14:37,938 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/e8049041-e59c-5406-b4c4-77425104a09d?$responsive_f
+2024-11-16 17:14:37,938 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="1" data-article-number="S089A0NNKJW" data-id="S089A0NN" data-list-position="82" data-local-list-position="82" data-product-id="S089A0NN" data-product-listi
+2024-11-16 17:14:37,938 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="15"></div>
+2024-11-16 17:14:37,938 - OttoScraper - DEBUG - Container Sample: <div data-toggle-state='{"USE_CUSTOMER_ID_TO_FETCH_PURCHASES":true,"SWITCH_MOREFROMTHESERIES_AND_ALTERNATIVES_POSITION":true,"SHOW_DEALS":true,"ENABLE_EMPLOYEE_BONUS_OTTO_UP_LOGO":false,"SHOW_MORE_FRO
+2024-11-16 17:14:37,939 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="37182017" data-id="1911638860" data-list-position="61" data-local-list-position="61" data-product-id="1911638860" data-product-list
+2024-11-16 17:14:37,939 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0O5P00V" data-id="S0O5P00V" data-list-position="35" data-local-list-position="35" data-product-id="S0O5P00V" data-product-listing-
+2024-11-16 17:14:37,939 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S009B0GL" data-id="S009B0GL" data-list-position="80" data-local-list-position="80" data-product-id="S009B0GL" data-product-listing-
+2024-11-16 17:14:37,940 - OttoScraper - DEBUG - Container Sample: <div class="reptile_product__ottosChoiceBadge">
+<oc-tag-v1 size="50" variant="info-primary">OTTOs Tipp</oc-tag-v1>
+</div>
+2024-11-16 17:14:37,940 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="63112548" data-id="1726490994" data-list-position="95" data-local-list-position="95" data-product-id="1726490994" data-product-list
+2024-11-16 17:14:37,940 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="7" data-article-number="S0C7A0M1ORY" data-id="S0C7A0M1" data-list-position="96" data-local-list-position="96" data-product-id="S0C7A0M1
+2024-11-16 17:14:37,941 - OttoScraper - DEBUG - Container Sample: <a class="find_tile__productLink" data-link-type="text" href="/p/playstation-5-disk-edition-slim-inkl-marvels-spider-man-2-C1802445989/#variationId=1802445990" title="PlayStation 5 Disk Edition (Slim)
+2024-11-16 17:14:37,941 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="13"></div>
+2024-11-16 17:14:37,941 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0G7K0N9" data-id="S0G7K0N9" data-list-position="37" data-local-list-position="37" data-product-id="S0G7K0N9" data-product-listing-
+2024-11-16 17:14:37,941 - OttoScraper - DEBUG - Container Sample: <div class="reptile_productListTeaser reptile_productListTeaser__target reptile_mas-list-slot js_reptile_productListTeaser__target" data-tilelist-slot="17"></div>
+2024-11-16 17:14:37,942 - OttoScraper - DEBUG - Container Sample: <picture class="find_tile__productImage find_tile__productImage--animated find_tile__productImage--loading"> <source srcset="https://i.otto.de/i/otto/6d578fcf-bd15-5c13-bf3e-895f98be3c26?$responsive_f
+2024-11-16 17:14:37,942 - OttoScraper - DEBUG - Container Sample: <article class="product spa js_deal_data" data-advertiser-legal-name="Hüseyin-Hüsnü Ünlü" data-amount-colors="0" data-article-number="S0SB40HN" data-funder-legal-name="Hüseyin-Hüsnü Ünlü" data-id="S0S
+2024-11-16 17:14:37,942 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvcGxheXN0YXRpb24tcHM1LWtvbnNvbGUtc2xpbS1kaXNrLWxhdWZ3ZXJrLXBsdXMtZ3Jhbi10dXJpc21vLTctc3BpZWwtYnVuZGxlLTF0Y
+2024-11-16 17:14:37,942 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0M830PT" data-id="S0M830PT" data-list-position="47" data-local-list-position="47" data-product-id="S0M830PT" data-product-listing-
+2024-11-16 17:14:37,943 - OttoScraper - DEBUG - Container Sample: <span class="ub64e find_tile__productImageLink js_find_tile__productImageLink" data-ub64e="L3AvY3NsLXBsYXlzdGF0aW9uLWNvbnRyb2xsZXItc3Bhci1zZXQtMi1zdC11c2ItY29udHJvbGxlci1mdWVyLWFuZHJvaWQtcGMtcHMzLWRpc
+2024-11-16 17:14:37,943 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="54709707" data-id="1458532181" data-list-position="54" data-local-list-position="54" data-product-id="1458532181" data-product-list
+2024-11-16 17:14:37,943 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0P2E0XX" data-id="S0P2E0XX" data-list-position="106" data-local-list-position="106" data-product-id="S0P2E0XX" data-product-listin
+2024-11-16 17:14:37,944 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="10" data-article-number="S0XAP0LENA6" data-id="S0XAP0LE" data-list-position="43" data-local-list-position="43" data-product-id="S0XAP0L
+2024-11-16 17:14:37,946 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="19194269" data-id="1844690158" data-list-position="9" data-local-list-position="9" data-product-id="1844690158" data-product-listin
+2024-11-16 17:14:37,947 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="33722648" data-id="1917267445" data-list-position="79" data-local-list-position="79" data-product-id="1917267445" data-product-list
+2024-11-16 17:14:37,947 - OttoScraper - DEBUG - Container Sample: <article class="product" data-amount-colors="0" data-article-number="S0HA10J0" data-id="S0HA10J0" data-list-position="28" data-local-list-position="28" data-product-id="S0HA10J0" data-product-listing-
+2024-11-16 17:14:37,949 - OttoScraper - DEBUG - Container Sample: <article class="product js_find_colorChange" data-amount-colors="10" data-article-number="S0EA10V47ZK" data-id="S0EA10V4" data-list-position="4" data-local-list-position="4" data-product-id="S0EA10V4"
+2024-11-16 17:14:37,952 - OttoScraper - DEBUG - Gefundenes Produkt: Playstation Playstation Playstation 5 Slim 1TB mit Blu-ray Laufwerk + 2 Controller Wunschfarbe - 699,00€
+2024-11-16 17:14:37,952 - OttoScraper - DEBUG - Erfolgreich 9 Otto-Produkte geparst
+2024-11-16 17:14:37,952 - BaseScraper - DEBUG - otto: Speichere 25 Ergebnisse in der Datenbank
+2024-11-16 17:14:37,957 - BaseScraper - INFO - otto: Suche abgeschlossen. 25 Artikel gefunden.
+2024-11-16 17:14:37,957 - AllYouCanShopGUI - DEBUG - otto: 25 Ergebnisse gefunden
+2024-11-16 17:14:37,958 - ResultsSection - DEBUG - Favoriten geladen: 0 Einträge
+2024-11-16 17:14:37,963 - ResultsSection - DEBUG - 211 Ergebnisse aktualisiert
+2024-11-16 17:14:37,964 - StatusBar - DEBUG - Status aktualisiert: Suche abgeschlossen. 211 Ergebnisse gefunden.

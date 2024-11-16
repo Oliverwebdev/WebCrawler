@@ -12,14 +12,14 @@ from .components.results_section import ResultsSection
 from .components.favorites_window import FavoritesWindow
 from .components.status_bar import StatusBar
 
-logger = logging.getLogger('EbayScraperGUI')
+logger = logging.getLogger('AllYouCanShopGUI')
 
 
 class EbayScraperGUI:
     def __init__(self, root, scrapers, db_manager):
         """
         Initialisiert die Hauptanwendung.
-        
+
         Args:
             root: Tkinter Root-Widget
             scrapers: Dictionary mit Scraper-Instanzen für alle Shops
@@ -29,7 +29,7 @@ class EbayScraperGUI:
         self.db_manager = db_manager
         self.scrapers = scrapers
         self.search_active = False
-        
+
         # Initialisiere Ergebnisspeicher für alle verfügbaren Shops
         self.current_results = {shop: [] for shop in scrapers.keys()}
 
@@ -40,7 +40,7 @@ class EbayScraperGUI:
 
     def setup_main_window(self):
         """Konfiguriert das Hauptfenster."""
-        self.root.title("Shop Scraper")
+        self.root.title("AllYouCanShop")
         self.root.minsize(800, 600)
 
         # Erstelle Hauptframe
@@ -96,7 +96,7 @@ class EbayScraperGUI:
         # Titel
         title_label = ttk.Label(
             self.header_frame,
-            text="Shop Preisvergleich",
+            text="AllYouCanShop - Preisvergleich",
             style='Header.TLabel'
         )
         title_label.pack(side=tk.LEFT)
@@ -185,6 +185,10 @@ class EbayScraperGUI:
 
         def search_thread():
             try:
+                # Lösche alte Suchergebnisse für dieses Keyword
+                logger.debug(f"Lösche alte Suchergebnisse für: {keyword}")
+                self.db_manager.clear_search_results(keyword)
+
                 # Bestimme aktive Scraper
                 active_scrapers = {}
                 logger.debug(f"Starte Suche mit Quelle: {source}")
