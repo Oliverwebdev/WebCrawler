@@ -1,4 +1,4 @@
--- Einstellungen Tabelle
+-- Einstellungen Tabelle bleibt unverändert
 CREATE TABLE IF NOT EXISTS settings (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     max_pages INTEGER DEFAULT 3,
@@ -7,10 +7,10 @@ CREATE TABLE IF NOT EXISTS settings (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Suchergebnisse Tabelle
+-- Aktualisierte Suchergebnisse Tabelle mit Otto als mögliche Quelle
 CREATE TABLE IF NOT EXISTS search_results (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon')),
+    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto')),
     keyword VARCHAR(255) NOT NULL,
     title TEXT NOT NULL,
     price VARCHAR(50) NOT NULL,
@@ -20,20 +20,20 @@ CREATE TABLE IF NOT EXISTS search_results (
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Favoriten Tabelle
+-- Aktualisierte Favoriten Tabelle mit Otto als mögliche Quelle
 CREATE TABLE IF NOT EXISTS favorites (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     price VARCHAR(50) NOT NULL,
     link TEXT UNIQUE NOT NULL,
-    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon')),
+    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto')),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Archivtabelle für alte Suchergebnisse
+-- Aktualisierte Archivtabelle mit Otto als mögliche Quelle
 CREATE TABLE IF NOT EXISTS search_results_archive (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon')),
+    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto')),
     keyword VARCHAR(255) NOT NULL,
     title TEXT NOT NULL,
     price VARCHAR(50) NOT NULL,
@@ -44,14 +44,13 @@ CREATE TABLE IF NOT EXISTS search_results_archive (
     archived_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Trigger für automatische Aktualisierung des updated_at Feldes
+-- Trigger bleiben unverändert
 CREATE TRIGGER IF NOT EXISTS update_settings_timestamp 
 AFTER UPDATE ON settings
 BEGIN
     UPDATE settings SET updated_at = CURRENT_TIMESTAMP WHERE id = NEW.id;
 END;
 
--- Trigger für automatische Archivierung alter Suchergebnisse
 CREATE TRIGGER IF NOT EXISTS archive_old_results 
 AFTER INSERT ON search_results
 BEGIN

@@ -5,6 +5,7 @@ import logging
 import threading
 import webbrowser
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
 from config import CONFIG
 from .components.search_section import SearchSection
 from .components.results_section import ResultsSection
@@ -14,21 +15,23 @@ from .components.status_bar import StatusBar
 logger = logging.getLogger('EbayScraperGUI')
 
 
-# gui.py
-
-logger = logging.getLogger('EbayScraperGUI')
-
-
 class EbayScraperGUI:
-    def __init__(self, root, ebay_scraper, amazon_scraper, db_manager):
-        """Initialisiert die Hauptanwendung."""
+    def __init__(self, root, scrapers, db_manager):
+        """
+        Initialisiert die Hauptanwendung.
+        
+        Args:
+            root: Tkinter Root-Widget
+            scrapers: Dictionary mit Scraper-Instanzen für alle Shops
+            db_manager: Datenbankmanager-Instanz
+        """
         self.root = root
-        self.db_manager = db_manager  # Speichere db_manager als Instanzvariable
-        self.ebay_scraper = ebay_scraper
-        self.amazon_scraper = amazon_scraper
+        self.db_manager = db_manager
+        self.scrapers = scrapers
         self.search_active = False
-        self.current_ebay_results = []
-        self.current_amazon_results = []
+        
+        # Initialisiere Ergebnisspeicher für alle verfügbaren Shops
+        self.current_results = {shop: [] for shop in scrapers.keys()}
 
         self.setup_main_window()
         self.setup_styles()
@@ -37,7 +40,7 @@ class EbayScraperGUI:
 
     def setup_main_window(self):
         """Konfiguriert das Hauptfenster."""
-        self.root.title("eBay/Amazon Scraper")
+        self.root.title("Shop Scraper")
         self.root.minsize(800, 600)
 
         # Erstelle Hauptframe
@@ -70,7 +73,6 @@ class EbayScraperGUI:
             # Results Section
             self.results_section = ResultsSection(
                 self.main_frame, self.sort_results)
-            # Wichtig: Setze den Datenbankmanager direkt nach der Initialisierung
             self.results_section.set_db_manager(self.db_manager)
 
             # Setze Callbacks für Results Section
@@ -94,7 +96,7 @@ class EbayScraperGUI:
         # Titel
         title_label = ttk.Label(
             self.header_frame,
-            text="eBay/Amazon Preisvergleich",
+            text="Shop Preisvergleich",
             style='Header.TLabel'
         )
         title_label.pack(side=tk.LEFT)
@@ -158,8 +160,17 @@ class EbayScraperGUI:
             command=save_settings
         ).pack(pady=20)
 
-    def start_search(self, keyword, source='both', min_price=None, max_price=None, condition=None):
-        """Startet eine neue Suche."""
+    def start_search(self, keyword, source='all', min_price=None, max_price=None, condition=None):
+        """
+        Startet eine neue Suche.
+
+        Args:
+            keyword: Suchbegriff
+            source: Ausgewählte Quelle ('all', 'ebay', 'amazon', 'otto')
+            min_price: Minimaler Preis
+            max_price: Maximaler Preis
+            condition: Artikelzustand
+        """
         if not keyword:
             messagebox.showwarning(
                 "Warnung", "Bitte geben Sie einen Suchbegriff ein")
@@ -174,25 +185,50 @@ class EbayScraperGUI:
 
         def search_thread():
             try:
-                if source in ['both', 'ebay']:
-                    self.current_ebay_results = self.ebay_scraper.search(
-                        keyword,
-                        self.settings.get('max_pages', 3),
-                        min_price,
-                        max_price,
-                        condition
-                    )
+                # Bestimme aktive Scraper
+                active_scrapers = {}
+                logger.debug(f"Starte Suche mit Quelle: {source}")
 
-                if source in ['both', 'amazon']:
-                    self.current_amazon_results = self.amazon_scraper.search(
-                        keyword,
-                        self.settings.get('max_pages', 3),
-                        min_price,
-                        max_price,
-                        condition
-                    )
+                if source == 'all':
+                    active_scrapers = self.scrapers
+                elif source in self.scrapers:
+                    active_scrapers = {source: self.scrapers[source]}
+                else:
+                    logger.error(f"Unbekannte Quelle: {source}")
+                    return
 
-                all_results = self.current_ebay_results + self.current_amazon_results
+                # Leere aktuelle Ergebnisse
+                for key in self.current_results:
+                    self.current_results[key] = []
+
+                # Führe Suchen parallel aus
+                all_results = []
+                with ThreadPoolExecutor(max_workers=len(active_scrapers)) as executor:
+                    future_to_source = {
+                        executor.submit(
+                            scraper.search,
+                            keyword,
+                            self.settings.get('max_pages', 3),
+                            min_price,
+                            max_price,
+                            condition
+                        ): source_name
+                        for source_name, scraper in active_scrapers.items()
+                    }
+
+                    for future in future_to_source:
+                        source_name = future_to_source[future]
+                        try:
+                            results = future.result(timeout=30)
+                            logger.debug(
+                                f"{source_name}: {len(results)} Ergebnisse gefunden")
+                            self.current_results[source_name] = results
+                            all_results.extend(results)
+                        except Exception as e:
+                            logger.error(
+                                f"Fehler bei {source_name}-Suche: {str(e)}")
+
+                # Aktualisiere GUI
                 self.root.after(
                     0, lambda: self.results_section.update_results(all_results))
                 self.root.after(0, lambda: self.status_bar.update_status(
@@ -214,7 +250,9 @@ class EbayScraperGUI:
     def sort_results(self, sort_by):
         """Sortiert die Ergebnisse."""
         try:
-            all_results = self.current_ebay_results + self.current_amazon_results
+            all_results = []
+            for results in self.current_results.values():
+                all_results.extend(results)
 
             if sort_by == 'price':
                 all_results.sort(key=lambda x: float(

@@ -10,7 +10,7 @@ class SearchSection:
     def __init__(self, parent, search_callback):
         """
         Initialisiert die Suchsektion.
-        
+
         Args:
             parent: Übergeordnetes Tkinter-Widget
             search_callback: Callback-Funktion für die Suche
@@ -35,16 +35,27 @@ class SearchSection:
             search_frame, textvariable=self.keyword_var)
         self.search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
 
-        # Quelle
-        self.source_var = tk.StringVar(value="both")
-        ttk.Label(search_frame, text="Quelle:").pack(
-            side=tk.LEFT, padx=(10, 0))
-        ttk.Radiobutton(search_frame, text="Beide", variable=self.source_var,
-                        value="both").pack(side=tk.LEFT)
-        ttk.Radiobutton(search_frame, text="eBay", variable=self.source_var,
-                        value="ebay").pack(side=tk.LEFT)
-        ttk.Radiobutton(search_frame, text="Amazon", variable=self.source_var,
-                        value="amazon").pack(side=tk.LEFT)
+        # Quelle mit Otto Option
+        source_frame = ttk.Frame(search_frame)
+        source_frame.pack(side=tk.LEFT, padx=(10, 0))
+
+        ttk.Label(source_frame, text="Quelle:").pack(side=tk.LEFT)
+        self.source_var = tk.StringVar(value="all")
+
+        sources = [
+            ("Alle", "all"),
+            ("eBay", "ebay"),
+            ("Amazon", "amazon"),
+            ("Otto", "otto")
+        ]
+
+        for text, value in sources:
+            ttk.Radiobutton(
+                source_frame,
+                text=text,
+                variable=self.source_var,
+                value=value
+            ).pack(side=tk.LEFT, padx=2)
 
         # Erweiterte Optionen
         options_frame = ttk.Frame(self.frame)
@@ -70,9 +81,13 @@ class SearchSection:
 
         ttk.Label(condition_frame, text="Zustand:").pack(side=tk.LEFT)
         self.condition_var = tk.StringVar(value="alle")
-        ttk.Combobox(condition_frame, textvariable=self.condition_var,
-                     values=["alle", "neu", "gebraucht"],
-                     state="readonly", width=10).pack(side=tk.LEFT, padx=5)
+        ttk.Combobox(
+            condition_frame,
+            textvariable=self.condition_var,
+            values=["alle", "neu", "gebraucht"],
+            state="readonly",
+            width=10
+        ).pack(side=tk.LEFT, padx=5)
 
         # Suchbutton
         self.search_button = ttk.Button(
@@ -82,6 +97,9 @@ class SearchSection:
             style='Search.TButton'
         )
         self.search_button.pack(pady=10)
+
+        # Bind Enter-Taste zum Starten der Suche
+        self.search_entry.bind('<Return>', lambda e: self.start_search())
 
     def start_search(self):
         """Startet die Suche mit den eingegebenen Parametern."""
@@ -97,9 +115,17 @@ class SearchSection:
                 return
 
             # Konvertiere Preise wenn angegeben
-            min_price = float(min_price) if min_price else None
-            max_price = float(max_price) if max_price else None
+            try:
+                min_price = float(min_price) if min_price else None
+                max_price = float(max_price) if max_price else None
+            except ValueError:
+                logger.error("Ungültige Preiseingabe")
+                return
+
             condition = None if condition == "alle" else condition
+
+            logger.debug(f"Starte Suche: Quelle={source}, Keyword={keyword}, "
+                         f"Preis={min_price}-{max_price}, Zustand={condition}")
 
             self.search_callback(
                 keyword=keyword,
@@ -109,7 +135,5 @@ class SearchSection:
                 condition=condition
             )
 
-        except ValueError as e:
-            logger.error(f"Ungültige Preiseingabe: {e}")
         except Exception as e:
             logger.error(f"Fehler beim Starten der Suche: {e}")

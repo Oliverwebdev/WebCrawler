@@ -36,7 +36,7 @@ def test_imports():
         print(f"✗ config: {e}")
     
     try:
-        from scraper.ebay_scraper import EbayScraper
+        from scrapers.ebay_scraper import EbayScraper
         print("✓ ebay_scraper")
     except ImportError as e:
         print(f"✗ ebay_scraper: {e}")

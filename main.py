@@ -5,10 +5,11 @@ import logging
 import sys
 import os
 from pathlib import Path
+from typing import Optional, Dict, Any
 
 # Konfiguriere Logging sofort
 logging.basicConfig(
-    level=logging.DEBUG,  # Setze auf DEBUG für mehr Details
+    level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),
@@ -19,21 +20,28 @@ logging.basicConfig(
 logger = logging.getLogger('Main')
 
 
-def check_system_requirements():
-    """Überprüft Systemvoraussetzungen und Verzeichnisstruktur."""
+def check_system_requirements() -> bool:
+    """
+    Überprüft Systemvoraussetzungen und Verzeichnisstruktur.
+
+    Returns:
+        bool: True wenn alle Anforderungen erfüllt sind, sonst False
+    """
     try:
         logger.debug("Überprüfe Systemvoraussetzungen...")
 
         # Überprüfe/Erstelle notwendige Verzeichnisse
-        required_dirs = ['utils', 'database',
-                         'scraper', 'gui', 'gui/components']
+        required_dirs = [
+            'utils',
+            'database',
+            'scrapers',
+            'gui',
+            'gui/components'
+        ]
+
         for directory in required_dirs:
             Path(directory).mkdir(parents=True, exist_ok=True)
             logger.debug(f"Verzeichnis überprüft/erstellt: {directory}")
-
-        # Überprüfe Datenbankdatei
-        if not Path('utils/scraper.db').exists():
-            logger.debug("Datenbank existiert noch nicht - wird erstellt")
 
         return True
     except Exception as e:
@@ -41,12 +49,17 @@ def check_system_requirements():
         return False
 
 
-def create_gui():
-    """Erstellt das GUI-Fenster mit Fehlerbehandlung."""
+def create_gui() -> Optional[tk.Tk]:
+    """
+    Erstellt das GUI-Fenster mit Fehlerbehandlung.
+
+    Returns:
+        Optional[tk.Tk]: Tkinter Root-Fenster oder None bei Fehler
+    """
     try:
         logger.debug("Initialisiere GUI...")
         root = tk.Tk()
-        root.title("eBay/Amazon Scraper")
+        root.title("Shop Scraper")
 
         # Setze Fenstergröße und -position
         window_width = 800
@@ -65,6 +78,33 @@ def create_gui():
         return None
 
 
+def setup_scrapers(db_manager) -> Dict[str, Any]:
+    """
+    Initialisiert die Scraper-Instanzen.
+
+    Args:
+        db_manager: Datenbankmanager-Instanz
+
+    Returns:
+        Dict[str, Any]: Dictionary mit initialisierten Scraper-Instanzen
+    """
+    try:
+        from scrapers.ebay_scraper import EbayScraper
+        from scrapers.amazon_scraper import AmazonScraper
+        from scrapers.otto_scraper import OttoScraper
+
+        scrapers = {
+            'ebay': EbayScraper(db_manager),
+            'amazon': AmazonScraper(db_manager),
+            'otto': OttoScraper(db_manager)
+        }
+        logger.debug("Scraper erfolgreich initialisiert")
+        return scrapers
+    except Exception as e:
+        logger.error(f"Fehler bei Scraper-Initialisierung: {e}")
+        raise
+
+
 def main():
     """Hauptfunktion mit verbesserter Fehlerbehandlung und Debugging."""
     try:
@@ -78,8 +118,6 @@ def main():
         # Importiere erst nach Systemcheck
         logger.debug("Importiere Module...")
         from gui.gui import EbayScraperGUI
-        from scraper.ebay_scraper import EbayScraper
-        from scraper.amazon_scraper import AmazonScraper
         from database.database_manager import DatabaseManager
         from x11_config import configure_x11_environment, check_display_server
 
@@ -103,14 +141,13 @@ def main():
 
         # Initialisiere Scraper
         logger.debug("Initialisiere Scraper...")
-        ebay_scraper = EbayScraper(db_manager)
-        amazon_scraper = AmazonScraper(db_manager)
+        scrapers = setup_scrapers(db_manager)
 
         # Erstelle Hauptanwendung
         logger.debug("Erstelle Hauptanwendung...")
-        app = EbayScraperGUI(root, ebay_scraper, amazon_scraper, db_manager)
+        app = EbayScraperGUI(root, scrapers, db_manager)
 
-        # Führe Datenmigration durch
+        # Führe Datenmigration durch falls nötig
         logger.debug("Führe Datenmigration durch...")
         db_manager.migrate_from_json()
 
