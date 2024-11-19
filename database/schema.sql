@@ -7,10 +7,10 @@ CREATE TABLE IF NOT EXISTS settings (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Aktualisierte Suchergebnisse Tabelle mit Otto als mögliche Quelle
+-- Aktualisierte Suchergebnisse Tabelle mit Kaufland als mögliche Quelle
 CREATE TABLE IF NOT EXISTS search_results (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto')),
+    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto', 'kaufland')),
     keyword VARCHAR(255) NOT NULL,
     title TEXT NOT NULL,
     price VARCHAR(50) NOT NULL,
@@ -20,20 +20,20 @@ CREATE TABLE IF NOT EXISTS search_results (
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Aktualisierte Favoriten Tabelle mit Otto als mögliche Quelle
+-- Aktualisierte Favoriten Tabelle mit Kaufland als mögliche Quelle
 CREATE TABLE IF NOT EXISTS favorites (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     price VARCHAR(50) NOT NULL,
     link TEXT UNIQUE NOT NULL,
-    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto')),
+    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto', 'kaufland')),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Aktualisierte Archivtabelle mit Otto als mögliche Quelle
+-- Aktualisierte Archivtabelle mit Kaufland als mögliche Quelle
 CREATE TABLE IF NOT EXISTS search_results_archive (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto')),
+    source VARCHAR(10) NOT NULL CHECK (source IN ('ebay', 'amazon', 'otto', 'kaufland')),
     keyword VARCHAR(255) NOT NULL,
     title TEXT NOT NULL,
     price VARCHAR(50) NOT NULL,

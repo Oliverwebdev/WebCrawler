@@ -92,11 +92,15 @@ def setup_scrapers(db_manager) -> Dict[str, Any]:
         from scrapers.ebay_scraper import EbayScraper
         from scrapers.amazon_scraper import AmazonScraper
         from scrapers.otto_scraper import OttoScraper
+        from scrapers.kaufland_scraper import KauflandScraper
 
         scrapers = {
             'ebay': EbayScraper(db_manager),
             'amazon': AmazonScraper(db_manager),
-            'otto': OttoScraper(db_manager)
+            'otto': OttoScraper(db_manager),
+            'kaufland': KauflandScraper(db_manager)
+
+            
         }
         logger.debug("Scraper erfolgreich initialisiert")
         return scrapers

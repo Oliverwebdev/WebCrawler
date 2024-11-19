@@ -46,7 +46,8 @@ class SearchSection:
             ("Alle", "all"),
             ("eBay", "ebay"),
             ("Amazon", "amazon"),
-            ("Otto", "otto")
+            ("Otto", "otto"),
+            ("Kaufland", "kaufland")
         ]
 
         for text, value in sources:
