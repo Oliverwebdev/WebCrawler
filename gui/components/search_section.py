@@ -47,8 +47,9 @@ class SearchSection:
             ("eBay", "ebay"),
             ("Amazon", "amazon"),
             ("Otto", "otto"),
-            ("Kaufland", "kaufland")
+            # ("Kaufland", "kaufland")
         ]
+        # alles einbauen was hingehört
 
         for text, value in sources:
             ttk.Radiobutton(

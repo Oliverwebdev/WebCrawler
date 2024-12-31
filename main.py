@@ -98,7 +98,7 @@ def setup_scrapers(db_manager) -> Dict[str, Any]:
             'ebay': EbayScraper(db_manager),
             'amazon': AmazonScraper(db_manager),
             'otto': OttoScraper(db_manager),
-            'kaufland': KauflandScraper(db_manager)
+            # 'kaufland': KauflandScraper(db_manager)
 
             
         }

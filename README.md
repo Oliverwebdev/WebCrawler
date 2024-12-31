@@ -121,3 +121,9 @@ Besonderer Dank gilt:
 
 
 
+## To do
+
+# Ebay, Amazon, Otto gehen 
+
+# Kaufland zu starke anti bot maßnahmen
+# Idealo, kleinanzeigen, saturn, zalando fehlen noch 
