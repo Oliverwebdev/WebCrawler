@@ -47,7 +47,7 @@ class SearchSection:
             ("eBay", "ebay"),
             ("Amazon", "amazon"),
             ("Otto", "otto"),
-            # ("Kaufland", "kaufland")
+            ("Kleinanzeigen", "kleinanzeigen")
         ]
         # alles einbauen was hingehört
 
